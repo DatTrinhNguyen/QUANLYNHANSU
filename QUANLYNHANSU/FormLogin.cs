@@ -56,7 +56,6 @@ namespace QUANLYNHANSU
                     usernameLogin.Clear();
                     passwordLogin.Clear();
                     FormGiamDoc formGiamDoc = new FormGiamDoc();
-                    formGiamDoc.ShowDialog();
                 }
                 else
                 {
