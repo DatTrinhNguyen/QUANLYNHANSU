@@ -37,26 +37,26 @@ namespace QUANLYNHANSU
                 if (usernameLogin.Text == "NhanSu123")
                 {
                     this.Hide();
+                    FormNhanSu formNhanSu = new FormNhanSu(usernameLogin.Text);
                     usernameLogin.Clear();
                     passwordLogin.Clear();
-                    FormNhanSu formNhanSu = new FormNhanSu();
                     formNhanSu.ShowDialog();
                 }
                 else if (usernameLogin.Text == "GiamDoc123")
                 {
                     this.Hide();
+                    FormNhanSu formNhanSu = new FormNhanSu(usernameLogin.Text);
                     usernameLogin.Clear();
                     passwordLogin.Clear();
-                    FormGiamDoc formGiamDoc = new FormGiamDoc();
-                    formGiamDoc.ShowDialog();
+                    formNhanSu.ShowDialog();
                 }
                 else if (usernameLogin.Text == "KeToan123")
                 {
                     this.Hide();
+                    FormNhanSu formNhanSu = new FormNhanSu(usernameLogin.Text);
                     usernameLogin.Clear();
                     passwordLogin.Clear();
-                    FormGiamDoc formGiamDoc = new FormGiamDoc();
-                    formGiamDoc.ShowDialog();
+                    formNhanSu.ShowDialog();
                 }
                 else
                 {
@@ -97,7 +97,7 @@ namespace QUANLYNHANSU
                 return false;
             }
             //Kiểm tra password
-            if (password.Length == 8 )
+            if (password.Length != 8 )
             {
                 DialogResult dialogResult = MessageBox.Show("Mật khẩu chỉ chứa 8 ký tự", "Lỗi", MessageBoxButtons.OK);
                 return false;

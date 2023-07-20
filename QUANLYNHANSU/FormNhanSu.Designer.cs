@@ -622,7 +622,6 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FromNhanSu";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FormNhanSu_FormClosed);
-            this.Load += new System.EventHandler(this.MainForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

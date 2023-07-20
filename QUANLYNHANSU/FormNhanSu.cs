@@ -12,16 +12,14 @@ namespace QUANLYNHANSU
     public partial class FormNhanSu : DevExpress.XtraBars.Ribbon.RibbonForm
     {
         bool exit = true;
-        public FormNhanSu()
+        string permission;
+        public FormNhanSu(string permission )
         {
             InitializeComponent();
-            
+            this.permission = permission;
+            Decentralization(permission);
         }
 
-        private void MainForm_Load(object sender, EventArgs e)
-        {
-            ribbonPage1.Visible=false;
-        }
 
         private void btnThoatChuongTrinnh_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
@@ -37,5 +35,34 @@ namespace QUANLYNHANSU
             }
         }
 
+        //Phân quyền từng chức vụ
+        private void Decentralization(string permission)
+        {
+            //Phân quyền giám đốc
+            if (permission.Contains("GiamDoc"))
+            {
+                ribbonPage4.Visible = false;
+                btnLoaiCong.Enabled = false;
+                btnLoaiCa.Enabled= false;
+                ribbonPage5.Visible = false;
+                return;
+            }
+
+            //Phân quyền nhân sự
+            if (permission.Contains("NhanSu"))
+            {
+                ribbonPage2.Visible = false;
+                ribbonPage4.Visible = false;
+                return;
+            }
+
+            //Phân quyền kế toán
+            if (permission.Contains("KeToan"))
+            {
+                ribbonPage2.Visible = false;
+                ribbonPage3.Visible = false;
+                return;
+            }
+        }
     }
 }

@@ -58,12 +58,6 @@
     <Compile Include="FormLogin.Designer.cs">
       <DependentUpon>FormLogin.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormGiamDoc.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FormGiamDoc.Designer.cs">
-      <DependentUpon>FormGiamDoc.cs</DependentUpon>
-    </Compile>
     <Compile Include="FormNhanSu.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -92,9 +86,6 @@
     </Compile>
     <EmbeddedResource Include="FormLogin.resx">
       <DependentUpon>FormLogin.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="FormGiamDoc.resx">
-      <DependentUpon>FormGiamDoc.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormNhanSu.resx">
       <DependentUpon>FormNhanSu.cs</DependentUpon>
