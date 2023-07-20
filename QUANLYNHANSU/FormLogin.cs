@@ -50,6 +50,14 @@ namespace QUANLYNHANSU
                     FormGiamDoc formGiamDoc = new FormGiamDoc();
                     formGiamDoc.ShowDialog();
                 }
+                else if (usernameLogin.Text == "KeToan123")
+                {
+                    this.Hide();
+                    usernameLogin.Clear();
+                    passwordLogin.Clear();
+                    FormGiamDoc formGiamDoc = new FormGiamDoc();
+                    formGiamDoc.ShowDialog();
+                }
                 else
                 {
                     passwordLogin.Clear();
