@@ -9,11 +9,11 @@ using System.Windows.Forms;
 
 namespace QUANLYNHANSU
 {
-    public partial class FormNhanSu : DevExpress.XtraBars.Ribbon.RibbonForm
+    public partial class FormMain : DevExpress.XtraBars.Ribbon.RibbonForm
     {
         bool exit = true;
         string permission;
-        public FormNhanSu(string permission )
+        public FormMain(string permission )
         {
             InitializeComponent();
             this.permission = permission;

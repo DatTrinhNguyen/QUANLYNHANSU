@@ -37,7 +37,7 @@ namespace QUANLYNHANSU
                 if (usernameLogin.Text == "NhanSu123")
                 {
                     this.Hide();
-                    FormNhanSu formNhanSu = new FormNhanSu(usernameLogin.Text);
+                    FormMain formNhanSu = new FormMain(usernameLogin.Text);
                     usernameLogin.Clear();
                     passwordLogin.Clear();
                     formNhanSu.ShowDialog();
@@ -45,7 +45,7 @@ namespace QUANLYNHANSU
                 else if (usernameLogin.Text == "GiamDoc123")
                 {
                     this.Hide();
-                    FormNhanSu formNhanSu = new FormNhanSu(usernameLogin.Text);
+                    FormMain formNhanSu = new FormMain(usernameLogin.Text);
                     usernameLogin.Clear();
                     passwordLogin.Clear();
                     formNhanSu.ShowDialog();
@@ -53,7 +53,7 @@ namespace QUANLYNHANSU
                 else if (usernameLogin.Text == "KeToan123")
                 {
                     this.Hide();
-                    FormNhanSu formNhanSu = new FormNhanSu(usernameLogin.Text);
+                    FormMain formNhanSu = new FormMain(usernameLogin.Text);
                     usernameLogin.Clear();
                     passwordLogin.Clear();
                     formNhanSu.ShowDialog();
