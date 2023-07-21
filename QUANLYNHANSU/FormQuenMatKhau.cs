@@ -62,6 +62,7 @@ namespace QUANLYNHANSU
             if(gmail.Length == 0)
             {
                 DialogResult dialogResult = MessageBox.Show("Tên tài khoản Gmail không được bỏ trống ", "Lỗi", MessageBoxButtons.OK);
+                return false;
             }
             if (!gmail.Contains("@gmail.com"))
             {

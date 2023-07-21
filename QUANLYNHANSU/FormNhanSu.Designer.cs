@@ -85,6 +85,11 @@
             this.ribbonPageGroup9 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPage6 = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroup10 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
+            this.ribbonPage7 = new DevExpress.XtraBars.Ribbon.RibbonPage();
+            this.ribbonPageGroup15 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
+            this.btnThemNhanVien = new DevExpress.XtraBars.BarButtonItem();
+            this.btnTimNhanVien = new DevExpress.XtraBars.BarButtonItem();
+            this.btnCapNhatNhanVien = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -129,10 +134,13 @@
             this.btnCongTangCa,
             this.btnNhanVienNghi,
             this.btnTroGiup,
-            this.btnPhanHoi});
+            this.btnPhanHoi,
+            this.btnThemNhanVien,
+            this.btnTimNhanVien,
+            this.btnCapNhatNhanVien});
             this.ribbonControl1.Location = new System.Drawing.Point(0, 0);
             this.ribbonControl1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.ribbonControl1.MaxItemId = 36;
+            this.ribbonControl1.MaxItemId = 40;
             this.ribbonControl1.Name = "ribbonControl1";
             this.ribbonControl1.OptionsMenuMinWidth = 385;
             this.ribbonControl1.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
@@ -141,7 +149,8 @@
             this.ribbonPage3,
             this.ribbonPage4,
             this.ribbonPage5,
-            this.ribbonPage6});
+            this.ribbonPage6,
+            this.ribbonPage7});
             this.ribbonControl1.Size = new System.Drawing.Size(994, 193);
             // 
             // btnDangXuat
@@ -609,6 +618,48 @@
             this.ribbonPageGroup10.Name = "ribbonPageGroup10";
             this.ribbonPageGroup10.Text = "Trợ giúp";
             // 
+            // ribbonPage7
+            // 
+            this.ribbonPage7.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
+            this.ribbonPageGroup15});
+            this.ribbonPage7.Name = "ribbonPage7";
+            this.ribbonPage7.Text = "Quản lý nhân viên";
+            // 
+            // ribbonPageGroup15
+            // 
+            this.ribbonPageGroup15.ItemLinks.Add(this.btnThemNhanVien);
+            this.ribbonPageGroup15.ItemLinks.Add(this.btnTimNhanVien);
+            this.ribbonPageGroup15.ItemLinks.Add(this.btnCapNhatNhanVien);
+            this.ribbonPageGroup15.Name = "ribbonPageGroup15";
+            this.ribbonPageGroup15.Text = "Nhân viên";
+            // 
+            // btnThemNhanVien
+            // 
+            this.btnThemNhanVien.Caption = "Thêm nhân viên";
+            this.btnThemNhanVien.Id = 37;
+            this.btnThemNhanVien.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonItem1.ImageOptions.Image")));
+            this.btnThemNhanVien.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barButtonItem1.ImageOptions.LargeImage")));
+            this.btnThemNhanVien.Name = "btnThemNhanVien";
+            this.btnThemNhanVien.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
+            // 
+            // btnTimNhanVien
+            // 
+            this.btnTimNhanVien.Caption = "Tìm nhân viên";
+            this.btnTimNhanVien.Id = 38;
+            this.btnTimNhanVien.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonItem2.ImageOptions.Image")));
+            this.btnTimNhanVien.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barButtonItem2.ImageOptions.LargeImage")));
+            this.btnTimNhanVien.Name = "btnTimNhanVien";
+            this.btnTimNhanVien.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
+            // 
+            // btnCapNhatNhanVien
+            // 
+            this.btnCapNhatNhanVien.Caption = "Cập nhật nhân viên";
+            this.btnCapNhatNhanVien.Id = 39;
+            this.btnCapNhatNhanVien.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonItem3.ImageOptions.Image")));
+            this.btnCapNhatNhanVien.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barButtonItem3.ImageOptions.LargeImage")));
+            this.btnCapNhatNhanVien.Name = "btnCapNhatNhanVien";
+            this.btnCapNhatNhanVien.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
+            // 
             // FormNhanSu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
@@ -686,6 +737,11 @@
         private DevExpress.XtraBars.BarButtonItem btnNhanVienNghi;
         private DevExpress.XtraBars.BarButtonItem btnTroGiup;
         private DevExpress.XtraBars.BarButtonItem btnPhanHoi;
+        private DevExpress.XtraBars.Ribbon.RibbonPage ribbonPage7;
+        private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup15;
+        private DevExpress.XtraBars.BarButtonItem btnThemNhanVien;
+        private DevExpress.XtraBars.BarButtonItem btnTimNhanVien;
+        private DevExpress.XtraBars.BarButtonItem btnCapNhatNhanVien;
     }
 }
 
