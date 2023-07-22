@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormMain));
             this.ribbonControl1 = new DevExpress.XtraBars.Ribbon.RibbonControl();
             this.btnDangXuat = new DevExpress.XtraBars.BarButtonItem();
@@ -65,6 +66,9 @@
             this.btnNhanVienNghi = new DevExpress.XtraBars.BarButtonItem();
             this.btnTroGiup = new DevExpress.XtraBars.BarButtonItem();
             this.btnPhanHoi = new DevExpress.XtraBars.BarButtonItem();
+            this.btnThemNhanVien = new DevExpress.XtraBars.BarButtonItem();
+            this.btnTimNhanVien = new DevExpress.XtraBars.BarButtonItem();
+            this.btnCapNhatNhanVien = new DevExpress.XtraBars.BarButtonItem();
             this.ribbonPage1 = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroup1 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroup4 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
@@ -87,10 +91,11 @@
             this.ribbonPageGroup10 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPage7 = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroup15 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
-            this.btnThemNhanVien = new DevExpress.XtraBars.BarButtonItem();
-            this.btnTimNhanVien = new DevExpress.XtraBars.BarButtonItem();
-            this.btnCapNhatNhanVien = new DevExpress.XtraBars.BarButtonItem();
+            this.documentManager1 = new DevExpress.XtraBars.Docking2010.DocumentManager(this.components);
+            this.tabbedView1 = new DevExpress.XtraBars.Docking2010.Views.Tabbed.TabbedView(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.documentManager1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tabbedView1)).BeginInit();
             this.SuspendLayout();
             // 
             // ribbonControl1
@@ -151,7 +156,7 @@
             this.ribbonPage5,
             this.ribbonPage6,
             this.ribbonPage7});
-            this.ribbonControl1.Size = new System.Drawing.Size(994, 193);
+            this.ribbonControl1.Size = new System.Drawing.Size(998, 193);
             // 
             // btnDangXuat
             // 
@@ -463,6 +468,34 @@
             this.btnPhanHoi.Name = "btnPhanHoi";
             this.btnPhanHoi.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
             // 
+            // btnThemNhanVien
+            // 
+            this.btnThemNhanVien.Caption = "Thêm nhân viên";
+            this.btnThemNhanVien.Id = 37;
+            this.btnThemNhanVien.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnThemNhanVien.ImageOptions.Image")));
+            this.btnThemNhanVien.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnThemNhanVien.ImageOptions.LargeImage")));
+            this.btnThemNhanVien.Name = "btnThemNhanVien";
+            this.btnThemNhanVien.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
+            this.btnThemNhanVien.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnThemNhanVien_ItemClick);
+            // 
+            // btnTimNhanVien
+            // 
+            this.btnTimNhanVien.Caption = "Tìm nhân viên";
+            this.btnTimNhanVien.Id = 38;
+            this.btnTimNhanVien.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnTimNhanVien.ImageOptions.Image")));
+            this.btnTimNhanVien.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnTimNhanVien.ImageOptions.LargeImage")));
+            this.btnTimNhanVien.Name = "btnTimNhanVien";
+            this.btnTimNhanVien.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
+            // 
+            // btnCapNhatNhanVien
+            // 
+            this.btnCapNhatNhanVien.Caption = "Cập nhật nhân viên";
+            this.btnCapNhatNhanVien.Id = 39;
+            this.btnCapNhatNhanVien.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnCapNhatNhanVien.ImageOptions.Image")));
+            this.btnCapNhatNhanVien.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnCapNhatNhanVien.ImageOptions.LargeImage")));
+            this.btnCapNhatNhanVien.Name = "btnCapNhatNhanVien";
+            this.btnCapNhatNhanVien.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
+            // 
             // ribbonPage1
             // 
             this.ribbonPage1.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
@@ -633,47 +666,31 @@
             this.ribbonPageGroup15.Name = "ribbonPageGroup15";
             this.ribbonPageGroup15.Text = "Nhân viên";
             // 
-            // btnThemNhanVien
+            // documentManager1
             // 
-            this.btnThemNhanVien.Caption = "Thêm nhân viên";
-            this.btnThemNhanVien.Id = 37;
-            this.btnThemNhanVien.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonItem1.ImageOptions.Image")));
-            this.btnThemNhanVien.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barButtonItem1.ImageOptions.LargeImage")));
-            this.btnThemNhanVien.Name = "btnThemNhanVien";
-            this.btnThemNhanVien.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
+            this.documentManager1.MdiParent = this;
+            this.documentManager1.MenuManager = this.ribbonControl1;
+            this.documentManager1.View = this.tabbedView1;
+            this.documentManager1.ViewCollection.AddRange(new DevExpress.XtraBars.Docking2010.Views.BaseView[] {
+            this.tabbedView1});
             // 
-            // btnTimNhanVien
-            // 
-            this.btnTimNhanVien.Caption = "Tìm nhân viên";
-            this.btnTimNhanVien.Id = 38;
-            this.btnTimNhanVien.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonItem2.ImageOptions.Image")));
-            this.btnTimNhanVien.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barButtonItem2.ImageOptions.LargeImage")));
-            this.btnTimNhanVien.Name = "btnTimNhanVien";
-            this.btnTimNhanVien.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
-            // 
-            // btnCapNhatNhanVien
-            // 
-            this.btnCapNhatNhanVien.Caption = "Cập nhật nhân viên";
-            this.btnCapNhatNhanVien.Id = 39;
-            this.btnCapNhatNhanVien.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonItem3.ImageOptions.Image")));
-            this.btnCapNhatNhanVien.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barButtonItem3.ImageOptions.LargeImage")));
-            this.btnCapNhatNhanVien.Name = "btnCapNhatNhanVien";
-            this.btnCapNhatNhanVien.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
-            // 
-            // FormNhanSu
+            // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(994, 548);
+            this.ClientSize = new System.Drawing.Size(998, 949);
             this.Controls.Add(this.ribbonControl1);
             this.FormBorderEffect = DevExpress.XtraEditors.FormBorderEffect.Shadow;
+            this.IsMdiContainer = true;
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.Name = "FormNhanSu";
+            this.Name = "FormMain";
             this.Ribbon = this.ribbonControl1;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FromNhanSu";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FormNhanSu_FormClosed);
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.documentManager1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tabbedView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -742,6 +759,8 @@
         private DevExpress.XtraBars.BarButtonItem btnThemNhanVien;
         private DevExpress.XtraBars.BarButtonItem btnTimNhanVien;
         private DevExpress.XtraBars.BarButtonItem btnCapNhatNhanVien;
+        private DevExpress.XtraBars.Docking2010.DocumentManager documentManager1;
+        private DevExpress.XtraBars.Docking2010.Views.Tabbed.TabbedView tabbedView1;
     }
 }
 

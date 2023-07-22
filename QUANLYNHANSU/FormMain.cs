@@ -66,5 +66,12 @@ namespace QUANLYNHANSU
                 return;
             }
         }
+
+        private void btnThemNhanVien_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            FormThemNhanVien formThemNhanVien = new FormThemNhanVien();
+            formThemNhanVien.MdiParent = this;
+            formThemNhanVien.Show();
+        }
     }
 }
