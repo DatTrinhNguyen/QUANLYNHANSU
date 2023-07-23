@@ -80,7 +80,7 @@ namespace QUANLYNHANSU
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(151, 60);
             this.label2.TabIndex = 9;
-            this.label2.Text = "02:00";
+            this.label2.Text = "03:00";
             // 
             // FormXacThuc
             // 

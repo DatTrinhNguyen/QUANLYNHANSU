@@ -16,7 +16,7 @@ namespace QUANLYNHANSU
         int otp;
         string gmail;
         //Thời gian hiệu lực
-        int minute=2,second=0;
+        int minute=3,second=0;
         public FormXacThuc(int otp, string gmail)
         {
             InitializeComponent();
