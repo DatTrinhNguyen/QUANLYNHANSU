@@ -17,7 +17,7 @@ namespace QUANLYNHANSU
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new FormMain("NhanSu"));
+            Application.Run(new FormLogin());
         }
     }
 }
