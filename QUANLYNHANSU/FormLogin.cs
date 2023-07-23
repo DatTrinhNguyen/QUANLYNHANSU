@@ -91,15 +91,19 @@ namespace QUANLYNHANSU
         private bool Condition(string username,string password)
         {
             //Kiểm tra tài khoản
-            if (username.Length <8 && username.Length > 25)
+            if (username.Length <8 || username.Length > 25)
             {
-                DialogResult dialogResult = MessageBox.Show("Tên tài khoản phải chứa 8 đến 25 ký tự", "Lỗi", MessageBoxButtons.OK);
+                usernameLogin.Clear();
+                passwordLogin.Clear();
+                DialogResult dialogResult = MessageBox.Show("Tên tài khoản của bạn phải có độ dài từ 6 đến 25 ký tự", "Lỗi", MessageBoxButtons.OK);
                 return false;
             }
             //Kiểm tra password
             if (password.Length != 8 )
             {
-                DialogResult dialogResult = MessageBox.Show("Mật khẩu chỉ chứa 8 ký tự", "Lỗi", MessageBoxButtons.OK);
+                usernameLogin.Clear();
+                passwordLogin.Clear();
+                DialogResult dialogResult = MessageBox.Show("Mật khẩu của bạn có độ dài bắt buộc 8 ký tự", "Lỗi", MessageBoxButtons.OK);
                 return false;
             }
             //Kiểm tra database
