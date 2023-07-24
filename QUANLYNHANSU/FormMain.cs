@@ -44,8 +44,8 @@ namespace QUANLYNHANSU
                 ribbonPage4.Visible = false;
                 btnLoaiCong.Enabled = false;
                 btnLoaiCa.Enabled= false;
-                ribbonPage5.Visible = false;
-                ribbonPage7.Visible = false;
+                //ribbonPage5.Visible = false;
+                
                 return;
             }
 
@@ -62,7 +62,7 @@ namespace QUANLYNHANSU
             {
                 ribbonPage2.Visible = false;
                 ribbonPage3.Visible = false;
-                ribbonPage7.Visible = false;
+                //ribbonPage7.Visible = false;
                 return;
             }
         }
