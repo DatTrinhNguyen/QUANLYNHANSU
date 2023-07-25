@@ -37,31 +37,34 @@ namespace QUANLYNHANSU
                 if (usernameLogin.Text == "NhanSu123")
                 {
                     this.Hide();
-                    FormMain formNhanSu = new FormMain(usernameLogin.Text);
+                    DialogResult dialogResult = MessageBox.Show("Đăng nhập thành công", "Thông báo", MessageBoxButtons.OKCancel);
+                    //FormMain formNhanSu = new FormMain(usernameLogin.Text);
                     usernameLogin.Clear();
                     passwordLogin.Clear();
-                    formNhanSu.ShowDialog();
+                    //formNhanSu.ShowDialog();
                 }
                 else if (usernameLogin.Text == "GiamDoc123")
                 {
                     this.Hide();
-                    FormMain formNhanSu = new FormMain(usernameLogin.Text);
+                    DialogResult dialogResult = MessageBox.Show("Đăng nhập thành công", "Thông báo", MessageBoxButtons.OKCancel);
+                    //FormMain formNhanSu = new FormMain(usernameLogin.Text);
                     usernameLogin.Clear();
                     passwordLogin.Clear();
-                    formNhanSu.ShowDialog();
+                    //formNhanSu.ShowDialog();
                 }
                 else if (usernameLogin.Text == "KeToan123")
                 {
                     this.Hide();
-                    FormMain formNhanSu = new FormMain(usernameLogin.Text);
+                    DialogResult dialogResult = MessageBox.Show("Đăng nhập thành công", "Thông báo", MessageBoxButtons.OKCancel);
+                    //FormMain formNhanSu = new FormMain(usernameLogin.Text);
                     usernameLogin.Clear();
                     passwordLogin.Clear();
-                    formNhanSu.ShowDialog();
+                    //formNhanSu.ShowDialog();
                 }
                 else
                 {
                     passwordLogin.Clear();
-                    DialogResult dialogResult = MessageBox.Show("Không tồn tại tài khoản ", "Lỗi", MessageBoxButtons.OKCancel);
+                    DialogResult dialogResult = MessageBox.Show("Không tồn tại tài khoản ", "Lỗi", MessageBoxButtons.RetryCancel);
                 }
                 this.Show();
             }
@@ -96,6 +99,7 @@ namespace QUANLYNHANSU
                 usernameLogin.Clear();
                 passwordLogin.Clear();
                 DialogResult dialogResult = MessageBox.Show("Tên tài khoản của bạn không được bỏ trống", "Lỗi", MessageBoxButtons.RetryCancel);
+                return false;
             }
             if (username.Length <8 || username.Length > 25)
             {
@@ -110,6 +114,7 @@ namespace QUANLYNHANSU
                 usernameLogin.Clear();
                 passwordLogin.Clear();
                 DialogResult dialogResult = MessageBox.Show("Mật khẩu của bạn không được bỏ trống", "Lỗi", MessageBoxButtons.RetryCancel);
+                return false;
             }
             if (password.Length != 8 )
             {
