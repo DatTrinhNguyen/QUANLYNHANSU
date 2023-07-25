@@ -91,19 +91,31 @@ namespace QUANLYNHANSU
         private bool Condition(string username,string password)
         {
             //Kiểm tra tài khoản
+            if (username.Length == 0)
+            {
+                usernameLogin.Clear();
+                passwordLogin.Clear();
+                DialogResult dialogResult = MessageBox.Show("Tên tài khoản của bạn không được bỏ trống", "Lỗi", MessageBoxButtons.RetryCancel);
+            }
             if (username.Length <8 || username.Length > 25)
             {
                 usernameLogin.Clear();
                 passwordLogin.Clear();
-                DialogResult dialogResult = MessageBox.Show("Tên tài khoản của bạn phải có độ dài từ 6 đến 25 ký tự", "Lỗi", MessageBoxButtons.OK);
+                DialogResult dialogResult = MessageBox.Show("Tên tài khoản của bạn phải có độ dài từ 6 đến 25 ký tự", "Lỗi", MessageBoxButtons.RetryCancel);
                 return false;
             }
             //Kiểm tra password
+            if(password.Length == 0)
+            {
+                usernameLogin.Clear();
+                passwordLogin.Clear();
+                DialogResult dialogResult = MessageBox.Show("Mật khẩu của bạn không được bỏ trống", "Lỗi", MessageBoxButtons.RetryCancel);
+            }
             if (password.Length != 8 )
             {
                 usernameLogin.Clear();
                 passwordLogin.Clear();
-                DialogResult dialogResult = MessageBox.Show("Mật khẩu của bạn có độ dài bắt buộc 8 ký tự", "Lỗi", MessageBoxButtons.OK);
+                DialogResult dialogResult = MessageBox.Show("Mật khẩu của bạn có độ dài bắt buộc 8 ký tự", "Lỗi", MessageBoxButtons.RetryCancel);
                 return false;
             }
             //Kiểm tra database
@@ -128,7 +140,6 @@ namespace QUANLYNHANSU
         {
             if (e.Handled = (e.KeyChar == (char)Keys.Space))
             {
-                MessageBox.Show("Không cho phép nhập khoảng trắng");
             }
             else
             {
@@ -140,7 +151,6 @@ namespace QUANLYNHANSU
         {
             if (e.Handled = (e.KeyChar == (char)Keys.Space))
             {
-                MessageBox.Show("Không cho phép nhập khoảng trắng");
             }
             else
             {
