@@ -13,6 +13,7 @@ namespace QUANLYNHANSU
 {
     public partial class FormBHYT : DevExpress.XtraEditors.XtraForm
     {
+        bool edit = false;
         //Kết nối database
         NpgsqlConnection connection = new NpgsqlConnection("Server=localhost;Port=5432;Database=QUANLYNHANSU;User ID=postgres;Password=20030930;");
         public FormBHYT()
@@ -80,7 +81,42 @@ namespace QUANLYNHANSU
 
         private void btnSua_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
+                if(dgv.SelectedRows.Count > 0)
+                {
+                    DataGridViewRow selectedRow = dgv.SelectedRows[0];
+                    string idBHYT = selectedRow.Cells[0].Value.ToString();
+                    string soTien = tbSoTien.Text.ToString();
+                    string maNV = tbMaNV.Text.ToString();
+                    string ngayDong = dtNgayDong.Text.ToString();
+                    string ngayKetThuc = dtNgayKetThuc.Text.ToString();
+                    // Kết nối tới cơ sở dữ liệu
+                    using (NpgsqlConnection connection = new NpgsqlConnection("Server=localhost;Port=5432;Database=QUANLYNHANSU;User ID=postgres;Password=20030930;"))
+                    {
+                    connection.Open();
+                        using (NpgsqlCommand command = new NpgsqlCommand())
+                        {
+                            command.Connection = connection;
+                            command.CommandType = CommandType.Text;
 
+                            // Sử dụng truy vấn UPDATE để cập nhật thông tin của nhân viên
+                            command.CommandText = "UPDATE public.\"tb.NHANVIENBAOHIEMYTE\" " +
+                                                  "SET \"SOTIEN\" = \'"+ soTien + "\', " +
+                                                  "\"IDNV\" = \'" + maNV + "\', " +
+                                                  "\"NGAYDONG\" = \'" + ngayDong + "\', " +
+                                                  "\"NGAYKETTHUC\" = \'" + ngayKetThuc + "\' " +
+                                                  "WHERE \"BHYT\" = \'" + idBHYT + "\'";
+
+                            // Thực thi truy vấn
+                            command.ExecuteNonQuery();
+                        }
+                    }
+                    // Sau khi sửa thông tin xong, cập nhật lại DataGridView
+                    loadData();
+                }
+                else
+                {
+                    MessageBox.Show("Vui lòng chọn một nhân viên để sửa thông tin.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
         }
         private void dgv_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
