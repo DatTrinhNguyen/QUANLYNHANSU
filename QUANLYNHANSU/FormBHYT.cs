@@ -19,7 +19,18 @@ namespace QUANLYNHANSU
         public FormBHYT()
         {
             InitializeComponent();
+            showHide(true);
             loadData();
+        }
+        void showHide(bool kt)
+        {
+            btnThem.Enabled = kt;
+            btnSua.Enabled = kt;
+            btnXoa.Enabled = kt;
+            btnLuu.Enabled = !kt;
+            btnKhongLuu.Enabled = !kt;
+            btnIn.Enabled = kt;
+
         }
         void loadData()
         {
@@ -28,7 +39,7 @@ namespace QUANLYNHANSU
             NpgsqlCommand command = new NpgsqlCommand();
             command.Connection = connection;
             command.CommandType = CommandType.Text;
-            command.CommandText = "SELECT \"BHYT\",\"SOTIEN\",\"IDNV\",\"NGAYDONG\",\"NGAYKETTHUC\",\"GHICHU\" FROM public.\"tb.NHANVIENBAOHIEMYTE\"";
+            command.CommandText = "SELECT \"BHYT\",\"SOTIEN\",\"IDNV\",\"NGAYDONG\",\"NGAYKETTHUC\",\"GHICHU\" FROM public.\"tb.NHANVIENBAOHIEMYTE\"" + "WHERE \"TRANGTHAI\" = \'1\';";
             NpgsqlDataReader dataReader = command.ExecuteReader();
             if (dataReader.HasRows)
             {
@@ -44,6 +55,7 @@ namespace QUANLYNHANSU
 
         private void FormBHYT_Load(object sender, EventArgs e)
         {
+            
             NpgsqlConnection connection = new NpgsqlConnection("Server=localhost;Port=5432;Database=QUANLYNHANSU;User ID=postgres;Password=20030930;");
             connection.Open();
             AutoCompleteStringCollection auto = new AutoCompleteStringCollection();
@@ -64,7 +76,8 @@ namespace QUANLYNHANSU
 
         private void btnThem_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            NpgsqlConnection connection = new NpgsqlConnection("Server=localhost;Port=5432;Database=QUANLYNHANSU;User ID=postgres;Password=20030930;");
+            showHide(false);
+            /*NpgsqlConnection connection = new NpgsqlConnection("Server=localhost;Port=5432;Database=QUANLYNHANSU;User ID=postgres;Password=20030930;");
             connection.Open();
             NpgsqlCommand command = new NpgsqlCommand();
             command.Connection = connection;
@@ -75,12 +88,13 @@ namespace QUANLYNHANSU
             command.ExecuteNonQuery();
             connection.Dispose();
             connection.Close();
-            loadData();
+            loadData();*/
 
         }
 
         private void btnSua_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
+
                 if(dgv.SelectedRows.Count > 0)
                 {
                     DataGridViewRow selectedRow = dgv.SelectedRows[0];
@@ -89,27 +103,23 @@ namespace QUANLYNHANSU
                     string maNV = tbMaNV.Text.ToString();
                     string ngayDong = dtNgayDong.Text.ToString();
                     string ngayKetThuc = dtNgayKetThuc.Text.ToString();
-                    // Kết nối tới cơ sở dữ liệu
-                    using (NpgsqlConnection connection = new NpgsqlConnection("Server=localhost;Port=5432;Database=QUANLYNHANSU;User ID=postgres;Password=20030930;"))
-                    {
+                     // Kết nối tới cơ sở dữ liệu
+                    NpgsqlConnection connection = new NpgsqlConnection("Server=localhost;Port=5432;Database=QUANLYNHANSU;User ID=postgres;Password=20030930;");
                     connection.Open();
-                        using (NpgsqlCommand command = new NpgsqlCommand())
-                        {
-                            command.Connection = connection;
-                            command.CommandType = CommandType.Text;
+                    NpgsqlCommand command = new NpgsqlCommand();
+                    command.Connection = connection;
+                    command.CommandType = CommandType.Text;
 
-                            // Sử dụng truy vấn UPDATE để cập nhật thông tin của nhân viên
-                            command.CommandText = "UPDATE public.\"tb.NHANVIENBAOHIEMYTE\" " +
-                                                  "SET \"SOTIEN\" = \'"+ soTien + "\', " +
-                                                  "\"IDNV\" = \'" + maNV + "\', " +
-                                                  "\"NGAYDONG\" = \'" + ngayDong + "\', " +
-                                                  "\"NGAYKETTHUC\" = \'" + ngayKetThuc + "\' " +
-                                                  "WHERE \"BHYT\" = \'" + idBHYT + "\'";
+                    // Sử dụng truy vấn UPDATE để cập nhật thông tin của nhân viên
+                    command.CommandText = "UPDATE public.\"tb.NHANVIENBAOHIEMYTE\" " +
+                                            "SET \"SOTIEN\" = \'"+ soTien + "\', " +
+                                            "\"IDNV\" = \'" + maNV + "\', " +
+                                            "\"NGAYDONG\" = \'" + ngayDong + "\', " +
+                                            "\"NGAYKETTHUC\" = \'" + ngayKetThuc + "\' " +
+                                            "WHERE \"BHYT\" = \'" + idBHYT + "\';";
 
-                            // Thực thi truy vấn
-                            command.ExecuteNonQuery();
-                        }
-                    }
+                    // Thực thi truy vấn
+                    command.ExecuteNonQuery();
                     // Sau khi sửa thông tin xong, cập nhật lại DataGridView
                     loadData();
                 }
@@ -133,5 +143,42 @@ namespace QUANLYNHANSU
 
         }
 
+        private void btnXoa_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            if(dgv.SelectedRows.Count > 0)
+               {
+                   DataGridViewRow selectedRow = dgv.SelectedRows[0];
+                   string idBHYT = selectedRow.Cells[0].Value.ToString();
+                    // Kết nối tới cơ sở dữ liệu
+                   NpgsqlConnection connection = new NpgsqlConnection("Server=localhost;Port=5432;Database=QUANLYNHANSU;User ID=postgres;Password=20030930;");
+                   connection.Open();
+                   NpgsqlCommand command = new NpgsqlCommand();
+                   command.Connection = connection;
+                   command.CommandType = CommandType.Text;
+
+                   // Sử dụng truy vấn UPDATE để cập nhật thông tin của nhân viên
+                   command.CommandText = "UPDATE public.\"tb.NHANVIENBAOHIEMYTE\" SET  \"TRANGTHAI\"=\'0\' WHERE \"BHYT\"=\'"+idBHYT+"\';";
+
+                   // Thực thi truy vấn
+                   command.ExecuteNonQuery();
+                   // Sau khi sửa thông tin xong, cập nhật lại DataGridView
+                   loadData();
+               }
+               else
+               {
+                   MessageBox.Show("Vui lòng chọn một nhân viên để xóa thông tin.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+               }
+            //showHide(false);
+        }
+
+        private void btnLuu_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            showHide(true);
+        }
+
+        private void btnKhongLuu_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            showHide(true);
+        }
     }
 }

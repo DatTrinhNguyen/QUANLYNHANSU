@@ -135,6 +135,7 @@ namespace QUANLYNHANSU
             this.btnXoa.Id = 2;
             this.btnXoa.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("btnXoa.ImageOptions.SvgImage")));
             this.btnXoa.Name = "btnXoa";
+            this.btnXoa.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnXoa_ItemClick);
             // 
             // btnLuu
             // 
@@ -143,6 +144,7 @@ namespace QUANLYNHANSU
             this.btnLuu.Id = 3;
             this.btnLuu.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("btnLuu.ImageOptions.SvgImage")));
             this.btnLuu.Name = "btnLuu";
+            this.btnLuu.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnLuu_ItemClick);
             // 
             // btnKhongLuu
             // 
@@ -151,6 +153,7 @@ namespace QUANLYNHANSU
             this.btnKhongLuu.Id = 4;
             this.btnKhongLuu.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("btnKhongLuu.ImageOptions.SvgImage")));
             this.btnKhongLuu.Name = "btnKhongLuu";
+            this.btnKhongLuu.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnKhongLuu_ItemClick);
             // 
             // btnThoat
             // 
