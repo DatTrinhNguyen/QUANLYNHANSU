@@ -9,14 +9,17 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Npgsql;
+using DevExpress.ExpressApp.SystemModule;
+using DevExpress.CodeParser;
+
 namespace QUANLYNHANSU
 {
     public partial class FormBHYT : DevExpress.XtraEditors.XtraForm
     {
         // biến điều khiển (có thể bỏ nếu tìm đc cách hay hơn)
-        bool them,sua = false;
+        bool them, tim, xoa, sua = false;
         //Kết nối database
-        NpgsqlConnection connection = new NpgsqlConnection("Server=localhost;Port=5432;Database=QUANLYNHANSU;User ID=postgres;Password=20030930;");
+        NpgsqlConnection connection = new NpgsqlConnection("Server=localhost;Port=5432;Database=postgres;User ID=postgres;Password=30062003;");
         public FormBHYT()
         {
             InitializeComponent();
@@ -33,6 +36,8 @@ namespace QUANLYNHANSU
             btnLuu.Enabled = !kt;
             btnKhongLuu.Enabled = !kt;
             btnIn.Enabled = kt;
+            btnTimKiem.Enabled = kt;
+       
 
             //Tắt bật các text box
             tbMaBHYT.Enabled = !kt;
@@ -49,10 +54,11 @@ namespace QUANLYNHANSU
             dtNgayDong.Clear();
         }
 
+
         //Load dữ liệu từ database
         void loadData()
         {
-            NpgsqlConnection connection = new NpgsqlConnection("Server=localhost;Port=5432;Database=QUANLYNHANSU;User ID=postgres;Password=20030930;");
+            NpgsqlConnection connection = new NpgsqlConnection("Server=localhost;Port=5432;Database=postgres;User ID=postgres;Password=30062003;");
             connection.Open();
             NpgsqlCommand command = new NpgsqlCommand();
             command.Connection = connection;
@@ -75,7 +81,7 @@ namespace QUANLYNHANSU
         private void FormBHYT_Load(object sender, EventArgs e)
         {
             
-            NpgsqlConnection connection = new NpgsqlConnection("Server=localhost;Port=5432;Database=QUANLYNHANSU;User ID=postgres;Password=20030930;");
+            NpgsqlConnection connection = new NpgsqlConnection("Server=localhost;Port=5432;Database=postgres;User ID=postgres;Password=30062003;");
             connection.Open();
             AutoCompleteStringCollection auto = new AutoCompleteStringCollection();
             NpgsqlCommand command = new NpgsqlCommand();
@@ -109,14 +115,14 @@ namespace QUANLYNHANSU
         }
         
         //Nút xóa dữ liệu (vô hiệu hóa) - Làm hộ tao phần này nhé
-        private void btnXoa_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        private void Xoa()
         {
             if(dgv.SelectedRows.Count > 0)
                {
                    DataGridViewRow selectedRow = dgv.SelectedRows[0];
                    string idBHYT = selectedRow.Cells[0].Value.ToString();
                     // Kết nối tới cơ sở dữ liệu
-                   NpgsqlConnection connection = new NpgsqlConnection("Server=localhost;Port=5432;Database=QUANLYNHANSU;User ID=postgres;Password=20030930;");
+                   NpgsqlConnection connection = new NpgsqlConnection("Server=localhost;Port=5432;Database=postgres;User ID=postgres;Password=30062003;");
                    connection.Open();
                    NpgsqlCommand command = new NpgsqlCommand();
                    command.Connection = connection;
@@ -135,9 +141,15 @@ namespace QUANLYNHANSU
                    MessageBox.Show("Vui lòng chọn một nhân viên để xóa thông tin.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                }
         }
+        private void btnXoa_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            showHide(true);
+            xoa = true;
+        }
 
-        //Nút lưu dữ liệu vào database
-        private void btnLuu_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+
+            //Nút lưu dữ liệu vào database
+            private void btnLuu_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             if (them==true)
             {
@@ -191,7 +203,7 @@ namespace QUANLYNHANSU
             string ngayDong = dtNgayDong.Text.ToString();
             string ngayKetThuc = dtNgayKetThuc.Text.ToString();
 
-            NpgsqlConnection connection = new NpgsqlConnection("Server=localhost;Port=5432;Database=QUANLYNHANSU;User ID=postgres;Password=20030930;");
+            NpgsqlConnection connection = new NpgsqlConnection("Server=localhost;Port=5432;Database=postgres;User ID=postgres;Password=30062003;");
             connection.Open();
             NpgsqlCommand command = new NpgsqlCommand();
             command.Connection = connection;
@@ -204,6 +216,42 @@ namespace QUANLYNHANSU
             connection.Close();
             loadData();
 
+        }
+        //Tìm Kiếm Dữ Liệu Bằng MANV, MABHYT
+        private void button1_Click(object sender, EventArgs e)
+        {
+            NpgsqlConnection connection = new NpgsqlConnection("Server=localhost;Port=5432;Database=postgres;User ID=postgres;Password=30062003;");
+            connection.Open();
+            NpgsqlCommand command = new NpgsqlCommand();
+            command.Connection = connection;
+            command.CommandType = CommandType.Text;
+
+            command.CommandText = "SELECT \"BHYT\" FROM public.\"tb.NHANVIENBAOHIEMYTE\" WHERE \"BHYT\" LIKE '%" + tbMaBHYT.Text + "%' or  \"IDNV\" LIKE '%" + tbMaNV.Text+ "%'";
+            command.ExecuteNonQuery();
+            NpgsqlDataReader dataReader = command.ExecuteReader();
+            if (dataReader.HasRows)
+            {
+                DataTable dataTable = new DataTable();
+                dataTable.Load(dataReader);
+                dgv.DataSource = dataTable;
+
+            }
+
+        }   
+
+        //Showhide tìm kiếm
+    
+        private void btnTimKiem_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            showHide(false);
+            btnSua.Enabled = true;
+            btnXoa.Enabled = true;
+            btnLuu.Enabled = false;
+            btnKhongLuu.Enabled = false;
+            tbSoTien.Enabled = false;
+            dtNgayDong.Enabled = false;
+            dtNgayKetThuc.Enabled = false;
+            tim = true;
         }
 
 
@@ -219,7 +267,7 @@ namespace QUANLYNHANSU
                 string ngayDong = dtNgayDong.Text.ToString();
                 string ngayKetThuc = dtNgayKetThuc.Text.ToString();
                 // Kết nối tới cơ sở dữ liệu
-                NpgsqlConnection connection = new NpgsqlConnection("Server=localhost;Port=5432;Database=QUANLYNHANSU;User ID=postgres;Password=20030930;");
+                NpgsqlConnection connection = new NpgsqlConnection("Server=localhost;Port=5432;Database=postgres;User ID=postgres;Password=30062003;");
                 connection.Open();
                 NpgsqlCommand command = new NpgsqlCommand();
                 command.Connection = connection;

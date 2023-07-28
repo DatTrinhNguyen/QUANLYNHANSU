@@ -40,6 +40,7 @@ namespace QUANLYNHANSU
             this.btnKhongLuu = new DevExpress.XtraBars.BarButtonItem();
             this.btnThoat = new DevExpress.XtraBars.BarButtonItem();
             this.btnIn = new DevExpress.XtraBars.BarButtonItem();
+            this.btnTimKiem = new DevExpress.XtraBars.BarButtonItem();
             this.bar3 = new DevExpress.XtraBars.Bar();
             this.barDockControlTop = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlBottom = new DevExpress.XtraBars.BarDockControl();
@@ -59,6 +60,7 @@ namespace QUANLYNHANSU
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.dgv = new System.Windows.Forms.DataGridView();
             this.bar1 = new DevExpress.XtraBars.Bar();
+            this.btTim = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtNgayKetThuc.Properties)).BeginInit();
@@ -86,9 +88,10 @@ namespace QUANLYNHANSU
             this.btnLuu,
             this.btnKhongLuu,
             this.btnThoat,
-            this.btnIn});
+            this.btnIn,
+            this.btnTimKiem});
             this.barManager1.MainMenu = this.bar2;
-            this.barManager1.MaxItemId = 7;
+            this.barManager1.MaxItemId = 8;
             this.barManager1.StatusBar = this.bar3;
             // 
             // bar2
@@ -105,7 +108,8 @@ namespace QUANLYNHANSU
             new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.btnLuu, "", true, true, true, 0, null, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
             new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.btnKhongLuu, "", true, true, true, 0, null, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
             new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.btnThoat, "", true, true, true, 0, null, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
-            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.btnIn, "", true, true, true, 0, null, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph)});
+            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.btnIn, "", true, true, true, 0, null, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
+            new DevExpress.XtraBars.LinkPersistInfo(this.btnTimKiem, true)});
             this.bar2.OptionsBar.MultiLine = true;
             this.bar2.OptionsBar.UseWholeRow = true;
             this.bar2.Text = "Main menu";
@@ -171,6 +175,15 @@ namespace QUANLYNHANSU
             this.btnIn.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("btnIn.ImageOptions.SvgImage")));
             this.btnIn.Name = "btnIn";
             // 
+            // btnTimKiem
+            // 
+            this.btnTimKiem.Border = DevExpress.XtraEditors.Controls.BorderStyles.Simple;
+            this.btnTimKiem.Caption = "Tim Kiếm";
+            this.btnTimKiem.Id = 7;
+            this.btnTimKiem.ImageOptions.SvgImage = global::QUANLYNHANSU.Properties.Resources.zoom;
+            this.btnTimKiem.Name = "btnTimKiem";
+            this.btnTimKiem.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnTimKiem_ItemClick);
+            // 
             // bar3
             // 
             this.bar3.BarName = "Status bar";
@@ -189,34 +202,39 @@ namespace QUANLYNHANSU
             this.barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top;
             this.barDockControlTop.Location = new System.Drawing.Point(0, 0);
             this.barDockControlTop.Manager = this.barManager1;
-            this.barDockControlTop.Size = new System.Drawing.Size(1362, 32);
+            this.barDockControlTop.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.barDockControlTop.Size = new System.Drawing.Size(1167, 26);
             // 
             // barDockControlBottom
             // 
             this.barDockControlBottom.CausesValidation = false;
             this.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.barDockControlBottom.Location = new System.Drawing.Point(0, 861);
+            this.barDockControlBottom.Location = new System.Drawing.Point(0, 594);
             this.barDockControlBottom.Manager = this.barManager1;
-            this.barDockControlBottom.Size = new System.Drawing.Size(1362, 20);
+            this.barDockControlBottom.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.barDockControlBottom.Size = new System.Drawing.Size(1167, 20);
             // 
             // barDockControlLeft
             // 
             this.barDockControlLeft.CausesValidation = false;
             this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
-            this.barDockControlLeft.Location = new System.Drawing.Point(0, 32);
+            this.barDockControlLeft.Location = new System.Drawing.Point(0, 26);
             this.barDockControlLeft.Manager = this.barManager1;
-            this.barDockControlLeft.Size = new System.Drawing.Size(0, 829);
+            this.barDockControlLeft.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.barDockControlLeft.Size = new System.Drawing.Size(0, 568);
             // 
             // barDockControlRight
             // 
             this.barDockControlRight.CausesValidation = false;
             this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
-            this.barDockControlRight.Location = new System.Drawing.Point(1362, 32);
+            this.barDockControlRight.Location = new System.Drawing.Point(1167, 26);
             this.barDockControlRight.Manager = this.barManager1;
-            this.barDockControlRight.Size = new System.Drawing.Size(0, 829);
+            this.barDockControlRight.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.barDockControlRight.Size = new System.Drawing.Size(0, 568);
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.btTim);
             this.groupBox1.Controls.Add(this.dtNgayKetThuc);
             this.groupBox1.Controls.Add(this.dtNgayDong);
             this.groupBox1.Controls.Add(this.tbMaNV);
@@ -227,16 +245,19 @@ namespace QUANLYNHANSU
             this.groupBox1.Controls.Add(this.lbMaNV);
             this.groupBox1.Controls.Add(this.lbNgayKetThuc);
             this.groupBox1.Controls.Add(this.lbMaBHYT);
-            this.groupBox1.Location = new System.Drawing.Point(12, 38);
+            this.groupBox1.Location = new System.Drawing.Point(10, 31);
+            this.groupBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(1338, 277);
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.groupBox1.Size = new System.Drawing.Size(1147, 225);
             this.groupBox1.TabIndex = 9;
             this.groupBox1.TabStop = false;
             // 
             // dtNgayKetThuc
             // 
             this.dtNgayKetThuc.EditValue = null;
-            this.dtNgayKetThuc.Location = new System.Drawing.Point(785, 126);
+            this.dtNgayKetThuc.Location = new System.Drawing.Point(673, 102);
+            this.dtNgayKetThuc.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dtNgayKetThuc.MenuManager = this.barManager1;
             this.dtNgayKetThuc.Name = "dtNgayKetThuc";
             this.dtNgayKetThuc.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 12F);
@@ -254,13 +275,14 @@ namespace QUANLYNHANSU
             this.dtNgayKetThuc.Properties.EditFormat.FormatString = "MM/dd/YYYY";
             this.dtNgayKetThuc.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
             this.dtNgayKetThuc.Properties.UseMaskAsDisplayFormat = true;
-            this.dtNgayKetThuc.Size = new System.Drawing.Size(285, 30);
+            this.dtNgayKetThuc.Size = new System.Drawing.Size(244, 26);
             this.dtNgayKetThuc.TabIndex = 34;
             // 
             // dtNgayDong
             // 
             this.dtNgayDong.EditValue = null;
-            this.dtNgayDong.Location = new System.Drawing.Point(290, 130);
+            this.dtNgayDong.Location = new System.Drawing.Point(249, 106);
+            this.dtNgayDong.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dtNgayDong.MenuManager = this.barManager1;
             this.dtNgayDong.Name = "dtNgayDong";
             this.dtNgayDong.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 12F);
@@ -278,7 +300,7 @@ namespace QUANLYNHANSU
             this.dtNgayDong.Properties.EditFormat.FormatString = "MM/dd/YYYY";
             this.dtNgayDong.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
             this.dtNgayDong.Properties.UseMaskAsDisplayFormat = true;
-            this.dtNgayDong.Size = new System.Drawing.Size(284, 30);
+            this.dtNgayDong.Size = new System.Drawing.Size(243, 26);
             this.dtNgayDong.TabIndex = 33;
             // 
             // tbMaNV
@@ -286,34 +308,37 @@ namespace QUANLYNHANSU
             this.tbMaNV.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
             this.tbMaNV.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
             this.tbMaNV.Font = new System.Drawing.Font("Tahoma", 12F);
-            this.tbMaNV.Location = new System.Drawing.Point(785, 38);
+            this.tbMaNV.Location = new System.Drawing.Point(673, 31);
+            this.tbMaNV.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tbMaNV.Name = "tbMaNV";
-            this.tbMaNV.Size = new System.Drawing.Size(285, 32);
+            this.tbMaNV.Size = new System.Drawing.Size(245, 27);
             this.tbMaNV.TabIndex = 32;
             // 
             // tbSoTien
             // 
             this.tbSoTien.Font = new System.Drawing.Font("Tahoma", 12F);
-            this.tbSoTien.Location = new System.Drawing.Point(289, 218);
+            this.tbSoTien.Location = new System.Drawing.Point(248, 177);
+            this.tbSoTien.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tbSoTien.Name = "tbSoTien";
-            this.tbSoTien.Size = new System.Drawing.Size(285, 32);
+            this.tbSoTien.Size = new System.Drawing.Size(245, 27);
             this.tbSoTien.TabIndex = 28;
             // 
             // tbMaBHYT
             // 
             this.tbMaBHYT.Font = new System.Drawing.Font("Tahoma", 12F);
-            this.tbMaBHYT.Location = new System.Drawing.Point(289, 33);
+            this.tbMaBHYT.Location = new System.Drawing.Point(248, 27);
+            this.tbMaBHYT.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tbMaBHYT.Name = "tbMaBHYT";
-            this.tbMaBHYT.Size = new System.Drawing.Size(285, 32);
+            this.tbMaBHYT.Size = new System.Drawing.Size(245, 27);
             this.tbMaBHYT.TabIndex = 26;
             // 
             // lbSoTien
             // 
             this.lbSoTien.AutoSize = true;
             this.lbSoTien.Font = new System.Drawing.Font("Tahoma", 12F);
-            this.lbSoTien.Location = new System.Drawing.Point(211, 226);
+            this.lbSoTien.Location = new System.Drawing.Point(181, 184);
             this.lbSoTien.Name = "lbSoTien";
-            this.lbSoTien.Size = new System.Drawing.Size(72, 24);
+            this.lbSoTien.Size = new System.Drawing.Size(58, 19);
             this.lbSoTien.TabIndex = 25;
             this.lbSoTien.Text = "Số tiền";
             // 
@@ -321,9 +346,9 @@ namespace QUANLYNHANSU
             // 
             this.lbNgayĐong.AutoSize = true;
             this.lbNgayĐong.Font = new System.Drawing.Font("Tahoma", 12F);
-            this.lbNgayĐong.Location = new System.Drawing.Point(175, 132);
+            this.lbNgayĐong.Location = new System.Drawing.Point(150, 107);
             this.lbNgayĐong.Name = "lbNgayĐong";
-            this.lbNgayĐong.Size = new System.Drawing.Size(108, 24);
+            this.lbNgayĐong.Size = new System.Drawing.Size(88, 19);
             this.lbNgayĐong.TabIndex = 24;
             this.lbNgayĐong.Text = "Ngày Đóng";
             // 
@@ -331,9 +356,9 @@ namespace QUANLYNHANSU
             // 
             this.lbMaNV.AutoSize = true;
             this.lbMaNV.Font = new System.Drawing.Font("Tahoma", 12F);
-            this.lbMaNV.Location = new System.Drawing.Point(712, 41);
+            this.lbMaNV.Location = new System.Drawing.Point(610, 33);
             this.lbMaNV.Name = "lbMaNV";
-            this.lbMaNV.Size = new System.Drawing.Size(67, 24);
+            this.lbMaNV.Size = new System.Drawing.Size(55, 19);
             this.lbMaNV.TabIndex = 23;
             this.lbMaNV.Text = "Mã NV";
             // 
@@ -341,9 +366,9 @@ namespace QUANLYNHANSU
             // 
             this.lbNgayKetThuc.AutoSize = true;
             this.lbNgayKetThuc.Font = new System.Drawing.Font("Tahoma", 12F);
-            this.lbNgayKetThuc.Location = new System.Drawing.Point(646, 132);
+            this.lbNgayKetThuc.Location = new System.Drawing.Point(554, 107);
             this.lbNgayKetThuc.Name = "lbNgayKetThuc";
-            this.lbNgayKetThuc.Size = new System.Drawing.Size(133, 24);
+            this.lbNgayKetThuc.Size = new System.Drawing.Size(106, 19);
             this.lbNgayKetThuc.TabIndex = 22;
             this.lbNgayKetThuc.Text = "Ngày kết thúc";
             // 
@@ -351,18 +376,20 @@ namespace QUANLYNHANSU
             // 
             this.lbMaBHYT.AutoSize = true;
             this.lbMaBHYT.Font = new System.Drawing.Font("Tahoma", 12F);
-            this.lbMaBHYT.Location = new System.Drawing.Point(191, 41);
+            this.lbMaBHYT.Location = new System.Drawing.Point(164, 33);
             this.lbMaBHYT.Name = "lbMaBHYT";
-            this.lbMaBHYT.Size = new System.Drawing.Size(92, 24);
+            this.lbMaBHYT.Size = new System.Drawing.Size(74, 19);
             this.lbMaBHYT.TabIndex = 21;
             this.lbMaBHYT.Text = "Mã BHYT";
             // 
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.dgv);
-            this.groupBox2.Location = new System.Drawing.Point(12, 321);
+            this.groupBox2.Location = new System.Drawing.Point(10, 261);
+            this.groupBox2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(1338, 534);
+            this.groupBox2.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.groupBox2.Size = new System.Drawing.Size(1147, 434);
             this.groupBox2.TabIndex = 10;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Thông tin BHYT";
@@ -377,12 +404,13 @@ namespace QUANLYNHANSU
             this.dgv.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Sunken;
             this.dgv.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgv.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
-            this.dgv.Location = new System.Drawing.Point(6, 22);
+            this.dgv.Location = new System.Drawing.Point(5, 18);
+            this.dgv.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dgv.Name = "dgv";
             this.dgv.RowHeadersWidth = 51;
             this.dgv.RowTemplate.Height = 24;
             this.dgv.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgv.Size = new System.Drawing.Size(1326, 506);
+            this.dgv.Size = new System.Drawing.Size(1137, 411);
             this.dgv.TabIndex = 1;
             this.dgv.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_CellContentClick);
             // 
@@ -404,17 +432,28 @@ namespace QUANLYNHANSU
             this.bar1.OptionsBar.UseWholeRow = true;
             this.bar1.Text = "Main menu";
             // 
+            // btTim
+            // 
+            this.btTim.Location = new System.Drawing.Point(854, 171);
+            this.btTim.Name = "btTim";
+            this.btTim.Size = new System.Drawing.Size(81, 32);
+            this.btTim.TabIndex = 35;
+            this.btTim.Text = "Tìm Kiếm";
+            this.btTim.UseVisualStyleBackColor = true;
+            this.btTim.Click += new System.EventHandler(this.button1_Click);
+            // 
             // FormBHYT
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1362, 881);
+            this.ClientSize = new System.Drawing.Size(1167, 614);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.barDockControlLeft);
             this.Controls.Add(this.barDockControlRight);
             this.Controls.Add(this.barDockControlBottom);
             this.Controls.Add(this.barDockControlTop);
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "FormBHYT";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FormBHYT";
@@ -449,6 +488,7 @@ namespace QUANLYNHANSU
         private DevExpress.XtraBars.BarButtonItem btnKhongLuu;
         private DevExpress.XtraBars.BarButtonItem btnThoat;
         private DevExpress.XtraBars.BarButtonItem btnIn;
+        private DevExpress.XtraBars.BarButtonItem btnTimKiem;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.DataGridView dgv;
@@ -463,5 +503,6 @@ namespace QUANLYNHANSU
         private DevExpress.XtraBars.Bar bar1;
         private DevExpress.XtraEditors.DateEdit dtNgayDong;
         private DevExpress.XtraEditors.DateEdit dtNgayKetThuc;
+        private System.Windows.Forms.Button btTim;
     }
 }
