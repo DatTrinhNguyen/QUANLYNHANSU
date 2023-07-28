@@ -188,7 +188,7 @@ namespace QUANLYNHANSU
             // 
             this.barDockControlBottom.CausesValidation = false;
             this.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.barDockControlBottom.Location = new System.Drawing.Point(0, 736);
+            this.barDockControlBottom.Location = new System.Drawing.Point(0, 852);
             this.barDockControlBottom.Manager = this.barManager1;
             this.barDockControlBottom.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.barDockControlBottom.Size = new System.Drawing.Size(1361, 20);
@@ -200,7 +200,7 @@ namespace QUANLYNHANSU
             this.barDockControlLeft.Location = new System.Drawing.Point(0, 32);
             this.barDockControlLeft.Manager = this.barManager1;
             this.barDockControlLeft.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.barDockControlLeft.Size = new System.Drawing.Size(0, 704);
+            this.barDockControlLeft.Size = new System.Drawing.Size(0, 820);
             // 
             // barDockControlRight
             // 
@@ -209,7 +209,7 @@ namespace QUANLYNHANSU
             this.barDockControlRight.Location = new System.Drawing.Point(1361, 32);
             this.barDockControlRight.Manager = this.barManager1;
             this.barDockControlRight.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.barDockControlRight.Size = new System.Drawing.Size(0, 704);
+            this.barDockControlRight.Size = new System.Drawing.Size(0, 820);
             // 
             // groupBox1
             // 
@@ -447,7 +447,7 @@ namespace QUANLYNHANSU
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1361, 756);
+            this.ClientSize = new System.Drawing.Size(1361, 872);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.barDockControlLeft);

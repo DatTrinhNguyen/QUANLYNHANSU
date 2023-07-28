@@ -298,18 +298,30 @@ namespace QUANLYNHANSU
 
         }
 
+        //Ràng buộc điều kiện 
+        //IDBHYT 2 KÝ TỰ CHỮ CÁI ĐẦU , 13 KÝ TỰ SỐ ĐẰNG SAU , KHÔNG CHO PASTE ,KHÔNG CHO VIẾT DẤU CÁCH , KHÔNG CHO BỎ TRỐNG , KHÔNG VƯỢT QUÁ 15 KÝ TỰ
+        //,KHÔNG CHO THIẾU,KHÔNG TRÙNG IDBHYT
 
-        
-
-        
-
-        
-
-        
+        //IDNV 2 KÝ TỰ ĐẦU CHỮ, 4 KÝ TỰ SAU SỐ , KHÔNG TRÙNG IDNV  , KHÔNG CHO PASTE ,KHÔNG CHO VIẾT DẤU CÁCH , KHÔNG CHO BỎ TRỐNG, KHÔNG VƯỢT QUÁ 6 KÝ TỰ
+        //,KHÔNG CHO THIẾU
 
 
-        
+        //NGÀY ĐÓNG <= NGÀY HIỆN TẠI
 
-       
+        //NGÀY KẾT THỨC > NGÀY NGÀY HIỆN TẠI
+
+        //CHỈ CHO NHẬP SỐ , KHÔNG CHO PASTE ,KHÔNG CHO VIẾT DẤU CÁCH , KHÔNG CHO BỎ TRỐNG , KHÔNG CHO NHẬP SỐ 0 VÔ NGHĨA, 10^9>SỐ TIỀN>10^5
+
+
+
+
+
+
+
+
+
+
+
+
     }
 }
