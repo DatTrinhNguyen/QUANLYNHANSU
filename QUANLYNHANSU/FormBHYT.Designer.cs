@@ -291,6 +291,7 @@ namespace QUANLYNHANSU
             this.dtNgayKetThuc.Properties.UseMaskAsDisplayFormat = true;
             this.dtNgayKetThuc.Size = new System.Drawing.Size(285, 30);
             this.dtNgayKetThuc.TabIndex = 34;
+            this.dtNgayKetThuc.Leave += new System.EventHandler(this.dtNgayKetThuc_Leave_1);
             // 
             // dtNgayDong
             // 
@@ -316,6 +317,7 @@ namespace QUANLYNHANSU
             this.dtNgayDong.Properties.UseMaskAsDisplayFormat = true;
             this.dtNgayDong.Size = new System.Drawing.Size(283, 30);
             this.dtNgayDong.TabIndex = 33;
+            this.dtNgayDong.Leave += new System.EventHandler(this.dtNgayDong_Leave_1);
             // 
             // tbMaNV
             // 
@@ -337,6 +339,10 @@ namespace QUANLYNHANSU
             this.tbSoTien.Name = "tbSoTien";
             this.tbSoTien.Size = new System.Drawing.Size(285, 32);
             this.tbSoTien.TabIndex = 28;
+            this.tbSoTien.TextChanged += new System.EventHandler(this.tbSoTien_TextChanged_1);
+            this.tbSoTien.KeyDown += new System.Windows.Forms.KeyEventHandler(this.tbSoTien_KeyDown_1);
+            this.tbSoTien.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbSoTien_KeyPress_1);
+            this.tbSoTien.Leave += new System.EventHandler(this.tbSoTien_Leave_1);
             // 
             // tbMaBHYT
             // 
