@@ -17,7 +17,7 @@ namespace QUANLYNHANSU
     public partial class FormBHYT : DevExpress.XtraEditors.XtraForm
     {
         // biến điều khiển (có thể bỏ nếu tìm đc cách hay hơn)
-        bool them,sua= false;
+        bool them = false, sua = false;
 
         //Kết nối database
         NpgsqlConnection connection = new NpgsqlConnection("Server=localhost;Port=5432;Database=QUANLYNHANSU;User ID=postgres;Password=20030930;");
@@ -25,6 +25,8 @@ namespace QUANLYNHANSU
         {
             InitializeComponent();
             showHide(true);
+            //Khóa chức năng paste
+            tbMaBHYT.ShortcutsEnabled = false;
             loadData();
         }
         //Hiển thị hoặc tắt các chức năng
@@ -38,7 +40,7 @@ namespace QUANLYNHANSU
             btnKhongLuu.Enabled = !kt;
             btnIn.Enabled = kt;
             btnTimKiem.Enabled = kt;
-       
+
 
             //Tắt bật các text box
             tbMaBHYT.Enabled = !kt;
@@ -54,16 +56,14 @@ namespace QUANLYNHANSU
             dtNgayKetThuc.Clear();
             dtNgayDong.Clear();
 
-            btnTim.Enabled=false;
-            them = !kt;
-            sua = !kt;
+            btnTim.Enabled = false;
         }
 
 
         //Load dữ liệu từ database
         void loadData()
         {
-            dgv.DataSource=null;
+            dgv.DataSource = null;
             NpgsqlConnection connection = new NpgsqlConnection("Server=localhost;Port=5432;Database=QUANLYNHANSU;User ID=postgres;Password=20030930;");
             connection.Open();
             NpgsqlCommand command = new NpgsqlCommand();
@@ -86,7 +86,7 @@ namespace QUANLYNHANSU
         //Hàm dùng cho text box tự gợi ý
         private void FormBHYT_Load(object sender, EventArgs e)
         {
-            
+
             NpgsqlConnection connection = new NpgsqlConnection("Server=localhost;Port=5432;Database=QUANLYNHANSU;User ID=postgres;Password=20030930;");
             connection.Open();
             AutoCompleteStringCollection auto = new AutoCompleteStringCollection();
@@ -122,6 +122,16 @@ namespace QUANLYNHANSU
             string ngayDong = dtNgayDong.Text.ToString();
             string ngayKetThuc = dtNgayKetThuc.Text.ToString();
 
+            if (!MaBHYT_Condition(idBHYT))
+            {
+                return;
+            }
+
+            if (!MaNV_Condition(maNV))
+            {
+                return;
+            }
+
             NpgsqlConnection connection = new NpgsqlConnection("Server=localhost;Port=5432;Database=QUANLYNHANSU;User ID=postgres;Password=20030930;");
             connection.Open();
             NpgsqlCommand command = new NpgsqlCommand();
@@ -151,11 +161,32 @@ namespace QUANLYNHANSU
             if (dgv.SelectedRows.Count > 0)
             {
                 DataGridViewRow selectedRow = dgv.SelectedRows[0];
-                string idBHYT = selectedRow.Cells[0].Value.ToString();
+                string idBHYT = tbMaBHYT.Text.ToString();
                 string soTien = tbSoTien.Text.ToString();
                 string maNV = tbMaNV.Text.ToString();
                 string ngayDong = dtNgayDong.Text.ToString();
                 string ngayKetThuc = dtNgayKetThuc.Text.ToString();
+
+                //Biến tạm
+                string _idBHYT = selectedRow.Cells[0].Value.ToString();
+                string _maNV = selectedRow.Cells[2].Value.ToString();
+                if (_idBHYT != idBHYT)
+                {
+                    if (!MaBHYT_Condition(idBHYT))
+                    {
+                        return;
+                    }
+                }
+
+                if (_maNV != maNV)
+                {
+                    if (!MaNV_Condition(maNV))
+                    {
+                        return;
+                    }
+                }
+
+
                 // Kết nối tới cơ sở dữ liệu
                 NpgsqlConnection connection = new NpgsqlConnection("Server=localhost;Port=5432;Database=QUANLYNHANSU;User ID=postgres;Password=20030930;");
                 connection.Open();
@@ -165,16 +196,18 @@ namespace QUANLYNHANSU
 
                 // Sử dụng truy vấn UPDATE để cập nhật thông tin của nhân viên
                 command.CommandText = "UPDATE public.\"tb.NHANVIENBAOHIEMYTE\" " +
-                                        "SET \"SOTIEN\" = \'" + soTien + "\', " +
+                                        "SET \"BHYT\" = \'" + idBHYT + "\',\"SOTIEN\" = \'" + soTien + "\', " +
                                         "\"IDNV\" = \'" + maNV + "\', " +
                                         "\"NGAYDONG\" = \'" + ngayDong + "\', " +
                                         "\"NGAYKETTHUC\" = \'" + ngayKetThuc + "\' " +
-                                        "WHERE \"BHYT\" = \'" + idBHYT + "\';";
+                                        "WHERE \"BHYT\" = \'" + _idBHYT + "\';";
 
                 // Thực thi truy vấn
                 command.ExecuteNonQuery();
                 // Sau khi sửa thông tin xong, cập nhật lại DataGridView
                 loadData();
+
+
             }
             else
             {
@@ -182,6 +215,10 @@ namespace QUANLYNHANSU
             }
 
         }
+
+
+
+
 
 
         //Nút xóa dữ liệu (database) trong database
@@ -194,32 +231,32 @@ namespace QUANLYNHANSU
         //Xóa dữ liệu (vô hiệu hóa) 
         private void Xoa()
         {
-            if(dgv.SelectedRows.Count > 0)
-               {
-                   DataGridViewRow selectedRow = dgv.SelectedRows[0];
-                   string idBHYT = selectedRow.Cells[0].Value.ToString();
-                    // Kết nối tới cơ sở dữ liệu
-                   NpgsqlConnection connection = new NpgsqlConnection("Server=localhost;Port=5432;Database=QUANLYNHANSU;User ID=postgres;Password=20030930;");
-                   connection.Open();
-                   NpgsqlCommand command = new NpgsqlCommand();
-                   command.Connection = connection;
-                   command.CommandType = CommandType.Text;
+            if (dgv.SelectedRows.Count > 0)
+            {
+                DataGridViewRow selectedRow = dgv.SelectedRows[0];
+                string idBHYT = selectedRow.Cells[0].Value.ToString();
+                // Kết nối tới cơ sở dữ liệu
+                NpgsqlConnection connection = new NpgsqlConnection("Server=localhost;Port=5432;Database=QUANLYNHANSU;User ID=postgres;Password=20030930;");
+                connection.Open();
+                NpgsqlCommand command = new NpgsqlCommand();
+                command.Connection = connection;
+                command.CommandType = CommandType.Text;
 
-                   // Sử dụng truy vấn UPDATE để cập nhật thông tin của nhân viên
-                   command.CommandText = "UPDATE public.\"tb.NHANVIENBAOHIEMYTE\" SET  \"TRANGTHAI\"=\'0\' WHERE \"BHYT\"=\'"+idBHYT+"\';";
+                // Sử dụng truy vấn UPDATE để cập nhật thông tin của nhân viên
+                command.CommandText = "UPDATE public.\"tb.NHANVIENBAOHIEMYTE\" SET  \"TRANGTHAI\"=\'0\' WHERE \"BHYT\"=\'" + idBHYT + "\';";
 
-                   // Thực thi truy vấn
-                   command.ExecuteNonQuery();
-                   // Sau khi sửa thông tin xong, cập nhật lại DataGridView
-                   loadData();
-               }
-               else
-               {
-                   MessageBox.Show("Vui lòng chọn một nhân viên để xóa thông tin.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-               }
+                // Thực thi truy vấn
+                command.ExecuteNonQuery();
+                // Sau khi sửa thông tin xong, cập nhật lại DataGridView
+                loadData();
+            }
+            else
+            {
+                MessageBox.Show("Vui lòng chọn một nhân viên để xóa thông tin.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
         }
 
-        //Tìm Kiếm Dữ Liệu Bằng MANV, MABHYT
+        //Nút tìm Kiếm Dữ Liệu Bằng MANV, MABHYT
         private void btnTim_Click(object sender, EventArgs e)
         {
             dgv.DataSource = null;
@@ -257,36 +294,41 @@ namespace QUANLYNHANSU
 
 
         //Nút lưu dữ liệu vào database
-        private void btnLuu_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+
+        private void btnLuu_Click(object sender, EventArgs e)
         {
-            if (them==true)
+            if (them == true)
             {
                 Them();
             }
 
-            if (sua==true)
+            if (sua == true)
             {
                 Sua();
             }
-            showHide(true);
         }
 
         //Nút hủy lưu dữ liệu
-        private void btnKhongLuu_Click_1(object sender, EventArgs e)
+        private void btnKhongLuu_Click(object sender, EventArgs e)
         {
             showHide(true);
+            them = false;
+            sua = false;
         }
 
         //Thoát các chức năng
         private void btnThoat_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             showHide(true);
+            them = false;
+            sua = false;
         }
+
 
         // Chọn dữ liệu để show lên text box
         private void dgv_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.RowIndex >= 0&&sua==true)
+            if (e.RowIndex >= 0 && sua == true)
             {
                 DataGridViewRow row = dgv.Rows[e.RowIndex];
                 tbMaBHYT.Text = row.Cells[0].Value.ToString();
@@ -299,29 +341,182 @@ namespace QUANLYNHANSU
         }
 
         //Ràng buộc điều kiện 
+
         //IDBHYT 2 KÝ TỰ CHỮ CÁI ĐẦU , 13 KÝ TỰ SỐ ĐẰNG SAU , KHÔNG CHO PASTE ,KHÔNG CHO VIẾT DẤU CÁCH , KHÔNG CHO BỎ TRỐNG , KHÔNG VƯỢT QUÁ 15 KÝ TỰ
         //,KHÔNG CHO THIẾU,KHÔNG TRÙNG IDBHYT
+        private void tbMaBHYT_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            //2 ký tự chữ đầu
+            if (e.KeyChar != (char)Keys.Back && !char.IsLetter(e.KeyChar) && tbMaBHYT.Text.Length < 2)
+            {
+                e.Handled = true;
+            }
+            //13 ký tự sau là số
+            if (e.KeyChar != (char)Keys.Back && !char.IsDigit(e.KeyChar) && tbMaBHYT.Text.Length >= 2)
+            {
+                e.Handled = true;
+            }
+            //không cho phép quá 15 ký tự
+            if (e.KeyChar != (char)Keys.Back && tbMaBHYT.Text.Length == 15)
+            {
+                e.Handled = true;
+            }
+        }
+
+
+        private bool MaBHYT_Condition(string idBHYT)
+        {
+            //Không cho phép thiếu
+            if (idBHYT.Length != 15)
+            {
+                DialogResult dialogResult = MessageBox.Show("Mã BHYT không đúng định dạng", "Lỗi", MessageBoxButtons.RetryCancel);
+                return false;
+            }
+
+
+            //Không cho phép trùng
+            if (!MaBHYT_CheckIfDataExists(idBHYT))
+            {
+                DialogResult dialogResult = MessageBox.Show("Mã BHYT đã tồn tại", "Lỗi", MessageBoxButtons.RetryCancel);
+                return false;
+            }
+            return true;
+
+        }
+
+        private bool MaBHYT_CheckIfDataExists(string idBHYT)
+        {
+            //Kiểm tra dữ liệu trùng
+            NpgsqlConnection connection = new NpgsqlConnection("Server=localhost;Port=5432;Database=QUANLYNHANSU;User ID=postgres;Password=20030930;");
+            connection.Open();
+            NpgsqlCommand command = new NpgsqlCommand();
+            command.Connection = connection;
+            command.CommandText = "SELECT \"BHYT\" FROM public.\"tb.NHANVIENBAOHIEMYTE\" WHERE \"BHYT\" = \'" + idBHYT + "\';";
+            command.ExecuteNonQuery();
+            NpgsqlDataReader dataReader = command.ExecuteReader();
+            if (dataReader.Read())
+            {
+                connection.Dispose();
+                connection.Close();
+                return false;
+            }
+            connection.Dispose();
+            connection.Close();
+            return true;
+        }
 
         //IDNV 2 KÝ TỰ ĐẦU CHỮ, 4 KÝ TỰ SAU SỐ , KHÔNG TRÙNG IDNV  , KHÔNG CHO PASTE ,KHÔNG CHO VIẾT DẤU CÁCH , KHÔNG CHO BỎ TRỐNG, KHÔNG VƯỢT QUÁ 6 KÝ TỰ
         //,KHÔNG CHO THIẾU
 
+        private void tbMaNV_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            //2 ký tự chữ đầu
+            if (!char.IsControl(e.KeyChar) && !char.IsLetter(e.KeyChar) && tbMaNV.Text.Length < 2)
+            {
+                e.Handled = true;
+            }
+            //4 ký tự sau là số
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && tbMaNV.Text.Length >= 2)
+            {
+                e.Handled = true;
+            }
+            //không cho phép quá 15 ký tự
+            if (tbMaNV.Text.Length == 6)
+            {
+                e.Handled = true;
+            }
+        }
 
-        //NGÀY ĐÓNG <= NGÀY HIỆN TẠI
 
-        //NGÀY KẾT THỨC > NGÀY NGÀY HIỆN TẠI
+        private bool MaNV_Condition(string idNV)
+        {
+            //Không cho phép thiếu
+            if (idNV.Length < 3)
+            {
+                DialogResult dialogResult = MessageBox.Show("Mã NV không đúng định dạng", "Lỗi", MessageBoxButtons.RetryCancel);
+                return false;
+            }
 
-        //CHỈ CHO NHẬP SỐ , KHÔNG CHO PASTE ,KHÔNG CHO VIẾT DẤU CÁCH , KHÔNG CHO BỎ TRỐNG , KHÔNG CHO NHẬP SỐ 0 VÔ NGHĨA, 10^9>SỐ TIỀN>10^5
+            //Không cho phép trùng
+            if (!MaNV_CheckIfDataExists(idNV))
+            {
+                DialogResult dialogResult = MessageBox.Show("Mã NV đã được đăng ký ", "Lỗi", MessageBoxButtons.RetryCancel);
+                return false;
+            }
 
-
-
-
-
-
-
-
-
-
-
+            //Mã NV không tồn tại
+            if (!MaNV_CheckIfDataNotExists(idNV))
+            {
+                DialogResult dialogResult = MessageBox.Show("Mã NV chưa tồn tại", "Lỗi", MessageBoxButtons.RetryCancel);
+                return false;
+            }
+            return true;
 
     }
+
+
+
+        private bool MaNV_CheckIfDataExists(string idNV)
+        {
+            //Kiểm tra dữ liệu đã được đăng ký chưa
+            NpgsqlConnection connection = new NpgsqlConnection("Server=localhost;Port=5432;Database=QUANLYNHANSU;User ID=postgres;Password=20030930;");
+            connection.Open();
+            NpgsqlCommand command = new NpgsqlCommand();
+            command.Connection = connection;
+            command.CommandText = "SELECT \"IDNV\" FROM public.\"tb.NHANVIENBAOHIEMYTE\" WHERE \"IDNV\" = \'" + idNV + "\';";
+            command.ExecuteNonQuery();
+            NpgsqlDataReader dataReader = command.ExecuteReader();
+            if (dataReader.Read())
+            {
+                connection.Dispose();
+                connection.Close();
+                return false;
+            }
+            connection.Dispose();
+            connection.Close();
+            return true;
+
+        }
+
+        private bool MaNV_CheckIfDataNotExists(string idNV)
+        {
+            //Kiểm tra dữ liệu đã tồn tại chưa
+            NpgsqlConnection connection = new NpgsqlConnection("Server=localhost;Port=5432;Database=QUANLYNHANSU;User ID=postgres;Password=20030930;");
+            connection.Open();
+            NpgsqlCommand command = new NpgsqlCommand();
+            command.Connection = connection;
+            command.CommandText = "SELECT \"IDNV\" FROM public.\"tb.NHANVIEN\" WHERE \"IDNV\" = \'" + idNV + "\';";
+            command.ExecuteNonQuery();
+            NpgsqlDataReader dataReader = command.ExecuteReader();
+            if (dataReader.Read())
+            {
+                connection.Dispose();
+                connection.Close();
+                return true;
+            }
+            connection.Dispose();
+            connection.Close();
+            return false;
+
+        }
+
+
+    //NGÀY ĐÓNG <= NGÀY HIỆN TẠI
+
+    //NGÀY KẾT THỨC > NGÀY NGÀY HIỆN TẠI
+
+    //CHỈ CHO NHẬP SỐ , KHÔNG CHO PASTE ,KHÔNG CHO VIẾT DẤU CÁCH , KHÔNG CHO BỎ TRỐNG , KHÔNG CHO NHẬP SỐ 0 VÔ NGHĨA, 10^9>SỐ TIỀN>10^5
+
+
+
+
+
+
+
+
+
+
+
+
+}
 }

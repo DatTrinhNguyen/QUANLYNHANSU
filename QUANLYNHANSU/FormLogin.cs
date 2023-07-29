@@ -143,23 +143,17 @@ namespace QUANLYNHANSU
         //Không cho phép nhập khoảng trắng
         private void usernameLogin_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (e.Handled = (e.KeyChar == (char)Keys.Space))
+            if (e.Handled != (e.KeyChar == (char)Keys.Space))
             {
-            }
-            else
-            {
-                e.Handled = false;
+                e.Handled = true;
             }
         }
 
         private void passwordLogin_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (e.Handled = (e.KeyChar == (char)Keys.Space))
+            if (e.Handled != (e.KeyChar == (char)Keys.Space))
             {
-            }
-            else
-            {
-                e.Handled = false;
+                e.Handled = true;
             }
         }
 

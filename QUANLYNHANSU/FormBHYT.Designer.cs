@@ -243,7 +243,7 @@ namespace QUANLYNHANSU
             this.btnKhongLuu.TabIndex = 37;
             this.btnKhongLuu.Text = "Không lưu";
             this.btnKhongLuu.UseVisualStyleBackColor = true;
-            this.btnKhongLuu.Click += new System.EventHandler(this.btnKhongLuu_Click_1);
+            this.btnKhongLuu.Click += new System.EventHandler(this.btnKhongLuu_Click);
             // 
             // btnLuu
             // 
@@ -254,6 +254,7 @@ namespace QUANLYNHANSU
             this.btnLuu.TabIndex = 36;
             this.btnLuu.Text = "Lưu";
             this.btnLuu.UseVisualStyleBackColor = true;
+            this.btnLuu.Click += new System.EventHandler(this.btnLuu_Click);
             // 
             // btnTim
             // 
@@ -326,6 +327,7 @@ namespace QUANLYNHANSU
             this.tbMaNV.Name = "tbMaNV";
             this.tbMaNV.Size = new System.Drawing.Size(285, 32);
             this.tbMaNV.TabIndex = 32;
+            this.tbMaNV.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbMaNV_KeyPress);
             // 
             // tbSoTien
             // 
@@ -344,6 +346,7 @@ namespace QUANLYNHANSU
             this.tbMaBHYT.Name = "tbMaBHYT";
             this.tbMaBHYT.Size = new System.Drawing.Size(285, 32);
             this.tbMaBHYT.TabIndex = 26;
+            this.tbMaBHYT.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbMaBHYT_KeyPress);
             // 
             // lbSoTien
             // 
