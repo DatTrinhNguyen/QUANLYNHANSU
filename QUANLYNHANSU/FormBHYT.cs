@@ -501,15 +501,113 @@ namespace QUANLYNHANSU
         }
 
 
-    //NGÀY ĐÓNG <= NGÀY HIỆN TẠI
+        //NGÀY ĐÓNG <= NGÀY HIỆN TẠI
 
-    //NGÀY KẾT THỨC > NGÀY NGÀY HIỆN TẠI
+        //NGÀY KẾT THỨC > NGÀY NGÀY HIỆN TẠI
 
-    //CHỈ CHO NHẬP SỐ , KHÔNG CHO PASTE ,KHÔNG CHO VIẾT DẤU CÁCH , KHÔNG CHO BỎ TRỐNG , KHÔNG CHO NHẬP SỐ 0 VÔ NGHĨA, 10^9>SỐ TIỀN>10^5
-
-
+        //CHỈ CHO NHẬP SỐ , KHÔNG CHO PASTE ,KHÔNG CHO VIẾT DẤU CÁCH , KHÔNG CHO BỎ TRỐNG , KHÔNG CHO NHẬP SỐ 0 VÔ NGHĨA, 10^9>SỐ TIỀN>10^5
 
 
+        //Ràng buộc Số tiền
+
+        private void tbSoTien_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            // Chỉ cho nhập từ 1-9
+            if (!char.IsControl(e.KeyChar) && (e.KeyChar < '1' || e.KeyChar > '9'))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void tbSoTien_TextChanged(object sender, EventArgs e)
+        {
+            // không cho khoảng trông
+            TextBox textBox = (TextBox)sender;
+            textBox.Text = textBox.Text.Replace(" ", "");
+        }
+
+        private void tbSoTien_KeyDown(object sender, KeyEventArgs e)
+        {
+            //Không cho dán số = ctrl + V
+            if (e.Control && e.KeyCode == Keys.V)
+            {
+                e.SuppressKeyPress = true;
+            }
+        }
+
+        //Ràng buộc giá trị số tiền
+        private void tbSoTien_Leave(object sender, EventArgs e)
+        {
+            StringBuilder sb = new StringBuilder();
+            if (string.IsNullOrEmpty(tbSoTien.Text.Trim()))
+            {
+                sb.AppendLine("Bạn chưa nhập số tiền đóng!");
+                tbSoTien.Focus();
+            }
+            else if (!decimal.TryParse(tbSoTien.Text.Trim(), out decimal newSoTien) || (newSoTien < 100000 || newSoTien > 1000000000))
+            {
+                sb.AppendLine("Số tiền bạn nhập không hợp lệ. Số tiền phải lớn hơn 10^5 và bé hơn 10^9");
+                tbSoTien.Focus();
+            }
+
+            if (sb.Length > 0)
+            {
+                MessageBox.Show(sb.ToString());
+            }
+        }
+        //Ràng buộc ngày đóng tiền
+        private void dtNgayDong_Leave(object sender, EventArgs e)
+        {
+            StringBuilder sb = new StringBuilder();
+
+            if (string.IsNullOrEmpty(dtNgayDong.Text.Trim()))
+            {
+                sb.AppendLine("Bạn chưa nhập thời gian đóng tiền!");
+                dtNgayDong.Focus();
+            }
+            else if (!DateTime.TryParse(dtNgayDong.Text, out DateTime inputTime))
+            {
+                sb.AppendLine("Thời gian bạn nhập không hợp lệ. Vui lòng nhập đúng định dạng thời gian.");
+                dtNgayDong.Focus();
+            }
+            else if (inputTime >= DateTime.Now)
+            {
+                sb.AppendLine("Thời gian đóng phải nhỏ hơn thời gian hiện tại.");
+                dtNgayDong.Focus();
+            }
+
+            if (sb.Length > 0)
+            {
+                MessageBox.Show(sb.ToString());
+            }
+        }
+
+        //Ràng buộc ngày kết thúc
+        private void dtNgayKetThuc_Leave(object sender, EventArgs e)
+        {
+            StringBuilder sb = new StringBuilder();
+
+            if (string.IsNullOrEmpty(dtNgayKetThuc.Text.Trim()))
+            {
+                sb.AppendLine("Bạn chưa nhập thời gian kết thúc!");
+                dtNgayKetThuc.Focus();
+            }
+            else if (!DateTime.TryParse(dtNgayKetThuc.Text, out DateTime inputTime))
+            {
+                sb.AppendLine("Thời gian bạn nhập không hợp lệ. Vui lòng nhập đúng định dạng thời gian.");
+                dtNgayKetThuc.Focus();
+            }
+            else if (inputTime <= DateTime.Now)
+            {
+                sb.AppendLine("Thời gian kết thúc phải lớn hơn thời gian hiện tại.");
+                dtNgayKetThuc.Focus();
+            }
+
+            if (sb.Length > 0)
+            {
+                MessageBox.Show(sb.ToString());
+            }
+        }
 
 
 
@@ -518,5 +616,8 @@ namespace QUANLYNHANSU
 
 
 
-}
+
+
+
+    }
 }
