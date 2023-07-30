@@ -170,6 +170,12 @@
     <Compile Include="FormTaoTaiKhoan.Designer.cs">
       <DependentUpon>FormTaoTaiKhoan.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormBHXH.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormBHXH.Designer.cs">
+      <DependentUpon>FormBHXH.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="FormBHYT.resx">
       <DependentUpon>FormBHYT.cs</DependentUpon>
     </EmbeddedResource>
@@ -201,6 +207,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormTaoTaiKhoan.resx">
       <DependentUpon>FormTaoTaiKhoan.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormBHXH.resx">
+      <DependentUpon>FormBHXH.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="App.config" />
     <None Include="packages.config" />
