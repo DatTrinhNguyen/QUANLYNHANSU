@@ -142,7 +142,6 @@ namespace QUANLYNHANSU
             this.btnTimKiem.Border = DevExpress.XtraEditors.Controls.BorderStyles.Simple;
             this.btnTimKiem.Caption = "Tim Kiếm";
             this.btnTimKiem.Id = 7;
-            this.btnTimKiem.ImageOptions.SvgImage = global::QUANLYNHANSU.Properties.Resources.zoom;
             this.btnTimKiem.Name = "btnTimKiem";
             this.btnTimKiem.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnTimKiem_ItemClick);
             // 

@@ -18,7 +18,7 @@ namespace QUANLYNHANSU
     {
         // biến điều khiển (có thể bỏ nếu tìm đc cách hay hơn)
         bool them = false, sua = false;
-        static string Database = "postgres", Password= "30062003";
+        static string Database = "QUANLYNHANSU", Password= "20030930";
         //Kết nối database
         NpgsqlConnection connection = new NpgsqlConnection("Server=localhost;Port=5432;Database=" + Database + ";User ID=postgres;Password=" + Password + ";");
         public FormBHYT()
