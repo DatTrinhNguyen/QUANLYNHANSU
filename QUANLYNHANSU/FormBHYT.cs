@@ -18,7 +18,7 @@ namespace QUANLYNHANSU
     {
         // biến điều khiển (có thể bỏ nếu tìm đc cách hay hơn)
         bool them = false, sua = false;
-        static string Database = "QUANLYNHANSU",Password= "20030930";
+        static string Database = "postgres", Password= "30062003";
         //Kết nối database
         NpgsqlConnection connection = new NpgsqlConnection("Server=localhost;Port=5432;Database=" + Database + ";User ID=postgres;Password=" + Password + ";");
         public FormBHYT()
@@ -131,6 +131,18 @@ namespace QUANLYNHANSU
             {
                 return;
             }
+            if (!NgayDong_Condition(ngayDong))
+            {
+                return;
+            }
+            if (!NgayKetThuc_Condition(ngayKetThuc))
+            {
+                return;
+            }
+            if (!SoTien_Condition(ngayKetThuc))
+            {
+                return;
+            }
 
 
 
@@ -173,6 +185,9 @@ namespace QUANLYNHANSU
                 //Biến tạm
                 string _idBHYT = selectedRow.Cells[0].Value.ToString();
                 string _maNV = selectedRow.Cells[2].Value.ToString();
+                string _soTien = selectedRow.Cells[1].Value.ToString();
+                string _ngayDong = selectedRow.Cells[3].Value.ToString();
+                string _ngayKetThuc = selectedRow.Cells[4].Value.ToString();
                 if (_idBHYT != idBHYT)
                 {
                     if (!MaBHYT_Condition(idBHYT))
@@ -184,6 +199,27 @@ namespace QUANLYNHANSU
                 if (_maNV != maNV)
                 {
                     if (!MaNV_Condition(maNV))
+                    {
+                        return;
+                    }
+                }
+                if (_ngayDong != ngayDong)
+                {
+                    if(!NgayDong_Condition(ngayDong))
+            {
+                        return;
+                    }
+                }
+                if (_ngayKetThuc != ngayKetThuc)
+                {
+                    if (!NgayKetThuc_Condition(ngayKetThuc))
+                    {
+                        return;
+                    }
+                }
+                if (_soTien != soTien)
+                {
+                    if (!SoTien_Condition(ngayKetThuc))
                     {
                         return;
                     }
@@ -503,59 +539,60 @@ namespace QUANLYNHANSU
 
         //NGÀY ĐÓNG <= NGÀY HIỆN TẠI
         //Ràng buộc ngày đóng tiền
-        private void dtNgayDong_Leave_1(object sender, EventArgs e)
+        private bool NgayDong_Condition(string ngayDong)
         {
             StringBuilder sb = new StringBuilder();
 
-            if (string.IsNullOrEmpty(dtNgayDong.Text.Trim()))
+            if (string.IsNullOrEmpty(ngayDong))
             {
-                sb.AppendLine("Bạn chưa nhập thời gian đóng tiền!");
-                dtNgayDong.Focus();
+                sb.AppendLine("Bạn chưa nhập thời gian đóng!");
             }
-            else if (!DateTime.TryParse(dtNgayDong.Text, out DateTime inputTime))
+            else if (!DateTime.TryParse(ngayDong, out DateTime inputTime))
             {
                 sb.AppendLine("Thời gian bạn nhập không hợp lệ. Vui lòng nhập đúng định dạng thời gian.");
-                dtNgayDong.Focus();
             }
             else if (inputTime >= DateTime.Now)
             {
                 sb.AppendLine("Thời gian đóng phải nhỏ hơn thời gian hiện tại.");
-                dtNgayDong.Focus();
             }
 
             if (sb.Length > 0)
             {
-                MessageBox.Show(sb.ToString());
+                MessageBox.Show(sb.ToString(), "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
             }
+
+            return true;
         }
 
 
         //NGÀY KẾT THỨC > NGÀY NGÀY HIỆN TẠI
         //Ràng buộc ngày kết thúc
-        private void dtNgayKetThuc_Leave_1(object sender, EventArgs e)
+
+        private bool NgayKetThuc_Condition(string ngayKetThuc)
         {
             StringBuilder sb = new StringBuilder();
 
-            if (string.IsNullOrEmpty(dtNgayKetThuc.Text.Trim()))
+            if (string.IsNullOrEmpty(ngayKetThuc))
             {
                 sb.AppendLine("Bạn chưa nhập thời gian kết thúc!");
-                dtNgayKetThuc.Focus();
             }
-            else if (!DateTime.TryParse(dtNgayKetThuc.Text, out DateTime inputTime))
+            else if (!DateTime.TryParse(ngayKetThuc, out DateTime inputTime))
             {
                 sb.AppendLine("Thời gian bạn nhập không hợp lệ. Vui lòng nhập đúng định dạng thời gian.");
-                dtNgayKetThuc.Focus();
             }
             else if (inputTime <= DateTime.Now)
             {
                 sb.AppendLine("Thời gian kết thúc phải lớn hơn thời gian hiện tại.");
-                dtNgayKetThuc.Focus();
             }
 
             if (sb.Length > 0)
             {
-                MessageBox.Show(sb.ToString());
+                MessageBox.Show(sb.ToString(), "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
             }
+
+            return true;
         }
         //CHỈ CHO NHẬP SỐ , KHÔNG CHO PASTE ,KHÔNG CHO VIẾT DẤU CÁCH , KHÔNG CHO BỎ TRỐNG , KHÔNG CHO NHẬP SỐ 0 VÔ NGHĨA, 10^9>SỐ TIỀN>10^5
 
@@ -580,8 +617,10 @@ namespace QUANLYNHANSU
             }
         }
 
+       
+
         //Ràng buộc giá trị số tiền
-        private void tbSoTien_Leave_1(object sender, EventArgs e)
+        private bool SoTien_Condition(string SoTien)
         {
             StringBuilder sb = new StringBuilder();
             if (string.IsNullOrEmpty(tbSoTien.Text.Trim()))
@@ -597,8 +636,10 @@ namespace QUANLYNHANSU
 
             if (sb.Length > 0)
             {
-                MessageBox.Show(sb.ToString());
+                MessageBox.Show(sb.ToString(), "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
             }
+            return true;
         }
 
         private void tbSoTien_TextChanged_1(object sender, EventArgs e)
@@ -608,11 +649,7 @@ namespace QUANLYNHANSU
             textBox.Text = textBox.Text.Replace(" ", "");
         }
 
-
         
-       
-
-       
 
 
 
@@ -624,5 +661,9 @@ namespace QUANLYNHANSU
 
 
 
-    }
+
+
+
+
+        }
 }

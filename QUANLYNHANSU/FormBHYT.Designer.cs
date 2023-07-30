@@ -182,34 +182,34 @@ namespace QUANLYNHANSU
             this.barDockControlTop.Location = new System.Drawing.Point(0, 0);
             this.barDockControlTop.Manager = this.barManager1;
             this.barDockControlTop.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.barDockControlTop.Size = new System.Drawing.Size(1361, 32);
+            this.barDockControlTop.Size = new System.Drawing.Size(1167, 26);
             // 
             // barDockControlBottom
             // 
             this.barDockControlBottom.CausesValidation = false;
             this.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.barDockControlBottom.Location = new System.Drawing.Point(0, 852);
+            this.barDockControlBottom.Location = new System.Drawing.Point(0, 594);
             this.barDockControlBottom.Manager = this.barManager1;
             this.barDockControlBottom.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.barDockControlBottom.Size = new System.Drawing.Size(1361, 20);
+            this.barDockControlBottom.Size = new System.Drawing.Size(1167, 20);
             // 
             // barDockControlLeft
             // 
             this.barDockControlLeft.CausesValidation = false;
             this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
-            this.barDockControlLeft.Location = new System.Drawing.Point(0, 32);
+            this.barDockControlLeft.Location = new System.Drawing.Point(0, 26);
             this.barDockControlLeft.Manager = this.barManager1;
             this.barDockControlLeft.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.barDockControlLeft.Size = new System.Drawing.Size(0, 820);
+            this.barDockControlLeft.Size = new System.Drawing.Size(0, 568);
             // 
             // barDockControlRight
             // 
             this.barDockControlRight.CausesValidation = false;
             this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
-            this.barDockControlRight.Location = new System.Drawing.Point(1361, 32);
+            this.barDockControlRight.Location = new System.Drawing.Point(1167, 26);
             this.barDockControlRight.Manager = this.barManager1;
             this.barDockControlRight.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.barDockControlRight.Size = new System.Drawing.Size(0, 820);
+            this.barDockControlRight.Size = new System.Drawing.Size(0, 568);
             // 
             // groupBox1
             // 
@@ -226,20 +226,19 @@ namespace QUANLYNHANSU
             this.groupBox1.Controls.Add(this.lbMaNV);
             this.groupBox1.Controls.Add(this.lbNgayKetThuc);
             this.groupBox1.Controls.Add(this.lbMaBHYT);
-            this.groupBox1.Location = new System.Drawing.Point(12, 38);
+            this.groupBox1.Location = new System.Drawing.Point(10, 31);
             this.groupBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.groupBox1.Size = new System.Drawing.Size(1338, 277);
+            this.groupBox1.Size = new System.Drawing.Size(1147, 225);
             this.groupBox1.TabIndex = 9;
             this.groupBox1.TabStop = false;
             // 
             // btnKhongLuu
             // 
-            this.btnKhongLuu.Location = new System.Drawing.Point(891, 210);
-            this.btnKhongLuu.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.btnKhongLuu.Location = new System.Drawing.Point(764, 171);
             this.btnKhongLuu.Name = "btnKhongLuu";
-            this.btnKhongLuu.Size = new System.Drawing.Size(150, 40);
+            this.btnKhongLuu.Size = new System.Drawing.Size(129, 32);
             this.btnKhongLuu.TabIndex = 37;
             this.btnKhongLuu.Text = "Không lưu";
             this.btnKhongLuu.UseVisualStyleBackColor = true;
@@ -247,10 +246,9 @@ namespace QUANLYNHANSU
             // 
             // btnLuu
             // 
-            this.btnLuu.Location = new System.Drawing.Point(714, 210);
-            this.btnLuu.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.btnLuu.Location = new System.Drawing.Point(612, 171);
             this.btnLuu.Name = "btnLuu";
-            this.btnLuu.Size = new System.Drawing.Size(150, 40);
+            this.btnLuu.Size = new System.Drawing.Size(129, 32);
             this.btnLuu.TabIndex = 36;
             this.btnLuu.Text = "Lưu";
             this.btnLuu.UseVisualStyleBackColor = true;
@@ -258,10 +256,9 @@ namespace QUANLYNHANSU
             // 
             // btnTim
             // 
-            this.btnTim.Location = new System.Drawing.Point(1069, 210);
-            this.btnTim.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.btnTim.Location = new System.Drawing.Point(916, 171);
             this.btnTim.Name = "btnTim";
-            this.btnTim.Size = new System.Drawing.Size(150, 40);
+            this.btnTim.Size = new System.Drawing.Size(129, 32);
             this.btnTim.TabIndex = 35;
             this.btnTim.Text = "Tìm Kiếm";
             this.btnTim.UseVisualStyleBackColor = true;
@@ -270,7 +267,7 @@ namespace QUANLYNHANSU
             // dtNgayKetThuc
             // 
             this.dtNgayKetThuc.EditValue = null;
-            this.dtNgayKetThuc.Location = new System.Drawing.Point(785, 126);
+            this.dtNgayKetThuc.Location = new System.Drawing.Point(673, 102);
             this.dtNgayKetThuc.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dtNgayKetThuc.MenuManager = this.barManager1;
             this.dtNgayKetThuc.Name = "dtNgayKetThuc";
@@ -289,14 +286,13 @@ namespace QUANLYNHANSU
             this.dtNgayKetThuc.Properties.EditFormat.FormatString = "MM/dd/YYYY";
             this.dtNgayKetThuc.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
             this.dtNgayKetThuc.Properties.UseMaskAsDisplayFormat = true;
-            this.dtNgayKetThuc.Size = new System.Drawing.Size(285, 30);
+            this.dtNgayKetThuc.Size = new System.Drawing.Size(244, 26);
             this.dtNgayKetThuc.TabIndex = 34;
-            this.dtNgayKetThuc.Leave += new System.EventHandler(this.dtNgayKetThuc_Leave_1);
             // 
             // dtNgayDong
             // 
             this.dtNgayDong.EditValue = null;
-            this.dtNgayDong.Location = new System.Drawing.Point(290, 130);
+            this.dtNgayDong.Location = new System.Drawing.Point(249, 106);
             this.dtNgayDong.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dtNgayDong.MenuManager = this.barManager1;
             this.dtNgayDong.Name = "dtNgayDong";
@@ -315,42 +311,39 @@ namespace QUANLYNHANSU
             this.dtNgayDong.Properties.EditFormat.FormatString = "MM/dd/YYYY";
             this.dtNgayDong.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
             this.dtNgayDong.Properties.UseMaskAsDisplayFormat = true;
-            this.dtNgayDong.Size = new System.Drawing.Size(283, 30);
+            this.dtNgayDong.Size = new System.Drawing.Size(243, 26);
             this.dtNgayDong.TabIndex = 33;
-            this.dtNgayDong.Leave += new System.EventHandler(this.dtNgayDong_Leave_1);
             // 
             // tbMaNV
             // 
             this.tbMaNV.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
             this.tbMaNV.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
             this.tbMaNV.Font = new System.Drawing.Font("Tahoma", 12F);
-            this.tbMaNV.Location = new System.Drawing.Point(785, 38);
+            this.tbMaNV.Location = new System.Drawing.Point(673, 31);
             this.tbMaNV.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tbMaNV.Name = "tbMaNV";
-            this.tbMaNV.Size = new System.Drawing.Size(285, 32);
+            this.tbMaNV.Size = new System.Drawing.Size(245, 27);
             this.tbMaNV.TabIndex = 32;
             this.tbMaNV.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbMaNV_KeyPress);
             // 
             // tbSoTien
             // 
             this.tbSoTien.Font = new System.Drawing.Font("Tahoma", 12F);
-            this.tbSoTien.Location = new System.Drawing.Point(289, 218);
+            this.tbSoTien.Location = new System.Drawing.Point(248, 177);
             this.tbSoTien.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tbSoTien.Name = "tbSoTien";
-            this.tbSoTien.Size = new System.Drawing.Size(285, 32);
+            this.tbSoTien.Size = new System.Drawing.Size(245, 27);
             this.tbSoTien.TabIndex = 28;
-            this.tbSoTien.TextChanged += new System.EventHandler(this.tbSoTien_TextChanged_1);
             this.tbSoTien.KeyDown += new System.Windows.Forms.KeyEventHandler(this.tbSoTien_KeyDown_1);
             this.tbSoTien.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbSoTien_KeyPress_1);
-            this.tbSoTien.Leave += new System.EventHandler(this.tbSoTien_Leave_1);
             // 
             // tbMaBHYT
             // 
             this.tbMaBHYT.Font = new System.Drawing.Font("Tahoma", 12F);
-            this.tbMaBHYT.Location = new System.Drawing.Point(289, 33);
+            this.tbMaBHYT.Location = new System.Drawing.Point(248, 27);
             this.tbMaBHYT.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tbMaBHYT.Name = "tbMaBHYT";
-            this.tbMaBHYT.Size = new System.Drawing.Size(285, 32);
+            this.tbMaBHYT.Size = new System.Drawing.Size(245, 27);
             this.tbMaBHYT.TabIndex = 26;
             this.tbMaBHYT.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbMaBHYT_KeyPress);
             // 
@@ -358,9 +351,9 @@ namespace QUANLYNHANSU
             // 
             this.lbSoTien.AutoSize = true;
             this.lbSoTien.Font = new System.Drawing.Font("Tahoma", 12F);
-            this.lbSoTien.Location = new System.Drawing.Point(211, 226);
+            this.lbSoTien.Location = new System.Drawing.Point(181, 184);
             this.lbSoTien.Name = "lbSoTien";
-            this.lbSoTien.Size = new System.Drawing.Size(72, 24);
+            this.lbSoTien.Size = new System.Drawing.Size(58, 19);
             this.lbSoTien.TabIndex = 25;
             this.lbSoTien.Text = "Số tiền";
             // 
@@ -368,9 +361,9 @@ namespace QUANLYNHANSU
             // 
             this.lbNgayĐong.AutoSize = true;
             this.lbNgayĐong.Font = new System.Drawing.Font("Tahoma", 12F);
-            this.lbNgayĐong.Location = new System.Drawing.Point(175, 132);
+            this.lbNgayĐong.Location = new System.Drawing.Point(150, 107);
             this.lbNgayĐong.Name = "lbNgayĐong";
-            this.lbNgayĐong.Size = new System.Drawing.Size(108, 24);
+            this.lbNgayĐong.Size = new System.Drawing.Size(88, 19);
             this.lbNgayĐong.TabIndex = 24;
             this.lbNgayĐong.Text = "Ngày Đóng";
             // 
@@ -378,9 +371,9 @@ namespace QUANLYNHANSU
             // 
             this.lbMaNV.AutoSize = true;
             this.lbMaNV.Font = new System.Drawing.Font("Tahoma", 12F);
-            this.lbMaNV.Location = new System.Drawing.Point(712, 41);
+            this.lbMaNV.Location = new System.Drawing.Point(610, 33);
             this.lbMaNV.Name = "lbMaNV";
-            this.lbMaNV.Size = new System.Drawing.Size(67, 24);
+            this.lbMaNV.Size = new System.Drawing.Size(55, 19);
             this.lbMaNV.TabIndex = 23;
             this.lbMaNV.Text = "Mã NV";
             // 
@@ -388,9 +381,9 @@ namespace QUANLYNHANSU
             // 
             this.lbNgayKetThuc.AutoSize = true;
             this.lbNgayKetThuc.Font = new System.Drawing.Font("Tahoma", 12F);
-            this.lbNgayKetThuc.Location = new System.Drawing.Point(646, 132);
+            this.lbNgayKetThuc.Location = new System.Drawing.Point(554, 107);
             this.lbNgayKetThuc.Name = "lbNgayKetThuc";
-            this.lbNgayKetThuc.Size = new System.Drawing.Size(133, 24);
+            this.lbNgayKetThuc.Size = new System.Drawing.Size(106, 19);
             this.lbNgayKetThuc.TabIndex = 22;
             this.lbNgayKetThuc.Text = "Ngày kết thúc";
             // 
@@ -398,20 +391,20 @@ namespace QUANLYNHANSU
             // 
             this.lbMaBHYT.AutoSize = true;
             this.lbMaBHYT.Font = new System.Drawing.Font("Tahoma", 12F);
-            this.lbMaBHYT.Location = new System.Drawing.Point(191, 41);
+            this.lbMaBHYT.Location = new System.Drawing.Point(164, 33);
             this.lbMaBHYT.Name = "lbMaBHYT";
-            this.lbMaBHYT.Size = new System.Drawing.Size(92, 24);
+            this.lbMaBHYT.Size = new System.Drawing.Size(74, 19);
             this.lbMaBHYT.TabIndex = 21;
             this.lbMaBHYT.Text = "Mã BHYT";
             // 
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.dgv);
-            this.groupBox2.Location = new System.Drawing.Point(12, 321);
+            this.groupBox2.Location = new System.Drawing.Point(10, 261);
             this.groupBox2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.groupBox2.Size = new System.Drawing.Size(1338, 534);
+            this.groupBox2.Size = new System.Drawing.Size(1147, 434);
             this.groupBox2.TabIndex = 10;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Thông tin BHYT";
@@ -426,13 +419,13 @@ namespace QUANLYNHANSU
             this.dgv.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Sunken;
             this.dgv.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgv.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
-            this.dgv.Location = new System.Drawing.Point(6, 22);
+            this.dgv.Location = new System.Drawing.Point(5, 18);
             this.dgv.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dgv.Name = "dgv";
             this.dgv.RowHeadersWidth = 51;
             this.dgv.RowTemplate.Height = 24;
             this.dgv.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgv.Size = new System.Drawing.Size(1326, 506);
+            this.dgv.Size = new System.Drawing.Size(1137, 411);
             this.dgv.TabIndex = 1;
             this.dgv.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_CellContentClick);
             // 
@@ -454,9 +447,9 @@ namespace QUANLYNHANSU
             // 
             // FormBHYT
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1361, 872);
+            this.ClientSize = new System.Drawing.Size(1167, 614);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.barDockControlLeft);
