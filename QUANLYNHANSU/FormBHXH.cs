@@ -384,7 +384,7 @@ namespace QUANLYNHANSU
             {
                 e.Handled = true;
             }
-            //không cho phép quá 15 ký tự
+            //không cho phép quá 10 ký tự
             if (e.KeyChar != (char)Keys.Back && tbMaBHXH.Text.Length == 10)
             {
                 e.Handled = true;
@@ -449,7 +449,7 @@ namespace QUANLYNHANSU
             {
                 e.Handled = true;
             }
-            //không cho phép quá 15 ký tự
+            //không cho phép quá 6 ký tự
             if (e.KeyChar != (char)Keys.Back && tbMaNV.Text.Length == 6)
             {
                 e.Handled = true;
@@ -600,7 +600,18 @@ namespace QUANLYNHANSU
         private void tbSoTien_KeyPress(object sender, KeyPressEventArgs e)
         {
             // Chỉ cho nhập từ 1-9
-            if (!char.IsControl(e.KeyChar) && (e.KeyChar < '1' || e.KeyChar > '9'))
+            if (!char.IsControl(e.KeyChar)&&!char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+            //Không cho nhập số 0 vô nghĩa
+            if (!char.IsControl(e.KeyChar) && e.KeyChar == '0' && tbSoTien.Text.Length==0)
+            {
+                e.Handled = true;
+            }
+
+            //Không cho nhập quá 9 chữ số
+            if(e.KeyChar != (char)Keys.Back && tbSoTien.Text.Length == 9)
             {
                 e.Handled = true;
             }

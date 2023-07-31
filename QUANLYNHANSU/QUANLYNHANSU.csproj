@@ -144,17 +144,11 @@
     <Compile Include="FormMain.Designer.cs">
       <DependentUpon>FormMain.cs</DependentUpon>
     </Compile>
-    <Compile Include="formNhanVien.cs">
+    <Compile Include="FormNhanVien.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="formNhanVien.Designer.cs">
-      <DependentUpon>formNhanVien.cs</DependentUpon>
-    </Compile>
-    <Compile Include="FormThemNhanVien.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FormThemNhanVien.Designer.cs">
-      <DependentUpon>FormThemNhanVien.cs</DependentUpon>
+    <Compile Include="FormNhanVien.designer.cs">
+      <DependentUpon>FormNhanVien.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -191,11 +185,8 @@
     <EmbeddedResource Include="FormMain.resx">
       <DependentUpon>FormMain.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="formNhanVien.resx">
-      <DependentUpon>formNhanVien.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="FormThemNhanVien.resx">
-      <DependentUpon>FormThemNhanVien.cs</DependentUpon>
+    <EmbeddedResource Include="FormNhanVien.resx">
+      <DependentUpon>FormNhanVien.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormXacThuc.resx">
       <DependentUpon>FormXacThuc.cs</DependentUpon>

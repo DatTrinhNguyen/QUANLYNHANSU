@@ -602,7 +602,18 @@ namespace QUANLYNHANSU
         private void tbSoTien_KeyPress_1(object sender, KeyPressEventArgs e)
         {
             // Chỉ cho nhập từ 1-9
-            if (!char.IsControl(e.KeyChar) && (e.KeyChar < '1' || e.KeyChar > '9'))
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+            //Không cho nhập số 0 vô nghĩa
+            if (!char.IsControl(e.KeyChar) && e.KeyChar == '0' && tbSoTien.Text.Length == 0)
+            {
+                e.Handled = true;
+            }
+
+            //Không cho nhập quá 9 chữ số
+            if (e.KeyChar != (char)Keys.Back && tbSoTien.Text.Length == 9)
             {
                 e.Handled = true;
             }

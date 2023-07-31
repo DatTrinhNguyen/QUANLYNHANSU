@@ -462,7 +462,6 @@
             this.btnThemNhanVien.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnThemNhanVien.ImageOptions.LargeImage")));
             this.btnThemNhanVien.Name = "btnThemNhanVien";
             this.btnThemNhanVien.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
-            this.btnThemNhanVien.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnThemNhanVien_ItemClick);
             // 
             // btnTimNhanVien
             // 
