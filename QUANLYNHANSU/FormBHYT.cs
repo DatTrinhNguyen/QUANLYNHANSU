@@ -342,6 +342,9 @@ namespace QUANLYNHANSU
             {
                 Sua();
             }
+            showHide(true);
+            them = false;
+            sua = false;
         }
 
         //Nút hủy lưu dữ liệu

@@ -106,8 +106,6 @@
             this.btnThem.Border = DevExpress.XtraEditors.Controls.BorderStyles.Simple;
             this.btnThem.Caption = "Thêm";
             this.btnThem.Id = 0;
-            this.btnThem.ImageOptions.Image = global::QUANLYNHANSU.Properties.Resources.add_32x325;
-            this.btnThem.ImageOptions.LargeImage = global::QUANLYNHANSU.Properties.Resources.add_32x325;
             this.btnThem.Name = "btnThem";
             this.btnThem.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnThem_ItemClick);
             // 
@@ -116,8 +114,6 @@
             this.btnSua.Border = DevExpress.XtraEditors.Controls.BorderStyles.Simple;
             this.btnSua.Caption = "Sửa";
             this.btnSua.Id = 1;
-            this.btnSua.ImageOptions.Image = global::QUANLYNHANSU.Properties.Resources.editname_32x325;
-            this.btnSua.ImageOptions.LargeImage = global::QUANLYNHANSU.Properties.Resources.editname_32x325;
             this.btnSua.Name = "btnSua";
             this.btnSua.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnSua_ItemClick);
             // 
@@ -126,8 +122,6 @@
             this.btnXoa.Border = DevExpress.XtraEditors.Controls.BorderStyles.Simple;
             this.btnXoa.Caption = "Xóa";
             this.btnXoa.Id = 2;
-            this.btnXoa.ImageOptions.Image = global::QUANLYNHANSU.Properties.Resources.clearformatting_32x325;
-            this.btnXoa.ImageOptions.LargeImage = global::QUANLYNHANSU.Properties.Resources.clearformatting_32x325;
             this.btnXoa.Name = "btnXoa";
             this.btnXoa.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnXoa_ItemClick);
             // 
@@ -136,8 +130,6 @@
             this.btnLuu.Border = DevExpress.XtraEditors.Controls.BorderStyles.Simple;
             this.btnLuu.Caption = "Lưu";
             this.btnLuu.Id = 3;
-            this.btnLuu.ImageOptions.Image = global::QUANLYNHANSU.Properties.Resources.saveas_32x325;
-            this.btnLuu.ImageOptions.LargeImage = global::QUANLYNHANSU.Properties.Resources.saveas_32x325;
             this.btnLuu.Name = "btnLuu";
             this.btnLuu.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnLuu_ItemClick);
             // 
@@ -146,8 +138,6 @@
             this.btnKhongLuu.Border = DevExpress.XtraEditors.Controls.BorderStyles.Simple;
             this.btnKhongLuu.Caption = "Không lưu";
             this.btnKhongLuu.Id = 4;
-            this.btnKhongLuu.ImageOptions.Image = global::QUANLYNHANSU.Properties.Resources.saveandclose_32x326;
-            this.btnKhongLuu.ImageOptions.LargeImage = global::QUANLYNHANSU.Properties.Resources.saveandclose_32x326;
             this.btnKhongLuu.Name = "btnKhongLuu";
             this.btnKhongLuu.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnKhongLuu_ItemClick);
             // 
@@ -156,8 +146,6 @@
             this.btnThoat.Border = DevExpress.XtraEditors.Controls.BorderStyles.Simple;
             this.btnThoat.Caption = "Thoát";
             this.btnThoat.Id = 5;
-            this.btnThoat.ImageOptions.Image = global::QUANLYNHANSU.Properties.Resources.cancel_32x329;
-            this.btnThoat.ImageOptions.LargeImage = global::QUANLYNHANSU.Properties.Resources.cancel_32x329;
             this.btnThoat.Name = "btnThoat";
             this.btnThoat.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnThoat_ItemClick);
             // 
