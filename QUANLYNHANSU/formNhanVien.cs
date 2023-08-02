@@ -19,6 +19,8 @@ namespace QUANLYNHANSU
     {
         // biến điều khiển (có thể bỏ nếu tìm đc cách hay hơn)
         bool them = false, sua = false;
+        // khai báo mã nhân viên ban đầu
+        private int idNV ;
         //Kết nối database
         NpgsqlConnection connection = new NpgsqlConnection("Server=localhost;Port=5432;Database=" + Database.name + ";User ID=postgres;Password=" + Database.pass + ";");
         public FormNhanVien()
@@ -150,18 +152,56 @@ namespace QUANLYNHANSU
             connection.Close();
         }
 
-
         //Nút thêm dữ liệu vào database
         private void btnThem_ItemClick_1(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             showHide(false);
             them = true;
+            TangidNV();
         }
+
+            // Hàm lấy mã nhân viên cuối cùng trong cơ sở dữ liệu
+        private void LayMaNhanVienCuoiCung()
+        {
+            NpgsqlConnection connection = new NpgsqlConnection("Server=localhost;Port=5432;Database=" + Database.name + ";User ID=postgres;Password=" + Database.pass + ";");
+            connection.Open();
+            NpgsqlCommand command = new NpgsqlCommand();
+            command.Connection = connection;
+            command.CommandType = CommandType.Text;
+
+             // Truy vấn mã nhân viên lớn nhất trong cơ sở dữ liệu
+            command.CommandText = "SELECT MAX(\"IDNV\") FROM public.\"tb.NHANVIEN\"";
+            object kq = command.ExecuteScalar();
+
+            if (kq != null && kq != DBNull.Value)
+            {
+                string kq1 = kq.ToString();//chuyển đổi từ object sang string
+                string kq2 = kq1.Substring(2);//loại bỏ 2 ký tự đầu.
+                // Nếu đã có mã nhân viên trong cơ sở dữ liệu, tăng giá trị lên một đơn vị
+                int maxMaNV = Convert.ToInt32(kq2);
+                idNV = maxMaNV; 
+            }
+            else
+            {
+                // Nếu chưa có mã nhân viên trong cơ sở dữ liệu, bắt đầu từ mã NV000001
+                idNV = 1;
+            }
+
+            connection.Dispose();
+            connection.Close();
+        }
+        private void TangidNV()
+        {
+            LayMaNhanVienCuoiCung(); // Gọi hàm để lấy mã nhân viên cuối cùng
+            idNV++;
+            tbMaNV.Text = "NV" + idNV.ToString("D6");// Định dạng mã nhân viên với 6 chữ số (NV000001, NV000002, ...)
+        }
+
 
         //Thêm dữ liệu vào database
         private void Them()
         {
-            string idNV = tbMaNV.Text.ToString();
+            string maNV = tbMaNV.Text;
             string hoDem = tbHoDem.Text.ToString();
             string Ten = tbTen.Text.ToString();
             string gioiTinh = cbGioiTinh.Text.ToString();
@@ -177,10 +217,7 @@ namespace QUANLYNHANSU
             string danToc = tbDanToc.Text.ToString();
             string trinhDo = tbDanToc.Text.ToString();
 
-            if (!MaNV_Condition(idNV))
-            {
-                return;
-            }
+           
             if (!HoDem_Condition(hoDem))
             {
                 return;
@@ -241,12 +278,13 @@ namespace QUANLYNHANSU
 
             command.CommandText = "INSERT INTO public.\"tb.NHANVIEN\"(\"IDNV\",\"HODEM\",\"TEN\",\"GIOITINH\",\"NGAYSINH\",\"CMND\",\"SDT\",\"DIACHI\"" +
                 ",\"IDPB\",\"IDCV\",\"LUONG\",\"NGAYGIANHAP\",\"DANTOC\",\"TONGIAO\",\"TRINHDO\",\"TRANGTHAI\")" +
-            "VALUES(\'" + idNV + "\', \'" + hoDem + "\', \'" + Ten + "\' , \'" + gioiTinh + "\', \'" + ngaySinh + "\', \'" + CMND + "\', \'" + SDT + "\'" +
+            "VALUES(\'" + maNV + "\', \'" + hoDem + "\', \'" + Ten + "\' , \'" + gioiTinh + "\', \'" + ngaySinh + "\', \'" + CMND + "\', \'" + SDT + "\'" +
             ", \'" + diaChi + "\', \'" + idPB + "\', \'" + idCV + "\', \'" + luong + "\', \'" + ngayGiaNhap + "\', \'" + tonGiao + "\', \'" + danToc + "\', \'" + trinhDo + "\', \'1\');";
             command.ExecuteNonQuery();
             connection.Dispose();
             connection.Close();
             loadData();
+            TangidNV();
 
         }
 
