@@ -15,9 +15,8 @@ namespace QUANLYNHANSU
     {
         // biến điều khiển (có thể bỏ nếu tìm đc cách hay hơn)
         bool them = false, sua = false;
-        static string Database = "postgres", Password = "30062003";
         //Kết nối database
-        NpgsqlConnection connection = new NpgsqlConnection("Server=localhost;Port=5432;Database=" + Database + ";User ID=postgres;Password=" + Password + ";");
+        NpgsqlConnection connection = new NpgsqlConnection("Server=localhost;Port=5432;Database=" + Database.name + ";User ID=postgres;Password=" + Database.pass + ";");
         public FormBHXH()
         {
             InitializeComponent();
@@ -62,7 +61,7 @@ namespace QUANLYNHANSU
         void loadData()
         {
             dgv.DataSource = null;
-            NpgsqlConnection connection = new NpgsqlConnection("Server=localhost;Port=5432;Database=" + Database + ";User ID=postgres;Password=" + Password + ";");
+            NpgsqlConnection connection = new NpgsqlConnection("Server=localhost;Port=5432;Database=" + Database.name + ";User ID=postgres;Password=" + Database.pass + ";");
             connection.Open();
             NpgsqlCommand command = new NpgsqlCommand();
             command.Connection = connection;
@@ -84,7 +83,7 @@ namespace QUANLYNHANSU
         //Hàm dùng cho text box tự gợi ý
         private void FormBHXH_Load(object sender, EventArgs e)
         {
-            NpgsqlConnection connection = new NpgsqlConnection("Server=localhost;Port=5432;Database=" + Database + ";User ID=postgres;Password=" + Password + ";");
+            NpgsqlConnection connection = new NpgsqlConnection("Server=localhost;Port=5432;Database=" + Database.name + ";User ID=postgres;Password=" + Database.pass + ";");
             connection.Open();
             AutoCompleteStringCollection auto = new AutoCompleteStringCollection();
             NpgsqlCommand command = new NpgsqlCommand();
@@ -141,7 +140,7 @@ namespace QUANLYNHANSU
             }
 
 
-            NpgsqlConnection connection = new NpgsqlConnection("Server=localhost;Port=5432;Database=" + Database + ";User ID=postgres;Password=" + Password + ";");
+            NpgsqlConnection connection = new NpgsqlConnection("Server=localhost;Port=5432;Database=" + Database.name + ";User ID=postgres;Password=" + Database.pass + ";");
             connection.Open();
             NpgsqlCommand command = new NpgsqlCommand();
             command.Connection = connection;
@@ -221,7 +220,7 @@ namespace QUANLYNHANSU
 
 
                 // Kết nối tới cơ sở dữ liệu
-                NpgsqlConnection connection = new NpgsqlConnection("Server=localhost;Port=5432;Database=" + Database + ";User ID=postgres;Password=" + Password + ";");
+                NpgsqlConnection connection = new NpgsqlConnection("Server=localhost;Port=5432;Database=" + Database.name + ";User ID=postgres;Password=" + Database.pass + ";");
                 connection.Open();
                 NpgsqlCommand command = new NpgsqlCommand();
                 command.Connection = connection;
@@ -265,7 +264,7 @@ namespace QUANLYNHANSU
                 DataGridViewRow selectedRow = dgv.SelectedRows[0];
                 string idBHXH = selectedRow.Cells[0].Value.ToString();
                 // Kết nối tới cơ sở dữ liệu
-                NpgsqlConnection connection = new NpgsqlConnection("Server=localhost;Port=5432;Database=" + Database + ";User ID=postgres;Password=" + Password + ";");
+                NpgsqlConnection connection = new NpgsqlConnection("Server=localhost;Port=5432;Database=" + Database.name + ";User ID=postgres;Password=" + Database.pass + ";");
                 connection.Open();
                 NpgsqlCommand command = new NpgsqlCommand();
                 command.Connection = connection;
@@ -290,7 +289,7 @@ namespace QUANLYNHANSU
         private void btnTim_Click(object sender, EventArgs e)
         {
             dgv.DataSource = null;
-            NpgsqlConnection connection = new NpgsqlConnection("Server=localhost;Port=5432;Database=" + Database + ";User ID=postgres;Password=" + Password + ";");
+            NpgsqlConnection connection = new NpgsqlConnection("Server=localhost;Port=5432;Database=" + Database.name + ";User ID=postgres;Password=" + Database.pass + ";");
             connection.Open();
             NpgsqlCommand command = new NpgsqlCommand();
             command.Connection = connection;
@@ -416,7 +415,7 @@ namespace QUANLYNHANSU
         private bool MaBHXH_CheckIfDataExists(string idBHXH)
         {
             //Kiểm tra dữ liệu trùng
-            NpgsqlConnection connection = new NpgsqlConnection("Server=localhost;Port=5432;Database=" + Database + ";User ID=postgres;Password=" + Password + ";");
+            NpgsqlConnection connection = new NpgsqlConnection("Server=localhost;Port=5432;Database=" + Database.name + ";User ID=postgres;Password=" + Database.pass + ";");
             connection.Open();
             NpgsqlCommand command = new NpgsqlCommand();
             command.Connection = connection;
@@ -486,7 +485,7 @@ namespace QUANLYNHANSU
         private bool MaNV_CheckIfDataExists(string idNV)
         {
             //Kiểm tra dữ liệu đã được đăng ký chưa
-            NpgsqlConnection connection = new NpgsqlConnection("Server=localhost;Port=5432;Database=" + Database + ";User ID=postgres;Password=" + Password + ";");
+            NpgsqlConnection connection = new NpgsqlConnection("Server=localhost;Port=5432;Database=" + Database.name + ";User ID=postgres;Password=" + Database.pass + ";");
             connection.Open();
             NpgsqlCommand command = new NpgsqlCommand();
             command.Connection = connection;
@@ -508,7 +507,7 @@ namespace QUANLYNHANSU
         private bool MaNV_CheckIfDataNotExists(string idNV)
         {
             //Kiểm tra dữ liệu đã tồn tại chưa
-            NpgsqlConnection connection = new NpgsqlConnection("Server=localhost;Port=5432;Database=" + Database + ";User ID=postgres;Password=" + Password + ";");
+            NpgsqlConnection connection = new NpgsqlConnection("Server=localhost;Port=5432;Database=" + Database.name + ";User ID=postgres;Password=" + Database.pass + ";");
             connection.Open();
             NpgsqlCommand command = new NpgsqlCommand();
             command.Connection = connection;
