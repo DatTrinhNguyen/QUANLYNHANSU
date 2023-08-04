@@ -172,7 +172,7 @@ namespace QUANLYNHANSU
             }
             else
             {
-                MessageBox.Show("Vui lòng chọn ca để sửa thông tin.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Vui lòng chọn loại ca để sửa thông tin.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
 
         }
@@ -209,13 +209,13 @@ namespace QUANLYNHANSU
             }
             else
             {
-                MessageBox.Show("Vui lòng chọn ca xóa thông tin.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Vui lòng chọn loại ca xóa thông tin.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
 
         
 
-
+        //Show hide tìm kiếm
         private void btnTimKiem_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             showHide(false);
@@ -223,11 +223,12 @@ namespace QUANLYNHANSU
             btnXoa.Enabled = true;
             btnLuu.Enabled = false;
             btnKhongLuu.Enabled = false;
-            tbTenLC.Enabled = false;
+            tbTenLC.Enabled = true;
             tbHeSo.Enabled = false;
             btnTim.Enabled = true;
         }
 
+        //Tìm kiếm thông tin
         private void btnTim_Click(object sender, EventArgs e)
         {
             dgv.DataSource = null;

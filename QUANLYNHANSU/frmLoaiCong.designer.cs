@@ -30,8 +30,17 @@
         {
             this.components = new System.ComponentModel.Container();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.tbHeSo = new System.Windows.Forms.MaskedTextBox();
+            this.tbTenLCONG = new System.Windows.Forms.MaskedTextBox();
+            this.btnLuu = new DevExpress.XtraEditors.SimpleButton();
+            this.btnKhongLuu = new DevExpress.XtraEditors.SimpleButton();
+            this.btnTim = new DevExpress.XtraEditors.SimpleButton();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.dgv = new System.Windows.Forms.DataGridView();
+            this.IDLC = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TenLoaiCa = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.HeSo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.barManager1 = new DevExpress.XtraBars.BarManager(this.components);
             this.bar2 = new DevExpress.XtraBars.Bar();
             this.btnThem = new DevExpress.XtraBars.BarButtonItem();
@@ -44,35 +53,26 @@
             this.barDockControlBottom = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlRight = new DevExpress.XtraBars.BarDockControl();
-            this.dgv = new System.Windows.Forms.DataGridView();
-            this.btnLuu = new DevExpress.XtraEditors.SimpleButton();
-            this.btnKhongLuu = new DevExpress.XtraEditors.SimpleButton();
-            this.btnTim = new DevExpress.XtraEditors.SimpleButton();
-            this.tbTenLC = new System.Windows.Forms.MaskedTextBox();
-            this.tbHeSo = new System.Windows.Forms.MaskedTextBox();
-            this.IDLC = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TenLoaiCa = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.HeSo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgv)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             this.SuspendLayout();
             // 
             // splitContainer1
             // 
             this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.splitContainer1.Location = new System.Drawing.Point(0, 28);
-            this.splitContainer1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.splitContainer1.Margin = new System.Windows.Forms.Padding(2);
             this.splitContainer1.Name = "splitContainer1";
             this.splitContainer1.Orientation = System.Windows.Forms.Orientation.Horizontal;
             // 
             // splitContainer1.Panel1
             // 
             this.splitContainer1.Panel1.Controls.Add(this.tbHeSo);
-            this.splitContainer1.Panel1.Controls.Add(this.tbTenLC);
+            this.splitContainer1.Panel1.Controls.Add(this.tbTenLCONG);
             this.splitContainer1.Panel1.Controls.Add(this.btnLuu);
             this.splitContainer1.Panel1.Controls.Add(this.btnKhongLuu);
             this.splitContainer1.Panel1.Controls.Add(this.btnTim);
@@ -86,6 +86,53 @@
             this.splitContainer1.SplitterDistance = 171;
             this.splitContainer1.SplitterWidth = 3;
             this.splitContainer1.TabIndex = 4;
+            // 
+            // tbHeSo
+            // 
+            this.tbHeSo.Font = new System.Drawing.Font("Tahoma", 12F);
+            this.tbHeSo.Location = new System.Drawing.Point(886, 37);
+            this.tbHeSo.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.tbHeSo.Name = "tbHeSo";
+            this.tbHeSo.Size = new System.Drawing.Size(145, 32);
+            this.tbHeSo.TabIndex = 29;
+            this.tbHeSo.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TbHeSo_KeyPress);
+            // 
+            // tbTenLCONG
+            // 
+            this.tbTenLCONG.Font = new System.Drawing.Font("Tahoma", 12F);
+            this.tbTenLCONG.Location = new System.Drawing.Point(615, 37);
+            this.tbTenLCONG.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.tbTenLCONG.Name = "tbTenLCONG";
+            this.tbTenLCONG.Size = new System.Drawing.Size(159, 32);
+            this.tbTenLCONG.TabIndex = 28;
+            this.tbTenLCONG.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbTenLCONG_KeyPress);
+            // 
+            // btnLuu
+            // 
+            this.btnLuu.Location = new System.Drawing.Point(609, 119);
+            this.btnLuu.Name = "btnLuu";
+            this.btnLuu.Size = new System.Drawing.Size(94, 29);
+            this.btnLuu.TabIndex = 12;
+            this.btnLuu.Text = "Lưu";
+            this.btnLuu.Click += new System.EventHandler(this.btnLuu_Click);
+            // 
+            // btnKhongLuu
+            // 
+            this.btnKhongLuu.Location = new System.Drawing.Point(732, 119);
+            this.btnKhongLuu.Name = "btnKhongLuu";
+            this.btnKhongLuu.Size = new System.Drawing.Size(94, 29);
+            this.btnKhongLuu.TabIndex = 11;
+            this.btnKhongLuu.Text = "Không lưu";
+            this.btnKhongLuu.Click += new System.EventHandler(this.btnKhongLuu_Click);
+            // 
+            // btnTim
+            // 
+            this.btnTim.Location = new System.Drawing.Point(855, 119);
+            this.btnTim.Name = "btnTim";
+            this.btnTim.Size = new System.Drawing.Size(94, 29);
+            this.btnTim.TabIndex = 10;
+            this.btnTim.Text = "Tìm kiếm";
+            this.btnTim.Click += new System.EventHandler(this.btnTim_Click);
             // 
             // label2
             // 
@@ -108,6 +155,54 @@
             this.label1.Size = new System.Drawing.Size(130, 24);
             this.label1.TabIndex = 0;
             this.label1.Text = "Tên loại công";
+            // 
+            // dgv
+            // 
+            this.dgv.AllowUserToAddRows = false;
+            this.dgv.AllowUserToDeleteRows = false;
+            this.dgv.AllowUserToResizeColumns = false;
+            this.dgv.AllowUserToResizeRows = false;
+            this.dgv.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgv.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Sunken;
+            this.dgv.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgv.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.IDLC,
+            this.TenLoaiCa,
+            this.HeSo});
+            this.dgv.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
+            this.dgv.Location = new System.Drawing.Point(3, 2);
+            this.dgv.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.dgv.Name = "dgv";
+            this.dgv.RowHeadersWidth = 51;
+            this.dgv.RowTemplate.Height = 24;
+            this.dgv.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgv.Size = new System.Drawing.Size(1569, 488);
+            this.dgv.TabIndex = 3;
+            this.dgv.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_CellContentClick);
+            // 
+            // IDLC
+            // 
+            this.IDLC.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.IDLC.DataPropertyName = "IDLCONG";
+            this.IDLC.HeaderText = "IDLCONG";
+            this.IDLC.MinimumWidth = 6;
+            this.IDLC.Name = "IDLC";
+            // 
+            // TenLoaiCa
+            // 
+            this.TenLoaiCa.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.TenLoaiCa.DataPropertyName = "TENLCONG";
+            this.TenLoaiCa.HeaderText = "TenLoaiCong";
+            this.TenLoaiCa.MinimumWidth = 6;
+            this.TenLoaiCa.Name = "TenLoaiCa";
+            // 
+            // HeSo
+            // 
+            this.HeSo.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.HeSo.DataPropertyName = "HESO";
+            this.HeSo.HeaderText = "HeSo";
+            this.HeSo.MinimumWidth = 6;
+            this.HeSo.Name = "HeSo";
             // 
             // barManager1
             // 
@@ -151,6 +246,7 @@
             this.btnThem.Caption = "Thêm";
             this.btnThem.Id = 0;
             this.btnThem.Name = "btnThem";
+            this.btnThem.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnThem_ItemClick);
             // 
             // btnSua
             // 
@@ -158,6 +254,7 @@
             this.btnSua.Caption = "Sửa";
             this.btnSua.Id = 1;
             this.btnSua.Name = "btnSua";
+            this.btnSua.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnSua_ItemClick);
             // 
             // btnXoa
             // 
@@ -165,6 +262,7 @@
             this.btnXoa.Caption = "Xóa";
             this.btnXoa.Id = 2;
             this.btnXoa.Name = "btnXoa";
+            this.btnXoa.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnXoa_ItemClick);
             // 
             // btnThoat
             // 
@@ -172,6 +270,7 @@
             this.btnThoat.Caption = "Thoát";
             this.btnThoat.Id = 5;
             this.btnThoat.Name = "btnThoat";
+            this.btnThoat.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnThoat_ItemClick);
             // 
             // btnTimKiem
             // 
@@ -179,6 +278,7 @@
             this.btnTimKiem.Caption = "Tìm kiếm";
             this.btnTimKiem.Id = 6;
             this.btnTimKiem.Name = "btnTimKiem";
+            this.btnTimKiem.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnTimKiem_ItemClick);
             // 
             // bar3
             // 
@@ -228,95 +328,6 @@
             this.barDockControlRight.Margin = new System.Windows.Forms.Padding(2);
             this.barDockControlRight.Size = new System.Drawing.Size(0, 652);
             // 
-            // dgv
-            // 
-            this.dgv.AllowUserToAddRows = false;
-            this.dgv.AllowUserToDeleteRows = false;
-            this.dgv.AllowUserToResizeColumns = false;
-            this.dgv.AllowUserToResizeRows = false;
-            this.dgv.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dgv.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Sunken;
-            this.dgv.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgv.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.IDLC,
-            this.TenLoaiCa,
-            this.HeSo});
-            this.dgv.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
-            this.dgv.Location = new System.Drawing.Point(3, 2);
-            this.dgv.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.dgv.Name = "dgv";
-            this.dgv.RowHeadersWidth = 51;
-            this.dgv.RowTemplate.Height = 24;
-            this.dgv.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgv.Size = new System.Drawing.Size(1569, 488);
-            this.dgv.TabIndex = 3;
-            // 
-            // btnLuu
-            // 
-            this.btnLuu.Location = new System.Drawing.Point(609, 119);
-            this.btnLuu.Name = "btnLuu";
-            this.btnLuu.Size = new System.Drawing.Size(94, 29);
-            this.btnLuu.TabIndex = 12;
-            this.btnLuu.Text = "Lưu";
-            // 
-            // btnKhongLuu
-            // 
-            this.btnKhongLuu.Location = new System.Drawing.Point(732, 119);
-            this.btnKhongLuu.Name = "btnKhongLuu";
-            this.btnKhongLuu.Size = new System.Drawing.Size(94, 29);
-            this.btnKhongLuu.TabIndex = 11;
-            this.btnKhongLuu.Text = "Không lưu";
-            // 
-            // btnTim
-            // 
-            this.btnTim.Location = new System.Drawing.Point(855, 119);
-            this.btnTim.Name = "btnTim";
-            this.btnTim.Size = new System.Drawing.Size(94, 29);
-            this.btnTim.TabIndex = 10;
-            this.btnTim.Text = "Tìm kiếm";
-            // 
-            // tbTenLC
-            // 
-            this.tbTenLC.Font = new System.Drawing.Font("Tahoma", 12F);
-            this.tbTenLC.Location = new System.Drawing.Point(615, 37);
-            this.tbTenLC.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.tbTenLC.Name = "tbTenLC";
-            this.tbTenLC.Size = new System.Drawing.Size(159, 32);
-            this.tbTenLC.TabIndex = 28;
-            // 
-            // tbHeSo
-            // 
-            this.tbHeSo.Font = new System.Drawing.Font("Tahoma", 12F);
-            this.tbHeSo.Location = new System.Drawing.Point(886, 37);
-            this.tbHeSo.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.tbHeSo.Name = "tbHeSo";
-            this.tbHeSo.Size = new System.Drawing.Size(145, 32);
-            this.tbHeSo.TabIndex = 29;
-            // 
-            // IDLC
-            // 
-            this.IDLC.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.IDLC.DataPropertyName = "IDLC";
-            this.IDLC.HeaderText = "IDLC";
-            this.IDLC.MinimumWidth = 6;
-            this.IDLC.Name = "IDLC";
-            // 
-            // TenLoaiCa
-            // 
-            this.TenLoaiCa.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.TenLoaiCa.DataPropertyName = "TENLCONG";
-            this.TenLoaiCa.HeaderText = "TenLoaiCong";
-            this.TenLoaiCa.MinimumWidth = 6;
-            this.TenLoaiCa.Name = "TenLoaiCa";
-            // 
-            // HeSo
-            // 
-            this.HeSo.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.HeSo.DataPropertyName = "HESO";
-            this.HeSo.HeaderText = "HeSo";
-            this.HeSo.MinimumWidth = 6;
-            this.HeSo.Name = "HeSo";
-            // 
             // frmLoaiCong
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
@@ -327,7 +338,7 @@
             this.Controls.Add(this.barDockControlRight);
             this.Controls.Add(this.barDockControlBottom);
             this.Controls.Add(this.barDockControlTop);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "frmLoaiCong";
             this.Text = "frmLoaiCong";
             this.splitContainer1.Panel1.ResumeLayout(false);
@@ -335,8 +346,8 @@
             this.splitContainer1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.barManager1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgv)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.barManager1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -362,7 +373,7 @@
         private DevExpress.XtraEditors.SimpleButton btnLuu;
         private DevExpress.XtraEditors.SimpleButton btnKhongLuu;
         private DevExpress.XtraEditors.SimpleButton btnTim;
-        private System.Windows.Forms.MaskedTextBox tbTenLC;
+        private System.Windows.Forms.MaskedTextBox tbTenLCONG;
         private System.Windows.Forms.MaskedTextBox tbHeSo;
         private System.Windows.Forms.DataGridViewTextBoxColumn IDLC;
         private System.Windows.Forms.DataGridViewTextBoxColumn TenLoaiCa;
