@@ -133,6 +133,12 @@
     <Compile Include="FormBHYT.Designer.cs">
       <DependentUpon>FormBHYT.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormKhenThuong.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormKhenThuong.Designer.cs">
+      <DependentUpon>FormKhenThuong.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormLogin.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -191,6 +197,9 @@
     </Compile>
     <EmbeddedResource Include="FormBHYT.resx">
       <DependentUpon>FormBHYT.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormKhenThuong.resx">
+      <DependentUpon>FormKhenThuong.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormLogin.resx">
       <DependentUpon>FormLogin.cs</DependentUpon>

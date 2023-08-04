@@ -27,9 +27,6 @@ namespace QUANLYNHANSU
         {
             InitializeComponent();
             // Thêm dữ liệu giới tính vào ComboBox
-         /*   cbGioiTinh.Items.Add("Nam");
-            cbGioiTinh.Items.Add("Nữ");
-            cbGioiTinh.Items.Add("Khác");*/
             showHide(true);
             //Khóa chức năng paste
             tbMaNV.ShortcutsEnabled = false;
