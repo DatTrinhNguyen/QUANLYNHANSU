@@ -42,25 +42,23 @@
             this.barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlRight = new DevExpress.XtraBars.BarDockControl();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.tbHeSo = new System.Windows.Forms.MaskedTextBox();
+            this.tbTenLC = new System.Windows.Forms.MaskedTextBox();
             this.btnLuu = new DevExpress.XtraEditors.SimpleButton();
             this.btnKhongLuu = new DevExpress.XtraEditors.SimpleButton();
             this.btnTim = new DevExpress.XtraEditors.SimpleButton();
-            this.txtHeSo = new System.Windows.Forms.TextBox();
-            this.txtTenLC = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.dgv = new DevExpress.XtraGrid.GridControl();
-            this.gvDanhSach = new DevExpress.XtraGrid.Views.Grid.GridView();
-            this.IDLC = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.TENLC = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.HESO = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.dgv = new System.Windows.Forms.DataGridView();
+            this.IDLC = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TenLoaiCa = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.HeSo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gvDanhSach)).BeginInit();
             this.SuspendLayout();
             // 
             // barManager1
@@ -197,11 +195,11 @@
             // 
             // splitContainer1.Panel1
             // 
+            this.splitContainer1.Panel1.Controls.Add(this.tbHeSo);
+            this.splitContainer1.Panel1.Controls.Add(this.tbTenLC);
             this.splitContainer1.Panel1.Controls.Add(this.btnLuu);
             this.splitContainer1.Panel1.Controls.Add(this.btnKhongLuu);
             this.splitContainer1.Panel1.Controls.Add(this.btnTim);
-            this.splitContainer1.Panel1.Controls.Add(this.txtHeSo);
-            this.splitContainer1.Panel1.Controls.Add(this.txtTenLC);
             this.splitContainer1.Panel1.Controls.Add(this.label2);
             this.splitContainer1.Panel1.Controls.Add(this.label1);
             // 
@@ -213,6 +211,26 @@
             this.splitContainer1.SplitterWidth = 3;
             this.splitContainer1.TabIndex = 4;
             // 
+            // tbHeSo
+            // 
+            this.tbHeSo.Font = new System.Drawing.Font("Tahoma", 12F);
+            this.tbHeSo.Location = new System.Drawing.Point(741, 26);
+            this.tbHeSo.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.tbHeSo.Name = "tbHeSo";
+            this.tbHeSo.Size = new System.Drawing.Size(145, 32);
+            this.tbHeSo.TabIndex = 28;
+            this.tbHeSo.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TbHeSo_KeyPress);
+            // 
+            // tbTenLC
+            // 
+            this.tbTenLC.Font = new System.Drawing.Font("Tahoma", 12F);
+            this.tbTenLC.Location = new System.Drawing.Point(511, 26);
+            this.tbTenLC.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.tbTenLC.Name = "tbTenLC";
+            this.tbTenLC.Size = new System.Drawing.Size(159, 32);
+            this.tbTenLC.TabIndex = 27;
+            this.tbTenLC.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbTenLC_KeyPress);
+            // 
             // btnLuu
             // 
             this.btnLuu.Location = new System.Drawing.Point(519, 96);
@@ -220,6 +238,7 @@
             this.btnLuu.Size = new System.Drawing.Size(94, 29);
             this.btnLuu.TabIndex = 9;
             this.btnLuu.Text = "Lưu";
+            this.btnLuu.Click += new System.EventHandler(this.btnLuu_Click);
             // 
             // btnKhongLuu
             // 
@@ -228,6 +247,7 @@
             this.btnKhongLuu.Size = new System.Drawing.Size(94, 29);
             this.btnKhongLuu.TabIndex = 8;
             this.btnKhongLuu.Text = "Không lưu";
+            this.btnKhongLuu.Click += new System.EventHandler(this.btnKhongLuu_Click);
             // 
             // btnTim
             // 
@@ -236,22 +256,7 @@
             this.btnTim.Size = new System.Drawing.Size(94, 29);
             this.btnTim.TabIndex = 7;
             this.btnTim.Text = "Tìm kiếm";
-            // 
-            // txtHeSo
-            // 
-            this.txtHeSo.Location = new System.Drawing.Point(749, 33);
-            this.txtHeSo.Margin = new System.Windows.Forms.Padding(2);
-            this.txtHeSo.Name = "txtHeSo";
-            this.txtHeSo.Size = new System.Drawing.Size(138, 23);
-            this.txtHeSo.TabIndex = 4;
-            // 
-            // txtTenLC
-            // 
-            this.txtTenLC.Location = new System.Drawing.Point(519, 33);
-            this.txtTenLC.Margin = new System.Windows.Forms.Padding(2);
-            this.txtTenLC.Name = "txtTenLC";
-            this.txtTenLC.Size = new System.Drawing.Size(138, 23);
-            this.txtTenLC.TabIndex = 3;
+            this.btnTim.Click += new System.EventHandler(this.btnTim_Click);
             // 
             // label2
             // 
@@ -277,64 +282,51 @@
             // 
             // dgv
             // 
-            this.dgv.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgv.EmbeddedNavigator.Margin = new System.Windows.Forms.Padding(2);
-            this.dgv.Location = new System.Drawing.Point(0, 0);
-            this.dgv.MainView = this.gvDanhSach;
-            this.dgv.Margin = new System.Windows.Forms.Padding(2);
-            this.dgv.MenuManager = this.barManager1;
-            this.dgv.Name = "dgv";
-            this.dgv.Size = new System.Drawing.Size(1556, 458);
-            this.dgv.TabIndex = 0;
-            this.dgv.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
-            this.gvDanhSach});
-            // 
-            // gvDanhSach
-            // 
-            this.gvDanhSach.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
+            this.dgv.AllowUserToAddRows = false;
+            this.dgv.AllowUserToDeleteRows = false;
+            this.dgv.AllowUserToResizeColumns = false;
+            this.dgv.AllowUserToResizeRows = false;
+            this.dgv.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgv.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Sunken;
+            this.dgv.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgv.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.IDLC,
-            this.TENLC,
-            this.HESO});
-            this.gvDanhSach.DetailHeight = 233;
-            this.gvDanhSach.GridControl = this.dgv;
-            this.gvDanhSach.Name = "gvDanhSach";
-            this.gvDanhSach.OptionsEditForm.PopupEditFormWidth = 509;
+            this.TenLoaiCa,
+            this.HeSo});
+            this.dgv.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
+            this.dgv.Location = new System.Drawing.Point(3, 2);
+            this.dgv.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.dgv.Name = "dgv";
+            this.dgv.RowHeadersWidth = 51;
+            this.dgv.RowTemplate.Height = 24;
+            this.dgv.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgv.Size = new System.Drawing.Size(1550, 452);
+            this.dgv.TabIndex = 2;
+            this.dgv.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_CellContentClick);
             // 
             // IDLC
             // 
-            this.IDLC.Caption = "ID";
-            this.IDLC.FieldName = "IDLC";
-            this.IDLC.Fixed = DevExpress.XtraGrid.Columns.FixedStyle.Left;
-            this.IDLC.MaxWidth = 64;
-            this.IDLC.MinWidth = 19;
+            this.IDLC.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.IDLC.DataPropertyName = "IDLC";
+            this.IDLC.HeaderText = "IDLC";
+            this.IDLC.MinimumWidth = 6;
             this.IDLC.Name = "IDLC";
-            this.IDLC.Visible = true;
-            this.IDLC.VisibleIndex = 0;
-            this.IDLC.Width = 64;
             // 
-            // TENLC
+            // TenLoaiCa
             // 
-            this.TENLC.Caption = "Tên ca";
-            this.TENLC.FieldName = "TENLC";
-            this.TENLC.Fixed = DevExpress.XtraGrid.Columns.FixedStyle.Left;
-            this.TENLC.MaxWidth = 95;
-            this.TENLC.MinWidth = 19;
-            this.TENLC.Name = "TENLC";
-            this.TENLC.Visible = true;
-            this.TENLC.VisibleIndex = 1;
-            this.TENLC.Width = 71;
+            this.TenLoaiCa.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.TenLoaiCa.DataPropertyName = "TENLC";
+            this.TenLoaiCa.HeaderText = "TenLoaiCa";
+            this.TenLoaiCa.MinimumWidth = 6;
+            this.TenLoaiCa.Name = "TenLoaiCa";
             // 
-            // HESO
+            // HeSo
             // 
-            this.HESO.Caption = "Hệ số";
-            this.HESO.FieldName = "HESO";
-            this.HESO.Fixed = DevExpress.XtraGrid.Columns.FixedStyle.Left;
-            this.HESO.MaxWidth = 64;
-            this.HESO.MinWidth = 19;
-            this.HESO.Name = "HESO";
-            this.HESO.Visible = true;
-            this.HESO.VisibleIndex = 2;
-            this.HESO.Width = 64;
+            this.HeSo.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.HeSo.DataPropertyName = "HESO";
+            this.HeSo.HeaderText = "HeSo";
+            this.HeSo.MinimumWidth = 6;
+            this.HeSo.Name = "HeSo";
             // 
             // frmLoaiCa
             // 
@@ -356,7 +348,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgv)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gvDanhSach)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -376,18 +367,17 @@
         private DevExpress.XtraBars.BarButtonItem btnXoa;
         private DevExpress.XtraBars.BarButtonItem btnThoat;
         private System.Windows.Forms.SplitContainer splitContainer1;
-        private System.Windows.Forms.TextBox txtTenLC;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
-        private DevExpress.XtraGrid.GridControl dgv;
-        private DevExpress.XtraGrid.Views.Grid.GridView gvDanhSach;
-        private DevExpress.XtraGrid.Columns.GridColumn IDLC;
-        private DevExpress.XtraGrid.Columns.GridColumn TENLC;
-        private DevExpress.XtraGrid.Columns.GridColumn HESO;
         private DevExpress.XtraBars.BarButtonItem btnTimKiem;
-        private System.Windows.Forms.TextBox txtHeSo;
         private DevExpress.XtraEditors.SimpleButton btnLuu;
         private DevExpress.XtraEditors.SimpleButton btnKhongLuu;
         private DevExpress.XtraEditors.SimpleButton btnTim;
+        private System.Windows.Forms.DataGridView dgv;
+        private System.Windows.Forms.DataGridViewTextBoxColumn IDLC;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TenLoaiCa;
+        private System.Windows.Forms.DataGridViewTextBoxColumn HeSo;
+        private System.Windows.Forms.MaskedTextBox tbHeSo;
+        private System.Windows.Forms.MaskedTextBox tbTenLC;
     }
 }
