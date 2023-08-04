@@ -86,15 +86,15 @@ namespace QUANLYNHANSU
             string tenca = tbTenLC.Text.ToString();
             string heso = tbHeSo.Text.ToString();
 
-            /*if (!MaBHXH_Condition(idBHYT))
+            if (!TenCa_Condition(tenca))
             {
                 return;
             }
 
-            if (!MaNV_Condition(maNV))
+            if (!HeSo_Condition(heso))
             {
                 return;
-            }*/
+            }
 
 
             NpgsqlConnection connection = new NpgsqlConnection("Server=localhost;Port=5432;Database=" + Database.name + ";User ID=postgres;Password=" + Database.pass + ";");
@@ -132,23 +132,23 @@ namespace QUANLYNHANSU
                 string _idLoaiCa = selectedRow.Cells[0].Value.ToString();
                 string _tenCa = selectedRow.Cells[2].Value.ToString();
                 string _heSo = selectedRow.Cells[1].Value.ToString();
-                
-                /*if (_idBHYT != idBHYT)
+
+                if (_tenCa != tenca)
                 {
-                    if (!MaBHXH_Condition(idBHYT))
+                    if (!TenCa_Condition(tenca))
                     {
                         return;
                     }
                 }
 
-                if (_maNV != maNV)
+                if (_heSo != heso)
                 {
-                    if (!MaNV_Condition(maNV))
+                    if (!HeSo_Condition(heso))
                     {
                         return;
                     }
                 }
-                */
+                
 
 
                 // Kết nối tới cơ sở dữ liệu
@@ -294,15 +294,109 @@ namespace QUANLYNHANSU
 
         }
 
-
+        //Ràng buộc tên ca
         private void tbTenLC_KeyPress(object sender, KeyPressEventArgs e)
         {
+            if (e.KeyChar != (char)Keys.Back && !char.IsLetter(e.KeyChar) && tbTenLC.Text.Length==0)
+            {
+                e.Handled = true;
+            }
+
+
+            if (e.KeyChar != (char)Keys.Back && tbTenLC.Text.Length == 30)
+            {
+                e.Handled = true;
+            }
+        }
+
+        private bool TenCa_Condition(string tenca)
+        {
+            //Không cho phép thiếu
+            if (tenca.Length <=5)
+            {
+                DialogResult dialogResult = MessageBox.Show("Tên ca quá ngắn", "Lỗi", MessageBoxButtons.RetryCancel);
+                return false;
+            }
+
+
+            //Không cho phép trùng
+            if (!TenCa_CheckIfDataExists(tenca))
+            {
+                DialogResult dialogResult = MessageBox.Show("Tên ca đã tồn tại", "Lỗi", MessageBoxButtons.RetryCancel);
+                return false;
+            }
+            return true;
 
         }
 
+        private bool TenCa_CheckIfDataExists(string tenca)
+        {
+            //Kiểm tra dữ liệu trùng
+            NpgsqlConnection connection = new NpgsqlConnection("Server=localhost;Port=5432;Database=" + Database.name + ";User ID=postgres;Password=" + Database.pass + ";");
+            connection.Open();
+            NpgsqlCommand command = new NpgsqlCommand();
+            command.Connection = connection;
+            command.CommandText = "SELECT \"TENLC\" FROM public.\"tb.LOAICA\" WHERE \"TENLC\" = \'" + tenca + "\';";
+            command.ExecuteNonQuery();
+            NpgsqlDataReader dataReader = command.ExecuteReader();
+            if (dataReader.Read())
+            {
+                connection.Dispose();
+                connection.Close();
+                return false;
+            }
+            connection.Dispose();
+            connection.Close();
+            return true;
+        }
+
+        //Ràng buộc hệ số
         private void TbHeSo_KeyPress(object sender, KeyPressEventArgs e)
         {
 
+            if (e.KeyChar != (char)Keys.Back && !char.IsDigit(e.KeyChar)  && tbHeSo.Text.Length == 0)
+            {
+                e.Handled = true;
+            }
+
+            if (e.KeyChar != (char)Keys.Back && e.KeyChar == (char)'0' && tbHeSo.Text.Length == 0)
+            {
+                e.Handled = true;
+            }
+
+            if (e.KeyChar != (char)Keys.Back && e.KeyChar != (char)'.' && tbHeSo.Text.Length == 1)
+            {
+                e.Handled = true;
+            }
+
+            if (e.KeyChar != (char)Keys.Back && !char.IsDigit(e.KeyChar) && tbHeSo.Text.Length > 1)
+            {
+                e.Handled = true;
+            }
+
+            if (e.KeyChar != (char)Keys.Back && tbHeSo.Text.Length == 5)
+            {
+                e.Handled = true;
+            }
+        }
+
+        private bool HeSo_Condition(string tenca)
+        {
+            //Không cho phép thiếu
+            if (tenca.Length ==0)
+            {
+                DialogResult dialogResult = MessageBox.Show("Hệ số không được bỏ trống", "Lỗi", MessageBoxButtons.RetryCancel);
+                return false;
+            }
+
+            //Sai định dạng
+            if (tenca.EndsWith(".")&&tenca.StartsWith("0"))
+            {
+                DialogResult dialogResult = MessageBox.Show("Hệ số không hợp lệ", "Lỗi", MessageBoxButtons.RetryCancel);
+                return false;
+            }
+
+            return true;
         }
     }
 }
