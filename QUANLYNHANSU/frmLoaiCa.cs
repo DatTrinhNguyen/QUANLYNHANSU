@@ -130,8 +130,8 @@ namespace QUANLYNHANSU
 
                 //Biến tạm
                 string _idLoaiCa = selectedRow.Cells[0].Value.ToString();
-                string _tenCa = selectedRow.Cells[2].Value.ToString();
-                string _heSo = selectedRow.Cells[1].Value.ToString();
+                string _tenCa = selectedRow.Cells[1].Value.ToString();
+                string _heSo = selectedRow.Cells[2].Value.ToString();
 
                 if (_tenCa != tenca)
                 {
@@ -160,7 +160,7 @@ namespace QUANLYNHANSU
 
                 // Sử dụng truy vấn UPDATE để cập nhật thông tin của nhân viên
                 command.CommandText = "UPDATE public.\"tb.LOAICA\" " +
-                                        "SET \"TENLC\" = \'" + tenca + "\',\"HESO\" = \'" + heso + "\', " +
+                                        "SET \"TENLC\" = \'" + tenca + "\',\"HESO\" = \'" + heso + "\' " +
                                         "WHERE \"IDLC\" = \'" + _idLoaiCa + "\';";
 
                 // Thực thi truy vấn
@@ -380,22 +380,26 @@ namespace QUANLYNHANSU
             }
         }
 
-        private bool HeSo_Condition(string tenca)
+        private bool HeSo_Condition(string heso)
         {
             //Không cho phép thiếu
-            if (tenca.Length ==0)
+            if (heso.Length ==0)
             {
                 DialogResult dialogResult = MessageBox.Show("Hệ số không được bỏ trống", "Lỗi", MessageBoxButtons.RetryCancel);
                 return false;
             }
 
             //Sai định dạng
-            if (tenca.EndsWith(".")&&tenca.StartsWith("0"))
+            if (heso.EndsWith("."))
             {
                 DialogResult dialogResult = MessageBox.Show("Hệ số không hợp lệ", "Lỗi", MessageBoxButtons.RetryCancel);
                 return false;
             }
-
+            if (!double.TryParse(heso.Trim(), out double newheso)|| newheso < 1)
+            {
+                DialogResult dialogResult = MessageBox.Show("Hệ số không hợp lệ", "Lỗi", MessageBoxButtons.RetryCancel);
+                return false;
+            }
             return true;
         }
     }
