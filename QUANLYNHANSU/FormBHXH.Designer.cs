@@ -76,6 +76,11 @@ namespace QUANLYNHANSU
             this.barDockControlBottom = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlRight = new DevExpress.XtraBars.BarDockControl();
+            this.BHXH = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.IDNV = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NGAYDONG = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.THOIHAN = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SOTIEN = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -150,6 +155,12 @@ namespace QUANLYNHANSU
             this.dgv.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgv.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Sunken;
             this.dgv.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgv.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.BHXH,
+            this.IDNV,
+            this.NGAYDONG,
+            this.THOIHAN,
+            this.SOTIEN});
             this.dgv.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.dgv.Location = new System.Drawing.Point(6, 20);
             this.dgv.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -616,6 +627,56 @@ namespace QUANLYNHANSU
             this.barDockControlRight.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.barDockControlRight.Size = new System.Drawing.Size(0, 811);
             // 
+            // BHXH
+            // 
+            this.BHXH.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.BHXH.DataPropertyName = "BHXH";
+            this.BHXH.HeaderText = "IDBHXH";
+            this.BHXH.MinimumWidth = 6;
+            this.BHXH.Name = "BHXH";
+            this.BHXH.ReadOnly = true;
+            this.BHXH.Width = 85;
+            // 
+            // IDNV
+            // 
+            this.IDNV.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.IDNV.DataPropertyName = "IDNV";
+            this.IDNV.HeaderText = "IDNV";
+            this.IDNV.MinimumWidth = 6;
+            this.IDNV.Name = "IDNV";
+            this.IDNV.ReadOnly = true;
+            this.IDNV.Width = 68;
+            // 
+            // NGAYDONG
+            // 
+            this.NGAYDONG.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.NGAYDONG.DataPropertyName = "NgayDong";
+            this.NGAYDONG.HeaderText = "NGAYDONG";
+            this.NGAYDONG.MinimumWidth = 6;
+            this.NGAYDONG.Name = "NGAYDONG";
+            this.NGAYDONG.ReadOnly = true;
+            this.NGAYDONG.Width = 109;
+            // 
+            // THOIHAN
+            // 
+            this.THOIHAN.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.THOIHAN.DataPropertyName = "ThoiHan";
+            this.THOIHAN.HeaderText = "THOIHAN";
+            this.THOIHAN.MinimumWidth = 6;
+            this.THOIHAN.Name = "THOIHAN";
+            this.THOIHAN.ReadOnly = true;
+            this.THOIHAN.Width = 94;
+            // 
+            // SOTIEN
+            // 
+            this.SOTIEN.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.SOTIEN.DataPropertyName = "SoTien";
+            this.SOTIEN.HeaderText = "SOTIEN";
+            this.SOTIEN.MinimumWidth = 6;
+            this.SOTIEN.Name = "SOTIEN";
+            this.SOTIEN.ReadOnly = true;
+            this.SOTIEN.Width = 84;
+            // 
             // FormBHXH
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
@@ -693,5 +754,10 @@ namespace QUANLYNHANSU
         private DevExpress.XtraBars.BarDockControl barDockControlBottom;
         private DevExpress.XtraBars.BarDockControl barDockControlLeft;
         private DevExpress.XtraBars.BarDockControl barDockControlRight;
+        private System.Windows.Forms.DataGridViewTextBoxColumn BHXH;
+        private System.Windows.Forms.DataGridViewTextBoxColumn IDNV;
+        private System.Windows.Forms.DataGridViewTextBoxColumn NGAYDONG;
+        private System.Windows.Forms.DataGridViewTextBoxColumn THOIHAN;
+        private System.Windows.Forms.DataGridViewTextBoxColumn SOTIEN;
     }
 }
