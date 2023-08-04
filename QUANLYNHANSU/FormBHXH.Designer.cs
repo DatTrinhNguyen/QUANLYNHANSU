@@ -629,53 +629,48 @@ namespace QUANLYNHANSU
             // 
             // BHXH
             // 
-            this.BHXH.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.BHXH.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.BHXH.DataPropertyName = "BHXH";
             this.BHXH.HeaderText = "IDBHXH";
             this.BHXH.MinimumWidth = 6;
             this.BHXH.Name = "BHXH";
             this.BHXH.ReadOnly = true;
-            this.BHXH.Width = 85;
             // 
             // IDNV
             // 
-            this.IDNV.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.IDNV.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.IDNV.DataPropertyName = "IDNV";
             this.IDNV.HeaderText = "IDNV";
             this.IDNV.MinimumWidth = 6;
             this.IDNV.Name = "IDNV";
             this.IDNV.ReadOnly = true;
-            this.IDNV.Width = 68;
             // 
             // NGAYDONG
             // 
-            this.NGAYDONG.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.NGAYDONG.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.NGAYDONG.DataPropertyName = "NgayDong";
             this.NGAYDONG.HeaderText = "NGAYDONG";
             this.NGAYDONG.MinimumWidth = 6;
             this.NGAYDONG.Name = "NGAYDONG";
             this.NGAYDONG.ReadOnly = true;
-            this.NGAYDONG.Width = 109;
             // 
             // THOIHAN
             // 
-            this.THOIHAN.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.THOIHAN.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.THOIHAN.DataPropertyName = "ThoiHan";
             this.THOIHAN.HeaderText = "THOIHAN";
             this.THOIHAN.MinimumWidth = 6;
             this.THOIHAN.Name = "THOIHAN";
             this.THOIHAN.ReadOnly = true;
-            this.THOIHAN.Width = 94;
             // 
             // SOTIEN
             // 
-            this.SOTIEN.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.SOTIEN.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.SOTIEN.DataPropertyName = "SoTien";
             this.SOTIEN.HeaderText = "SOTIEN";
             this.SOTIEN.MinimumWidth = 6;
             this.SOTIEN.Name = "SOTIEN";
             this.SOTIEN.ReadOnly = true;
-            this.SOTIEN.Width = 84;
             // 
             // FormBHXH
             // 

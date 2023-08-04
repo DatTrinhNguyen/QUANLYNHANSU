@@ -66,7 +66,7 @@ namespace QUANLYNHANSU
             NpgsqlCommand command = new NpgsqlCommand();
             command.Connection = connection;
             command.CommandType = CommandType.Text;
-            command.CommandText = "SELECT \"BHXH\",\"SOTIEN\",\"IDNV\",\"NGAYDONG\",\"THOIHAN\",\"GHICHU\" FROM public.\"tb.NHANVIENBAOHIEMXAHOI\"WHERE \"TRANGTHAI\" = \'1\';";
+            command.CommandText = "SELECT \"BHXH\",\"SOTIEN\",\"IDNV\",\"NGAYDONG\",\"THOIHAN\" FROM public.\"tb.NHANVIENBAOHIEMXAHOI\"WHERE \"TRANGTHAI\" = \'1\';";
             NpgsqlDataReader dataReader = command.ExecuteReader();
             if (dataReader.HasRows)
             {
@@ -295,7 +295,7 @@ namespace QUANLYNHANSU
             command.Connection = connection;
             command.CommandType = CommandType.Text;
 
-            command.CommandText = "SELECT  \"BHXH\",\"SOTIEN\",\"IDNV\",\"NGAYDONG\",\"THOIHAN\",\"GHICHU\" FROM public.\"tb.NHANVIENBAOHIEMXAHOI\" WHERE \"BHXH\" LIKE '%" + tbMaBHXH.Text + "%' AND  \"IDNV\" LIKE '%" + tbMaNV.Text + "%'AND\"TRANGTHAI\"=\'1\';";
+            command.CommandText = "SELECT  \"BHXH\",\"SOTIEN\",\"IDNV\",\"NGAYDONG\",\"THOIHAN\" FROM public.\"tb.NHANVIENBAOHIEMXAHOI\" WHERE \"BHXH\" LIKE '%" + tbMaBHXH.Text + "%' AND  \"IDNV\" LIKE '%" + tbMaNV.Text + "%'AND\"TRANGTHAI\"=\'1\';";
             command.ExecuteNonQuery();
             NpgsqlDataReader dataReader = command.ExecuteReader();
             if (dataReader.HasRows)
