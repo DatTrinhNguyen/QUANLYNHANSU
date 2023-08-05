@@ -805,7 +805,7 @@
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "FormNhanVien";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "formNhanVien";
+            this.Text = "FormNhanVien";
             ((System.ComponentModel.ISupportInitialize)(this.dtngaySinh.Properties.CalendarTimeProperties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtngaySinh.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtngayVaoLam.Properties.CalendarTimeProperties)).EndInit();

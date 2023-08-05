@@ -1,7 +1,7 @@
 ﻿
 namespace QUANLYNHANSU
 {
-    partial class FormKhenThuong
+    partial class FormKyLuat
     {
         /// <summary>
         /// Required designer variable.
@@ -30,7 +30,7 @@ namespace QUANLYNHANSU
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormKhenThuong));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormKyLuat));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.tbHoTen = new System.Windows.Forms.TextBox();
             this.btnKhongLuu = new System.Windows.Forms.Button();
@@ -39,19 +39,14 @@ namespace QUANLYNHANSU
             this.dtNgayLap = new DevExpress.XtraEditors.DateEdit();
             this.tbMaNV = new System.Windows.Forms.TextBox();
             this.tbSoTien = new System.Windows.Forms.MaskedTextBox();
-            this.tbMaKT = new System.Windows.Forms.MaskedTextBox();
+            this.tbMaKL = new System.Windows.Forms.MaskedTextBox();
             this.lbSoTien = new System.Windows.Forms.Label();
             this.lbNgayLap = new System.Windows.Forms.Label();
             this.lbMaNV = new System.Windows.Forms.Label();
             this.lbHoTen = new System.Windows.Forms.Label();
-            this.lbMaKT = new System.Windows.Forms.Label();
+            this.lbMaKL = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.dgv = new System.Windows.Forms.DataGridView();
-            this.IDKT = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.IDNV = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.HoTen = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.NgayLap = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.SoTien = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.bar1 = new DevExpress.XtraBars.Bar();
             this.bar4 = new DevExpress.XtraBars.Bar();
             this.bar2 = new DevExpress.XtraBars.Bar();
@@ -68,6 +63,11 @@ namespace QUANLYNHANSU
             this.barDockControlBottom = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlRight = new DevExpress.XtraBars.BarDockControl();
+            this.IDKL = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.IDNV = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.HoTen = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NgayLap = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SoTien = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtNgayLap.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtNgayLap.Properties.CalendarTimeProperties)).BeginInit();
@@ -85,12 +85,12 @@ namespace QUANLYNHANSU
             this.groupBox1.Controls.Add(this.dtNgayLap);
             this.groupBox1.Controls.Add(this.tbMaNV);
             this.groupBox1.Controls.Add(this.tbSoTien);
-            this.groupBox1.Controls.Add(this.tbMaKT);
+            this.groupBox1.Controls.Add(this.tbMaKL);
             this.groupBox1.Controls.Add(this.lbSoTien);
             this.groupBox1.Controls.Add(this.lbNgayLap);
             this.groupBox1.Controls.Add(this.lbMaNV);
             this.groupBox1.Controls.Add(this.lbHoTen);
-            this.groupBox1.Controls.Add(this.lbMaKT);
+            this.groupBox1.Controls.Add(this.lbMaKL);
             this.groupBox1.Location = new System.Drawing.Point(12, 38);
             this.groupBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.groupBox1.Name = "groupBox1";
@@ -191,14 +191,14 @@ namespace QUANLYNHANSU
             this.tbSoTien.KeyDown += new System.Windows.Forms.KeyEventHandler(this.tbSoTien_KeyDown_1);
             this.tbSoTien.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbSoTien_KeyPress_1);
             // 
-            // tbMaKT
+            // tbMaKL
             // 
-            this.tbMaKT.Font = new System.Drawing.Font("Tahoma", 12F);
-            this.tbMaKT.Location = new System.Drawing.Point(290, 33);
-            this.tbMaKT.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.tbMaKT.Name = "tbMaKT";
-            this.tbMaKT.Size = new System.Drawing.Size(285, 32);
-            this.tbMaKT.TabIndex = 26;
+            this.tbMaKL.Font = new System.Drawing.Font("Tahoma", 12F);
+            this.tbMaKL.Location = new System.Drawing.Point(290, 33);
+            this.tbMaKL.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.tbMaKL.Name = "tbMaKL";
+            this.tbMaKL.Size = new System.Drawing.Size(285, 32);
+            this.tbMaKL.TabIndex = 26;
             // 
             // lbSoTien
             // 
@@ -240,15 +240,15 @@ namespace QUANLYNHANSU
             this.lbHoTen.TabIndex = 22;
             this.lbHoTen.Text = "Họ Tên";
             // 
-            // lbMaKT
+            // lbMaKL
             // 
-            this.lbMaKT.AutoSize = true;
-            this.lbMaKT.Font = new System.Drawing.Font("Tahoma", 12F);
-            this.lbMaKT.Location = new System.Drawing.Point(122, 38);
-            this.lbMaKT.Name = "lbMaKT";
-            this.lbMaKT.Size = new System.Drawing.Size(161, 24);
-            this.lbMaKT.TabIndex = 21;
-            this.lbMaKT.Text = "Mã Khen Thưởng";
+            this.lbMaKL.AutoSize = true;
+            this.lbMaKL.Font = new System.Drawing.Font("Tahoma", 12F);
+            this.lbMaKL.Location = new System.Drawing.Point(122, 38);
+            this.lbMaKL.Name = "lbMaKL";
+            this.lbMaKL.Size = new System.Drawing.Size(109, 24);
+            this.lbMaKL.TabIndex = 21;
+            this.lbMaKL.Text = "Mã Kỷ Luật";
             // 
             // groupBox2
             // 
@@ -272,7 +272,7 @@ namespace QUANLYNHANSU
             this.dgv.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Sunken;
             this.dgv.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgv.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.IDKT,
+            this.IDKL,
             this.IDNV,
             this.HoTen,
             this.NgayLap,
@@ -287,46 +287,6 @@ namespace QUANLYNHANSU
             this.dgv.Size = new System.Drawing.Size(1326, 506);
             this.dgv.TabIndex = 1;
             this.dgv.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_CellContentClick);
-            // 
-            // IDKT
-            // 
-            this.IDKT.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.IDKT.DataPropertyName = "MAKT";
-            this.IDKT.HeaderText = "IDKT";
-            this.IDKT.MinimumWidth = 6;
-            this.IDKT.Name = "IDKT";
-            // 
-            // IDNV
-            // 
-            this.IDNV.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.IDNV.DataPropertyName = "IDNV";
-            this.IDNV.HeaderText = "IDNV";
-            this.IDNV.MinimumWidth = 6;
-            this.IDNV.Name = "IDNV";
-            // 
-            // HoTen
-            // 
-            this.HoTen.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.HoTen.DataPropertyName = "HoTen";
-            this.HoTen.HeaderText = "HoTen";
-            this.HoTen.MinimumWidth = 6;
-            this.HoTen.Name = "HoTen";
-            // 
-            // NgayLap
-            // 
-            this.NgayLap.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.NgayLap.DataPropertyName = "NgayLap";
-            this.NgayLap.HeaderText = "NgayLap";
-            this.NgayLap.MinimumWidth = 6;
-            this.NgayLap.Name = "NgayLap";
-            // 
-            // SoTien
-            // 
-            this.SoTien.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.SoTien.DataPropertyName = "SoTien";
-            this.SoTien.HeaderText = "SoTien";
-            this.SoTien.MinimumWidth = 6;
-            this.SoTien.Name = "SoTien";
             // 
             // bar1
             // 
@@ -500,7 +460,47 @@ namespace QUANLYNHANSU
             this.barDockControlRight.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.barDockControlRight.Size = new System.Drawing.Size(0, 815);
             // 
-            // FormKhenThuong
+            // IDKL
+            // 
+            this.IDKL.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.IDKL.DataPropertyName = "MAKL";
+            this.IDKL.HeaderText = "IDKL";
+            this.IDKL.MinimumWidth = 6;
+            this.IDKL.Name = "IDKL";
+            // 
+            // IDNV
+            // 
+            this.IDNV.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.IDNV.DataPropertyName = "IDNV";
+            this.IDNV.HeaderText = "IDNV";
+            this.IDNV.MinimumWidth = 6;
+            this.IDNV.Name = "IDNV";
+            // 
+            // HoTen
+            // 
+            this.HoTen.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.HoTen.DataPropertyName = "HoTen";
+            this.HoTen.HeaderText = "HoTen";
+            this.HoTen.MinimumWidth = 6;
+            this.HoTen.Name = "HoTen";
+            // 
+            // NgayLap
+            // 
+            this.NgayLap.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.NgayLap.DataPropertyName = "NgayLap";
+            this.NgayLap.HeaderText = "NgayLap";
+            this.NgayLap.MinimumWidth = 6;
+            this.NgayLap.Name = "NgayLap";
+            // 
+            // SoTien
+            // 
+            this.SoTien.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.SoTien.DataPropertyName = "SoTien";
+            this.SoTien.HeaderText = "SoTien";
+            this.SoTien.MinimumWidth = 6;
+            this.SoTien.Name = "SoTien";
+            // 
+            // FormKyLuat
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -512,9 +512,9 @@ namespace QUANLYNHANSU
             this.Controls.Add(this.barDockControlBottom);
             this.Controls.Add(this.barDockControl1);
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.Name = "FormKhenThuong";
+            this.Name = "FormKyLuat";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "FormKhenThuong";
+            this.Text = "FormKyLuat";
             this.Load += new System.EventHandler(this.FormKhenThuong_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
@@ -533,12 +533,12 @@ namespace QUANLYNHANSU
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.DataGridView dgv;
         private System.Windows.Forms.MaskedTextBox tbSoTien;
-        private System.Windows.Forms.MaskedTextBox tbMaKT;
+        private System.Windows.Forms.MaskedTextBox tbMaKL;
         private System.Windows.Forms.Label lbSoTien;
         private System.Windows.Forms.Label lbNgayLap;
         private System.Windows.Forms.Label lbMaNV;
         private System.Windows.Forms.Label lbHoTen;
-        private System.Windows.Forms.Label lbMaKT;
+        private System.Windows.Forms.Label lbMaKL;
         private System.Windows.Forms.TextBox tbMaNV;
         private DevExpress.XtraBars.Bar bar1;
         private DevExpress.XtraEditors.DateEdit dtNgayLap;
@@ -561,7 +561,7 @@ namespace QUANLYNHANSU
         private DevExpress.XtraBars.BarDockControl barDockControlBottom;
         private DevExpress.XtraBars.BarDockControl barDockControlLeft;
         private DevExpress.XtraBars.BarDockControl barDockControlRight;
-        private System.Windows.Forms.DataGridViewTextBoxColumn IDKT;
+        private System.Windows.Forms.DataGridViewTextBoxColumn IDKL;
         private System.Windows.Forms.DataGridViewTextBoxColumn IDNV;
         private System.Windows.Forms.DataGridViewTextBoxColumn HoTen;
         private System.Windows.Forms.DataGridViewTextBoxColumn NgayLap;

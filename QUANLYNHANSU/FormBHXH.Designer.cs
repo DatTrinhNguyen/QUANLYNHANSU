@@ -688,7 +688,7 @@ namespace QUANLYNHANSU
             this.Controls.Add(this.barDockControl1);
             this.Name = "FormBHXH";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "XtraForm1";
+            this.Text = "FormBHXH";
             this.Load += new System.EventHandler(this.FormBHXH_Load);
             this.groupBox2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgv)).EndInit();

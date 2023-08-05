@@ -544,14 +544,17 @@ namespace QUANLYNHANSU
             if (string.IsNullOrEmpty(ngayDong))
             {
                 sb.AppendLine("Bạn chưa nhập thời gian đóng!");
+                return false;
             }
             else if (!DateTime.TryParse(ngayDong, out DateTime inputTime))
             {
                 sb.AppendLine("Thời gian bạn nhập không hợp lệ. Vui lòng nhập đúng định dạng thời gian.");
+                return false;
             }
             else if (inputTime >= DateTime.Now)
             {
                 sb.AppendLine("Thời gian đóng phải nhỏ hơn thời gian hiện tại.");
+                return false;
             }
 
             if (sb.Length > 0)
@@ -565,22 +568,29 @@ namespace QUANLYNHANSU
 
         //THOIHAN > NGÀY NGÀY HIỆN TẠI
         //Ràng buộc thời hạn
-
         private bool ThoiHan_Condition(string ngayKetThuc)
         {
             StringBuilder sb = new StringBuilder();
 
             if (string.IsNullOrEmpty(ngayKetThuc))
             {
-                sb.AppendLine("Bạn chưa nhập thời hạn kết thúc!");
+                MessageBox.Show("Bạn chưa nhập thời gian kết thúc!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
             }
             else if (!DateTime.TryParse(ngayKetThuc, out DateTime inputTime))
             {
-                sb.AppendLine("Thời hạn bạn nhập không hợp lệ. Vui lòng nhập đúng định dạng thời gian.");
+                MessageBox.Show("Thời gian bạn nhập không hợp lệ. Vui lòng nhập đúng định dạng thời gian.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
             }
-            else if (inputTime <= DateTime.Now)
+            else if (!DateTime.TryParse(dtNgayDong.Text.ToString(), out DateTime ngayDongValue))
             {
-                sb.AppendLine("Thời hạn kết thúc phải lớn hơn thời gian hiện tại.");
+                MessageBox.Show("Ngày đóng không hợp lệ. Vui lòng kiểm tra lại.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+            else if (inputTime <= ngayDongValue)
+            {
+                MessageBox.Show("Thời hạn kết thúc phải lớn hơn thời gian đóng.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
             }
 
             if (sb.Length > 0)
@@ -618,7 +628,7 @@ namespace QUANLYNHANSU
                 e.Handled = true;
             }
 
-            //Không cho nhập quá 9 chữ số
+            //Không cho nhập quá 12 chữ số
             if(e.KeyChar != (char)Keys.Back && tbSoTien.Text.Length == 12)
             {
                 e.Handled = true;

@@ -107,7 +107,7 @@ namespace QUANLYNHANSU
         }
 
         // Hàm lấy mã nhân viên cuối cùng trong cơ sở dữ liệu
-        private int LayMaNhanVienCuoiCung()
+        private int LayMaKTCuoiCung()
         {
             int idKT = 0;
             NpgsqlConnection connection = new NpgsqlConnection("Server=localhost;Port=5432;Database=" + Database.name + ";User ID=postgres;Password=" + Database.pass + ";");
@@ -138,10 +138,10 @@ namespace QUANLYNHANSU
             connection.Close();
             return idKT;
         }
-        private void TangidNV()
+        private void TangidKT()
         {
             // Gọi hàm để lấy mã nhân viên cuối cùng
-            int idKT = LayMaNhanVienCuoiCung();
+            int idKT = LayMaKTCuoiCung();
             idKT++;
             tbMaKT.Text = "KT" + idKT.ToString("D6");// Định dạng mã nhân viên với 6 chữ số (NV000001, NV000002, ...)
         }
@@ -152,7 +152,7 @@ namespace QUANLYNHANSU
         {
             showHide(false);
             them = true;
-            TangidNV();
+            TangidKT();
         }
 
 
@@ -552,7 +552,7 @@ namespace QUANLYNHANSU
                 e.Handled = true;
             }
 
-            //Không cho nhập quá 9 chữ số
+            //Không cho nhập quá 12 chữ số
             if (e.KeyChar != (char)Keys.Back && tbSoTien.Text.Length == 12)
             {
                 e.Handled = true;
