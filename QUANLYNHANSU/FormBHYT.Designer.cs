@@ -67,6 +67,7 @@ namespace QUANLYNHANSU
             this.SoTien = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.bar1 = new DevExpress.XtraBars.Bar();
             this.bar4 = new DevExpress.XtraBars.Bar();
+            this.behaviorManager1 = new DevExpress.Utils.Behaviors.BehaviorManager(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtNgayKetThuc.Properties)).BeginInit();
@@ -75,6 +76,7 @@ namespace QUANLYNHANSU
             ((System.ComponentModel.ISupportInitialize)(this.dtNgayDong.Properties.CalendarTimeProperties)).BeginInit();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.behaviorManager1)).BeginInit();
             this.SuspendLayout();
             // 
             // barManager1
@@ -543,6 +545,7 @@ namespace QUANLYNHANSU
             ((System.ComponentModel.ISupportInitialize)(this.dtNgayDong.Properties)).EndInit();
             this.groupBox2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgv)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.behaviorManager1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -586,5 +589,6 @@ namespace QUANLYNHANSU
         private System.Windows.Forms.DataGridViewTextBoxColumn NgayDong;
         private System.Windows.Forms.DataGridViewTextBoxColumn NgayKetThuc;
         private System.Windows.Forms.DataGridViewTextBoxColumn SoTien;
+        private DevExpress.Utils.Behaviors.BehaviorManager behaviorManager1;
     }
 }

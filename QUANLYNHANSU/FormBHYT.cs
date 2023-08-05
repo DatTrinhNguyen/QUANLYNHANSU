@@ -185,10 +185,13 @@ namespace QUANLYNHANSU
 
                 //Biến tạm
                 string _idBHYT = selectedRow.Cells[0].Value.ToString();
-                string _maNV = selectedRow.Cells[2].Value.ToString();
                 string _soTien = selectedRow.Cells[1].Value.ToString();
-                string _ngayDong = selectedRow.Cells[3].Value.ToString();
-                string _ngayKetThuc = selectedRow.Cells[4].Value.ToString();
+                string _maNV = selectedRow.Cells[2].Value.ToString();             
+                string _ngayDong = selectedRow.Cells[2].ToString();
+                string _ngayKetThuc = selectedRow.Cells[3].ToString();
+
+
+
                 if (_idBHYT != idBHYT)
                 {
                     if (!MaBHYT_Condition(idBHYT))
@@ -361,6 +364,7 @@ namespace QUANLYNHANSU
             showHide(true);
             them = false;
             sua = false;
+            loadData();
         }
 
 
@@ -616,7 +620,7 @@ namespace QUANLYNHANSU
             }
 
             //Không cho nhập quá 9 chữ số
-            if (e.KeyChar != (char)Keys.Back && tbSoTien.Text.Length == 9)
+            if (e.KeyChar != (char)Keys.Back && tbSoTien.Text.Length == 12)
             {
                 e.Handled = true;
             }

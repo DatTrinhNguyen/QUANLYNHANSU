@@ -281,6 +281,7 @@ namespace QUANLYNHANSU
             showHide(true);
             them = false;
             sua = false;
+            loadData();
         }
 
         // Chọn dữ liệu để show lên text box

@@ -281,7 +281,6 @@ namespace QUANLYNHANSU
             connection.Dispose();
             connection.Close();
             loadData();
-            TangidNV();
 
         }
 
@@ -432,6 +431,7 @@ namespace QUANLYNHANSU
             showHide(true);
             them = false;
             sua = false;
+            loadData();
         }
 
         //Nút Lưu dữ liệu 

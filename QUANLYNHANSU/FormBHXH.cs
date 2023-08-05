@@ -159,8 +159,10 @@ namespace QUANLYNHANSU
         private void btnSua_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             showHide(false);
+            tbMaBHXH.Enabled = false;
+            tbMaNV.Enabled = false;
+            
             sua = true;
-
         }
 
         //Sửa dữ liệu trong database
@@ -177,10 +179,13 @@ namespace QUANLYNHANSU
 
                 //Biến tạm
                 string _idBHYT = selectedRow.Cells[0].Value.ToString();
-                string _maNV = selectedRow.Cells[2].Value.ToString();
                 string _soTien = selectedRow.Cells[1].Value.ToString();
+                string _maNV = selectedRow.Cells[2].Value.ToString();
                 string _ngayDong = selectedRow.Cells[3].Value.ToString();
                 string _ngayThoiHan = selectedRow.Cells[4].Value.ToString();
+
+
+
                 if (_idBHYT != idBHYT)
                 {
                     if (!MaBHXH_Condition(idBHYT))
@@ -198,6 +203,7 @@ namespace QUANLYNHANSU
                 }
                 if (_ngayDong != ngayDong)
                 {
+                    
                     if (!NgayDong_Condition(ngayDong))
                     {
                         return;
@@ -207,7 +213,7 @@ namespace QUANLYNHANSU
                 {
                     if (!ThoiHan_Condition(thoiHan))
                     {
-                        return;
+                     return;
                     }
                 }
                 if (_soTien != soTien)
@@ -354,7 +360,7 @@ namespace QUANLYNHANSU
             showHide(true);
             them = false;
             sua = false;
-
+            loadData();
 
         }
 
@@ -613,7 +619,7 @@ namespace QUANLYNHANSU
             }
 
             //Không cho nhập quá 9 chữ số
-            if(e.KeyChar != (char)Keys.Back && tbSoTien.Text.Length == 9)
+            if(e.KeyChar != (char)Keys.Back && tbSoTien.Text.Length == 12)
             {
                 e.Handled = true;
             }

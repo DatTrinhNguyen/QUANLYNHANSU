@@ -220,8 +220,8 @@ namespace QUANLYNHANSU
 
                 //Biến tạm
                 string _idKT = selectedRow.Cells[0].Value.ToString();
-                string _maNV = selectedRow.Cells[1].Value.ToString();
-                string _HoTen = selectedRow.Cells[2].Value.ToString();
+                string _HoTen = selectedRow.Cells[1].Value.ToString();
+                string _maNV = selectedRow.Cells[2].Value.ToString(); 
                 string _ngayLap = selectedRow.Cells[3].Value.ToString();
                 string _soTien = selectedRow.Cells[4].Value.ToString();
                 
@@ -240,7 +240,7 @@ namespace QUANLYNHANSU
                         return;
                     }
                 }
-                if (_ngayLap != hoTen)
+                if (_HoTen != hoTen)
                 {
                     if (!HoTen_Condition(hoTen))
                     {
@@ -352,6 +352,7 @@ namespace QUANLYNHANSU
             btnXoa.Enabled = true;
             btnLuu.Enabled = false;
             btnKhongLuu.Enabled = false;
+            tbMaKT.Enabled = true;
             tbSoTien.Enabled = false;
             dtNgayLap.Enabled = false;
             tbHoTen.Enabled = false;
@@ -390,6 +391,7 @@ namespace QUANLYNHANSU
             showHide(true);
             them = false;
             sua = false;
+            loadData();
         }
 
 
@@ -550,7 +552,7 @@ namespace QUANLYNHANSU
             }
 
             //Không cho nhập quá 9 chữ số
-            if (e.KeyChar != (char)Keys.Back && tbSoTien.Text.Length == 9)
+            if (e.KeyChar != (char)Keys.Back && tbSoTien.Text.Length == 12)
             {
                 e.Handled = true;
             }
@@ -576,7 +578,7 @@ namespace QUANLYNHANSU
                 sb.AppendLine("Bạn chưa nhập số tiền đóng!");
                 tbSoTien.Focus();
             }
-            else if (!decimal.TryParse(tbSoTien.Text.Trim(), out decimal newSoTien) || (newSoTien < 100 || newSoTien > 1000))
+            else if (!decimal.TryParse(tbSoTien.Text.Trim(), out decimal newSoTien) || (newSoTien < 100000 || newSoTien > 10000000))
             {
                 sb.AppendLine("Số tiền bạn nhập không hợp lệ. Số tiền phải lớn hơn 10^5 và bé hơn 10^9");
                 tbSoTien.Focus();
