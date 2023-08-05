@@ -174,14 +174,14 @@ namespace QUANLYNHANSU
             {
                 string kq1 = kq.ToString();//chuyển đổi từ object sang string
                 string kq2 = kq1.Substring(2);//loại bỏ 2 ký tự đầu.
-                // Nếu đã có mã nhân viên trong cơ sở dữ liệu, tăng giá trị lên một đơn vị
+              //Chuyển đổi kiểu sang int 
                 int maxMaNV = Convert.ToInt32(kq2);
                 idNV = maxMaNV; 
             }
             else
             {
-                // Nếu chưa có mã nhân viên trong cơ sở dữ liệu, bắt đầu từ mã NV000001
-                idNV = 1;
+                // Nếu chưa có mã nhân viên trong cơ sở dữ liệu, bắt đầu từ mã NV000000
+                idNV = 0;
             }
 
             connection.Dispose();
@@ -308,7 +308,7 @@ namespace QUANLYNHANSU
             if (dgv.SelectedRows.Count > 0)
             {
                 DataGridViewRow selectedRow = dgv.SelectedRows[0];
-                string idNV = tbMaNV.Text.ToString();
+                string idNV = tbMaNV.Text;
                 string hoDem = tbHoDem.Text.ToString();
                 string Ten = tbTen.Text.ToString();
                 string gioiTinh = cbGioiTinh.Text.ToString();
