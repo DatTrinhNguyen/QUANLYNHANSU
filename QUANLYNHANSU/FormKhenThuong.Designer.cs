@@ -31,28 +31,15 @@ namespace QUANLYNHANSU
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormKhenThuong));
-            this.barManager1 = new DevExpress.XtraBars.BarManager(this.components);
-            this.bar2 = new DevExpress.XtraBars.Bar();
-            this.btnThem = new DevExpress.XtraBars.BarButtonItem();
-            this.btnSua = new DevExpress.XtraBars.BarButtonItem();
-            this.btnXoa = new DevExpress.XtraBars.BarButtonItem();
-            this.btnTimKiem = new DevExpress.XtraBars.BarButtonItem();
-            this.btnIn = new DevExpress.XtraBars.BarButtonItem();
-            this.btnThoat = new DevExpress.XtraBars.BarButtonItem();
-            this.bar3 = new DevExpress.XtraBars.Bar();
-            this.barDockControlTop = new DevExpress.XtraBars.BarDockControl();
-            this.barDockControlBottom = new DevExpress.XtraBars.BarDockControl();
-            this.barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
-            this.barDockControlRight = new DevExpress.XtraBars.BarDockControl();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.tbHoTen = new System.Windows.Forms.TextBox();
             this.btnKhongLuu = new System.Windows.Forms.Button();
             this.btnLuu = new System.Windows.Forms.Button();
             this.btnTim = new System.Windows.Forms.Button();
-            this.dtNgayKetThuc = new DevExpress.XtraEditors.DateEdit();
-            this.dtNgayDong = new DevExpress.XtraEditors.DateEdit();
+            this.dtNgayLap = new DevExpress.XtraEditors.DateEdit();
             this.tbMaNV = new System.Windows.Forms.TextBox();
             this.tbSoTien = new System.Windows.Forms.MaskedTextBox();
-            this.tbMaBHYT = new System.Windows.Forms.MaskedTextBox();
+            this.tbMaKT = new System.Windows.Forms.MaskedTextBox();
             this.lbSoTien = new System.Windows.Forms.Label();
             this.lbNgayLap = new System.Windows.Forms.Label();
             this.lbMaNV = new System.Windows.Forms.Label();
@@ -63,169 +50,42 @@ namespace QUANLYNHANSU
             this.IDKT = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.IDNV = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.HoTen = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.NgayDong = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NgayLap = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.SoTien = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.bar1 = new DevExpress.XtraBars.Bar();
             this.bar4 = new DevExpress.XtraBars.Bar();
-            ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
+            this.bar2 = new DevExpress.XtraBars.Bar();
+            this.barManager1 = new DevExpress.XtraBars.BarManager(this.components);
+            this.bar5 = new DevExpress.XtraBars.Bar();
+            this.btnThem = new DevExpress.XtraBars.BarButtonItem();
+            this.btnSua = new DevExpress.XtraBars.BarButtonItem();
+            this.btnXoa = new DevExpress.XtraBars.BarButtonItem();
+            this.btnTimKiem = new DevExpress.XtraBars.BarButtonItem();
+            this.btnIn = new DevExpress.XtraBars.BarButtonItem();
+            this.btnThoat = new DevExpress.XtraBars.BarButtonItem();
+            this.bar6 = new DevExpress.XtraBars.Bar();
+            this.barDockControl1 = new DevExpress.XtraBars.BarDockControl();
+            this.barDockControlBottom = new DevExpress.XtraBars.BarDockControl();
+            this.barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
+            this.barDockControlRight = new DevExpress.XtraBars.BarDockControl();
             this.groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dtNgayKetThuc.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dtNgayKetThuc.Properties.CalendarTimeProperties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dtNgayDong.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dtNgayDong.Properties.CalendarTimeProperties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dtNgayLap.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dtNgayLap.Properties.CalendarTimeProperties)).BeginInit();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             this.SuspendLayout();
-            // 
-            // barManager1
-            // 
-            this.barManager1.Bars.AddRange(new DevExpress.XtraBars.Bar[] {
-            this.bar2,
-            this.bar3});
-            this.barManager1.DockControls.Add(this.barDockControlTop);
-            this.barManager1.DockControls.Add(this.barDockControlBottom);
-            this.barManager1.DockControls.Add(this.barDockControlLeft);
-            this.barManager1.DockControls.Add(this.barDockControlRight);
-            this.barManager1.Form = this;
-            this.barManager1.Items.AddRange(new DevExpress.XtraBars.BarItem[] {
-            this.btnThem,
-            this.btnSua,
-            this.btnXoa,
-            this.btnThoat,
-            this.btnIn,
-            this.btnTimKiem});
-            this.barManager1.MainMenu = this.bar2;
-            this.barManager1.MaxItemId = 14;
-            this.barManager1.StatusBar = this.bar3;
-            // 
-            // bar2
-            // 
-            this.bar2.BarName = "Main menu";
-            this.bar2.DockCol = 0;
-            this.bar2.DockRow = 0;
-            this.bar2.DockStyle = DevExpress.XtraBars.BarDockStyle.Top;
-            this.bar2.FloatLocation = new System.Drawing.Point(26, 160);
-            this.bar2.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
-            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.btnThem, "", true, true, true, 0, null, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
-            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.btnSua, "", true, true, true, 0, null, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
-            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.btnXoa, "", true, true, true, 0, null, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
-            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.btnTimKiem, "", true, true, true, 0, null, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
-            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.btnIn, "", true, true, true, 0, null, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
-            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.btnThoat, "", true, true, true, 0, null, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph)});
-            this.bar2.OptionsBar.MultiLine = true;
-            this.bar2.OptionsBar.UseWholeRow = true;
-            this.bar2.Text = "Main menu";
-            // 
-            // btnThem
-            // 
-            this.btnThem.Border = DevExpress.XtraEditors.Controls.BorderStyles.Simple;
-            this.btnThem.Caption = "Thêm";
-            this.btnThem.Id = 0;
-            this.btnThem.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("btnThem.ImageOptions.SvgImage")));
-            this.btnThem.Name = "btnThem";
-            this.btnThem.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnThem_ItemClick);
-            // 
-            // btnSua
-            // 
-            this.btnSua.Border = DevExpress.XtraEditors.Controls.BorderStyles.Simple;
-            this.btnSua.Caption = "Sửa";
-            this.btnSua.Id = 1;
-            this.btnSua.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("btnSua.ImageOptions.SvgImage")));
-            this.btnSua.Name = "btnSua";
-            this.btnSua.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnSua_ItemClick);
-            // 
-            // btnXoa
-            // 
-            this.btnXoa.Border = DevExpress.XtraEditors.Controls.BorderStyles.Simple;
-            this.btnXoa.Caption = "Xóa";
-            this.btnXoa.Id = 2;
-            this.btnXoa.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("btnXoa.ImageOptions.SvgImage")));
-            this.btnXoa.Name = "btnXoa";
-            this.btnXoa.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnXoa_ItemClick);
-            // 
-            // btnTimKiem
-            // 
-            this.btnTimKiem.Border = DevExpress.XtraEditors.Controls.BorderStyles.Simple;
-            this.btnTimKiem.Caption = "Tim Kiếm";
-            this.btnTimKiem.Id = 7;
-            this.btnTimKiem.Name = "btnTimKiem";
-            this.btnTimKiem.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnTimKiem_ItemClick);
-            // 
-            // btnIn
-            // 
-            this.btnIn.Border = DevExpress.XtraEditors.Controls.BorderStyles.Simple;
-            this.btnIn.Caption = "In";
-            this.btnIn.Id = 6;
-            this.btnIn.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("btnIn.ImageOptions.SvgImage")));
-            this.btnIn.Name = "btnIn";
-            // 
-            // btnThoat
-            // 
-            this.btnThoat.Border = DevExpress.XtraEditors.Controls.BorderStyles.Simple;
-            this.btnThoat.Caption = "Thoát";
-            this.btnThoat.Id = 5;
-            this.btnThoat.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("btnThoat.ImageOptions.SvgImage")));
-            this.btnThoat.Name = "btnThoat";
-            this.btnThoat.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnThoat_ItemClick);
-            // 
-            // bar3
-            // 
-            this.bar3.BarName = "Status bar";
-            this.bar3.CanDockStyle = DevExpress.XtraBars.BarCanDockStyle.Bottom;
-            this.bar3.DockCol = 0;
-            this.bar3.DockRow = 0;
-            this.bar3.DockStyle = DevExpress.XtraBars.BarDockStyle.Bottom;
-            this.bar3.OptionsBar.AllowQuickCustomization = false;
-            this.bar3.OptionsBar.DrawDragBorder = false;
-            this.bar3.OptionsBar.UseWholeRow = true;
-            this.bar3.Text = "Status bar";
-            // 
-            // barDockControlTop
-            // 
-            this.barDockControlTop.CausesValidation = false;
-            this.barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top;
-            this.barDockControlTop.Location = new System.Drawing.Point(0, 0);
-            this.barDockControlTop.Manager = this.barManager1;
-            this.barDockControlTop.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.barDockControlTop.Size = new System.Drawing.Size(1361, 32);
-            // 
-            // barDockControlBottom
-            // 
-            this.barDockControlBottom.CausesValidation = false;
-            this.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.barDockControlBottom.Location = new System.Drawing.Point(0, 847);
-            this.barDockControlBottom.Manager = this.barManager1;
-            this.barDockControlBottom.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.barDockControlBottom.Size = new System.Drawing.Size(1361, 20);
-            // 
-            // barDockControlLeft
-            // 
-            this.barDockControlLeft.CausesValidation = false;
-            this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
-            this.barDockControlLeft.Location = new System.Drawing.Point(0, 32);
-            this.barDockControlLeft.Manager = this.barManager1;
-            this.barDockControlLeft.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.barDockControlLeft.Size = new System.Drawing.Size(0, 815);
-            // 
-            // barDockControlRight
-            // 
-            this.barDockControlRight.CausesValidation = false;
-            this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
-            this.barDockControlRight.Location = new System.Drawing.Point(1361, 32);
-            this.barDockControlRight.Manager = this.barManager1;
-            this.barDockControlRight.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.barDockControlRight.Size = new System.Drawing.Size(0, 815);
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.tbHoTen);
             this.groupBox1.Controls.Add(this.btnKhongLuu);
             this.groupBox1.Controls.Add(this.btnLuu);
             this.groupBox1.Controls.Add(this.btnTim);
-            this.groupBox1.Controls.Add(this.dtNgayKetThuc);
-            this.groupBox1.Controls.Add(this.dtNgayDong);
+            this.groupBox1.Controls.Add(this.dtNgayLap);
             this.groupBox1.Controls.Add(this.tbMaNV);
             this.groupBox1.Controls.Add(this.tbSoTien);
-            this.groupBox1.Controls.Add(this.tbMaBHYT);
+            this.groupBox1.Controls.Add(this.tbMaKT);
             this.groupBox1.Controls.Add(this.lbSoTien);
             this.groupBox1.Controls.Add(this.lbNgayLap);
             this.groupBox1.Controls.Add(this.lbMaNV);
@@ -238,6 +98,18 @@ namespace QUANLYNHANSU
             this.groupBox1.Size = new System.Drawing.Size(1338, 277);
             this.groupBox1.TabIndex = 9;
             this.groupBox1.TabStop = false;
+            // 
+            // tbHoTen
+            // 
+            this.tbHoTen.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.tbHoTen.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
+            this.tbHoTen.Font = new System.Drawing.Font("Tahoma", 12F);
+            this.tbHoTen.Location = new System.Drawing.Point(793, 128);
+            this.tbHoTen.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.tbHoTen.Name = "tbHoTen";
+            this.tbHoTen.Size = new System.Drawing.Size(285, 32);
+            this.tbHoTen.TabIndex = 38;
+            this.tbHoTen.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbHoTen_KeyPress);
             // 
             // btnKhongLuu
             // 
@@ -272,55 +144,29 @@ namespace QUANLYNHANSU
             this.btnTim.UseVisualStyleBackColor = true;
             this.btnTim.Click += new System.EventHandler(this.btnTim_Click);
             // 
-            // dtNgayKetThuc
+            // dtNgayLap
             // 
-            this.dtNgayKetThuc.EditValue = null;
-            this.dtNgayKetThuc.Location = new System.Drawing.Point(793, 126);
-            this.dtNgayKetThuc.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.dtNgayKetThuc.MenuManager = this.barManager1;
-            this.dtNgayKetThuc.Name = "dtNgayKetThuc";
-            this.dtNgayKetThuc.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 12F);
-            this.dtNgayKetThuc.Properties.Appearance.Options.UseFont = true;
-            this.dtNgayKetThuc.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            this.dtNgayLap.EditValue = null;
+            this.dtNgayLap.Location = new System.Drawing.Point(290, 130);
+            this.dtNgayLap.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.dtNgayLap.Name = "dtNgayLap";
+            this.dtNgayLap.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 12F);
+            this.dtNgayLap.Properties.Appearance.Options.UseFont = true;
+            this.dtNgayLap.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.dtNgayKetThuc.Properties.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            this.dtNgayLap.Properties.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.dtNgayKetThuc.Properties.CalendarTimeProperties.DisplayFormat.FormatString = "MM/dd/YYYY";
-            this.dtNgayKetThuc.Properties.CalendarTimeProperties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
-            this.dtNgayKetThuc.Properties.CalendarTimeProperties.EditFormat.FormatString = "MM/dd/YYYY";
-            this.dtNgayKetThuc.Properties.CalendarTimeProperties.EditFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
-            this.dtNgayKetThuc.Properties.DisplayFormat.FormatString = "MM/dd/YYYY";
-            this.dtNgayKetThuc.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
-            this.dtNgayKetThuc.Properties.EditFormat.FormatString = "MM/dd/YYYY";
-            this.dtNgayKetThuc.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
-            this.dtNgayKetThuc.Properties.UseMaskAsDisplayFormat = true;
-            this.dtNgayKetThuc.Size = new System.Drawing.Size(285, 30);
-            this.dtNgayKetThuc.TabIndex = 34;
-            // 
-            // dtNgayDong
-            // 
-            this.dtNgayDong.EditValue = null;
-            this.dtNgayDong.Location = new System.Drawing.Point(290, 130);
-            this.dtNgayDong.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.dtNgayDong.MenuManager = this.barManager1;
-            this.dtNgayDong.Name = "dtNgayDong";
-            this.dtNgayDong.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 12F);
-            this.dtNgayDong.Properties.Appearance.Options.UseFont = true;
-            this.dtNgayDong.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.dtNgayDong.Properties.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.dtNgayDong.Properties.CalendarTimeProperties.DisplayFormat.FormatString = "MM/dd/YYYY";
-            this.dtNgayDong.Properties.CalendarTimeProperties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
-            this.dtNgayDong.Properties.CalendarTimeProperties.EditFormat.FormatString = "MM/dd/YYYY";
-            this.dtNgayDong.Properties.CalendarTimeProperties.EditFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
-            this.dtNgayDong.Properties.DisplayFormat.FormatString = "MM/dd/YYYY";
-            this.dtNgayDong.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
-            this.dtNgayDong.Properties.EditFormat.FormatString = "MM/dd/YYYY";
-            this.dtNgayDong.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
-            this.dtNgayDong.Properties.UseMaskAsDisplayFormat = true;
-            this.dtNgayDong.Size = new System.Drawing.Size(283, 30);
-            this.dtNgayDong.TabIndex = 33;
+            this.dtNgayLap.Properties.CalendarTimeProperties.DisplayFormat.FormatString = "MM/dd/YYYY";
+            this.dtNgayLap.Properties.CalendarTimeProperties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
+            this.dtNgayLap.Properties.CalendarTimeProperties.EditFormat.FormatString = "MM/dd/YYYY";
+            this.dtNgayLap.Properties.CalendarTimeProperties.EditFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
+            this.dtNgayLap.Properties.DisplayFormat.FormatString = "MM/dd/YYYY";
+            this.dtNgayLap.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
+            this.dtNgayLap.Properties.EditFormat.FormatString = "MM/dd/YYYY";
+            this.dtNgayLap.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
+            this.dtNgayLap.Properties.UseMaskAsDisplayFormat = true;
+            this.dtNgayLap.Size = new System.Drawing.Size(283, 30);
+            this.dtNgayLap.TabIndex = 33;
             // 
             // tbMaNV
             // 
@@ -342,18 +188,18 @@ namespace QUANLYNHANSU
             this.tbSoTien.Name = "tbSoTien";
             this.tbSoTien.Size = new System.Drawing.Size(285, 32);
             this.tbSoTien.TabIndex = 28;
+            this.tbSoTien.TextChanged += new System.EventHandler(this.tbSoTien_TextChanged_1);
             this.tbSoTien.KeyDown += new System.Windows.Forms.KeyEventHandler(this.tbSoTien_KeyDown_1);
             this.tbSoTien.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbSoTien_KeyPress_1);
             // 
-            // tbMaBHYT
+            // tbMaKT
             // 
-            this.tbMaBHYT.Font = new System.Drawing.Font("Tahoma", 12F);
-            this.tbMaBHYT.Location = new System.Drawing.Point(290, 33);
-            this.tbMaBHYT.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.tbMaBHYT.Name = "tbMaBHYT";
-            this.tbMaBHYT.Size = new System.Drawing.Size(285, 32);
-            this.tbMaBHYT.TabIndex = 26;
-            this.tbMaBHYT.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbMaBHYT_KeyPress);
+            this.tbMaKT.Font = new System.Drawing.Font("Tahoma", 12F);
+            this.tbMaKT.Location = new System.Drawing.Point(290, 33);
+            this.tbMaKT.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.tbMaKT.Name = "tbMaKT";
+            this.tbMaKT.Size = new System.Drawing.Size(285, 32);
+            this.tbMaKT.TabIndex = 26;
             // 
             // lbSoTien
             // 
@@ -430,7 +276,7 @@ namespace QUANLYNHANSU
             this.IDKT,
             this.IDNV,
             this.HoTen,
-            this.NgayDong,
+            this.NgayLap,
             this.SoTien});
             this.dgv.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.dgv.Location = new System.Drawing.Point(6, 22);
@@ -467,13 +313,13 @@ namespace QUANLYNHANSU
             this.HoTen.MinimumWidth = 6;
             this.HoTen.Name = "HoTen";
             // 
-            // NgayDong
+            // NgayLap
             // 
-            this.NgayDong.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.NgayDong.DataPropertyName = "NgayDong";
-            this.NgayDong.HeaderText = "NgayDong";
-            this.NgayDong.MinimumWidth = 6;
-            this.NgayDong.Name = "NgayDong";
+            this.NgayLap.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.NgayLap.DataPropertyName = "NgayLap";
+            this.NgayLap.HeaderText = "NgayLap";
+            this.NgayLap.MinimumWidth = 6;
+            this.NgayLap.Name = "NgayLap";
             // 
             // SoTien
             // 
@@ -489,12 +335,6 @@ namespace QUANLYNHANSU
             this.bar1.DockCol = 0;
             this.bar1.DockRow = 0;
             this.bar1.FloatLocation = new System.Drawing.Point(137, 209);
-            this.bar1.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
-            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.btnThem, "", true, true, true, 0, null, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
-            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.btnSua, "", true, true, true, 0, null, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
-            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.btnXoa, "", true, true, true, 0, null, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
-            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.btnThoat, "", true, true, true, 0, null, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
-            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.btnIn, "", true, true, true, 0, null, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph)});
             this.bar1.OptionsBar.MultiLine = true;
             this.bar1.OptionsBar.UseWholeRow = true;
             this.bar1.Text = "Main menu";
@@ -506,16 +346,160 @@ namespace QUANLYNHANSU
             this.bar4.DockRow = 0;
             this.bar4.DockStyle = DevExpress.XtraBars.BarDockStyle.Top;
             this.bar4.FloatLocation = new System.Drawing.Point(26, 160);
-            this.bar4.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
+            this.bar4.OptionsBar.MultiLine = true;
+            this.bar4.OptionsBar.UseWholeRow = true;
+            this.bar4.Text = "Main menu";
+            // 
+            // bar2
+            // 
+            this.bar2.BarName = "Main menu";
+            this.bar2.DockCol = 0;
+            this.bar2.DockRow = 0;
+            this.bar2.DockStyle = DevExpress.XtraBars.BarDockStyle.Top;
+            this.bar2.FloatLocation = new System.Drawing.Point(26, 160);
+            this.bar2.OptionsBar.MultiLine = true;
+            this.bar2.OptionsBar.UseWholeRow = true;
+            this.bar2.Text = "Main menu";
+            // 
+            // barManager1
+            // 
+            this.barManager1.Bars.AddRange(new DevExpress.XtraBars.Bar[] {
+            this.bar5,
+            this.bar6});
+            this.barManager1.DockControls.Add(this.barDockControl1);
+            this.barManager1.DockControls.Add(this.barDockControlBottom);
+            this.barManager1.DockControls.Add(this.barDockControlLeft);
+            this.barManager1.DockControls.Add(this.barDockControlRight);
+            this.barManager1.Form = this;
+            this.barManager1.Items.AddRange(new DevExpress.XtraBars.BarItem[] {
+            this.btnThem,
+            this.btnSua,
+            this.btnXoa,
+            this.btnThoat,
+            this.btnIn,
+            this.btnTimKiem});
+            this.barManager1.MainMenu = this.bar5;
+            this.barManager1.MaxItemId = 14;
+            this.barManager1.StatusBar = this.bar6;
+            // 
+            // bar5
+            // 
+            this.bar5.BarName = "Main menu";
+            this.bar5.DockCol = 0;
+            this.bar5.DockRow = 0;
+            this.bar5.DockStyle = DevExpress.XtraBars.BarDockStyle.Top;
+            this.bar5.FloatLocation = new System.Drawing.Point(75, 164);
+            this.bar5.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
             new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.btnThem, "", true, true, true, 0, null, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
             new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.btnSua, "", true, true, true, 0, null, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
             new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.btnXoa, "", true, true, true, 0, null, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
             new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.btnTimKiem, "", true, true, true, 0, null, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
             new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.btnIn, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
             new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.btnThoat, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph)});
-            this.bar4.OptionsBar.MultiLine = true;
-            this.bar4.OptionsBar.UseWholeRow = true;
-            this.bar4.Text = "Main menu";
+            this.bar5.OptionsBar.MultiLine = true;
+            this.bar5.OptionsBar.UseWholeRow = true;
+            this.bar5.Text = "Main menu";
+            // 
+            // btnThem
+            // 
+            this.btnThem.Border = DevExpress.XtraEditors.Controls.BorderStyles.Simple;
+            this.btnThem.Caption = "Thêm";
+            this.btnThem.Id = 0;
+            this.btnThem.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("btnThem.ImageOptions.SvgImage")));
+            this.btnThem.Name = "btnThem";
+            this.btnThem.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnThem_ItemClick);
+            // 
+            // btnSua
+            // 
+            this.btnSua.Border = DevExpress.XtraEditors.Controls.BorderStyles.Simple;
+            this.btnSua.Caption = "Sửa";
+            this.btnSua.Id = 1;
+            this.btnSua.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("btnSua.ImageOptions.SvgImage")));
+            this.btnSua.Name = "btnSua";
+            this.btnSua.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnSua_ItemClick);
+            // 
+            // btnXoa
+            // 
+            this.btnXoa.Border = DevExpress.XtraEditors.Controls.BorderStyles.Simple;
+            this.btnXoa.Caption = "Xóa";
+            this.btnXoa.Id = 2;
+            this.btnXoa.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("btnXoa.ImageOptions.SvgImage")));
+            this.btnXoa.Name = "btnXoa";
+            this.btnXoa.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnXoa_ItemClick);
+            // 
+            // btnTimKiem
+            // 
+            this.btnTimKiem.Border = DevExpress.XtraEditors.Controls.BorderStyles.Simple;
+            this.btnTimKiem.Caption = "Tim Kiếm";
+            this.btnTimKiem.Id = 7;
+            this.btnTimKiem.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("btnTimKiem.ImageOptions.SvgImage")));
+            this.btnTimKiem.Name = "btnTimKiem";
+            this.btnTimKiem.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnTimKiem_ItemClick);
+            // 
+            // btnIn
+            // 
+            this.btnIn.Border = DevExpress.XtraEditors.Controls.BorderStyles.Simple;
+            this.btnIn.Caption = "In";
+            this.btnIn.Id = 6;
+            this.btnIn.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("btnIn.ImageOptions.SvgImage")));
+            this.btnIn.Name = "btnIn";
+            // 
+            // btnThoat
+            // 
+            this.btnThoat.Border = DevExpress.XtraEditors.Controls.BorderStyles.Simple;
+            this.btnThoat.Caption = "Thoát";
+            this.btnThoat.Id = 5;
+            this.btnThoat.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("btnThoat.ImageOptions.SvgImage")));
+            this.btnThoat.Name = "btnThoat";
+            this.btnThoat.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnThoat_ItemClick);
+            // 
+            // bar6
+            // 
+            this.bar6.BarName = "Status bar";
+            this.bar6.CanDockStyle = DevExpress.XtraBars.BarCanDockStyle.Bottom;
+            this.bar6.DockCol = 0;
+            this.bar6.DockRow = 0;
+            this.bar6.DockStyle = DevExpress.XtraBars.BarDockStyle.Bottom;
+            this.bar6.OptionsBar.AllowQuickCustomization = false;
+            this.bar6.OptionsBar.DrawDragBorder = false;
+            this.bar6.OptionsBar.UseWholeRow = true;
+            this.bar6.Text = "Status bar";
+            // 
+            // barDockControl1
+            // 
+            this.barDockControl1.CausesValidation = false;
+            this.barDockControl1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.barDockControl1.Location = new System.Drawing.Point(0, 0);
+            this.barDockControl1.Manager = this.barManager1;
+            this.barDockControl1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.barDockControl1.Size = new System.Drawing.Size(1361, 32);
+            // 
+            // barDockControlBottom
+            // 
+            this.barDockControlBottom.CausesValidation = false;
+            this.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.barDockControlBottom.Location = new System.Drawing.Point(0, 847);
+            this.barDockControlBottom.Manager = this.barManager1;
+            this.barDockControlBottom.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.barDockControlBottom.Size = new System.Drawing.Size(1361, 20);
+            // 
+            // barDockControlLeft
+            // 
+            this.barDockControlLeft.CausesValidation = false;
+            this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
+            this.barDockControlLeft.Location = new System.Drawing.Point(0, 32);
+            this.barDockControlLeft.Manager = this.barManager1;
+            this.barDockControlLeft.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.barDockControlLeft.Size = new System.Drawing.Size(0, 815);
+            // 
+            // barDockControlRight
+            // 
+            this.barDockControlRight.CausesValidation = false;
+            this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
+            this.barDockControlRight.Location = new System.Drawing.Point(1361, 32);
+            this.barDockControlRight.Manager = this.barManager1;
+            this.barDockControlRight.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.barDockControlRight.Size = new System.Drawing.Size(0, 815);
             // 
             // FormKhenThuong
             // 
@@ -527,46 +511,30 @@ namespace QUANLYNHANSU
             this.Controls.Add(this.barDockControlLeft);
             this.Controls.Add(this.barDockControlRight);
             this.Controls.Add(this.barDockControlBottom);
-            this.Controls.Add(this.barDockControlTop);
+            this.Controls.Add(this.barDockControl1);
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "FormKhenThuong";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FormBHYT";
-            this.Load += new System.EventHandler(this.FormBHYT_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.barManager1)).EndInit();
+            this.Load += new System.EventHandler(this.FormKhenThuong_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dtNgayKetThuc.Properties.CalendarTimeProperties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dtNgayKetThuc.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dtNgayDong.Properties.CalendarTimeProperties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dtNgayDong.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dtNgayLap.Properties.CalendarTimeProperties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dtNgayLap.Properties)).EndInit();
             this.groupBox2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgv)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.barManager1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-
-        private DevExpress.XtraBars.BarManager barManager1;
-        private DevExpress.XtraBars.Bar bar2;
-        private DevExpress.XtraBars.Bar bar3;
-        private DevExpress.XtraBars.BarDockControl barDockControlTop;
-        private DevExpress.XtraBars.BarDockControl barDockControlBottom;
-        private DevExpress.XtraBars.BarDockControl barDockControlLeft;
-        private DevExpress.XtraBars.BarDockControl barDockControlRight;
-        private DevExpress.XtraBars.BarButtonItem btnThem;
-        private DevExpress.XtraBars.BarButtonItem btnSua;
-        private DevExpress.XtraBars.BarButtonItem btnXoa;
-        private DevExpress.XtraBars.BarButtonItem btnThoat;
-        private DevExpress.XtraBars.BarButtonItem btnIn;
-        private DevExpress.XtraBars.BarButtonItem btnTimKiem;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.DataGridView dgv;
         private System.Windows.Forms.MaskedTextBox tbSoTien;
-        private System.Windows.Forms.MaskedTextBox tbMaBHYT;
+        private System.Windows.Forms.MaskedTextBox tbMaKT;
         private System.Windows.Forms.Label lbSoTien;
         private System.Windows.Forms.Label lbNgayLap;
         private System.Windows.Forms.Label lbMaNV;
@@ -574,16 +542,30 @@ namespace QUANLYNHANSU
         private System.Windows.Forms.Label lbMaKT;
         private System.Windows.Forms.TextBox tbMaNV;
         private DevExpress.XtraBars.Bar bar1;
-        private DevExpress.XtraEditors.DateEdit dtNgayDong;
-        private DevExpress.XtraEditors.DateEdit dtNgayKetThuc;
+        private DevExpress.XtraEditors.DateEdit dtNgayLap;
         private System.Windows.Forms.Button btnTim;
         private System.Windows.Forms.Button btnKhongLuu;
         private System.Windows.Forms.Button btnLuu;
         private DevExpress.XtraBars.Bar bar4;
+        private System.Windows.Forms.TextBox tbHoTen;
+        private DevExpress.XtraBars.Bar bar2;
+        private DevExpress.XtraBars.BarManager barManager1;
+        private DevExpress.XtraBars.Bar bar5;
+        private DevExpress.XtraBars.BarButtonItem btnThem;
+        private DevExpress.XtraBars.BarButtonItem btnSua;
+        private DevExpress.XtraBars.BarButtonItem btnXoa;
+        private DevExpress.XtraBars.BarButtonItem btnTimKiem;
+        private DevExpress.XtraBars.BarButtonItem btnIn;
+        private DevExpress.XtraBars.BarButtonItem btnThoat;
+        private DevExpress.XtraBars.Bar bar6;
+        private DevExpress.XtraBars.BarDockControl barDockControl1;
+        private DevExpress.XtraBars.BarDockControl barDockControlBottom;
+        private DevExpress.XtraBars.BarDockControl barDockControlLeft;
+        private DevExpress.XtraBars.BarDockControl barDockControlRight;
         private System.Windows.Forms.DataGridViewTextBoxColumn IDKT;
         private System.Windows.Forms.DataGridViewTextBoxColumn IDNV;
         private System.Windows.Forms.DataGridViewTextBoxColumn HoTen;
-        private System.Windows.Forms.DataGridViewTextBoxColumn NgayDong;
+        private System.Windows.Forms.DataGridViewTextBoxColumn NgayLap;
         private System.Windows.Forms.DataGridViewTextBoxColumn SoTien;
     }
 }

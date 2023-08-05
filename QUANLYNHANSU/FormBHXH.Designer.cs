@@ -37,6 +37,11 @@ namespace QUANLYNHANSU
             this.bar4 = new DevExpress.XtraBars.Bar();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.dgv = new System.Windows.Forms.DataGridView();
+            this.BHXH = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.IDNV = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NGAYDONG = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.THOIHAN = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SOTIEN = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.btnKhongLuu = new System.Windows.Forms.Button();
             this.btnLuu = new System.Windows.Forms.Button();
@@ -76,11 +81,6 @@ namespace QUANLYNHANSU
             this.barDockControlBottom = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlRight = new DevExpress.XtraBars.BarDockControl();
-            this.BHXH = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.IDNV = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.NGAYDONG = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.THOIHAN = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.SOTIEN = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -170,6 +170,51 @@ namespace QUANLYNHANSU
             this.dgv.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgv.Size = new System.Drawing.Size(1326, 479);
             this.dgv.TabIndex = 1;
+            // 
+            // BHXH
+            // 
+            this.BHXH.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.BHXH.DataPropertyName = "BHXH";
+            this.BHXH.HeaderText = "IDBHXH";
+            this.BHXH.MinimumWidth = 6;
+            this.BHXH.Name = "BHXH";
+            this.BHXH.ReadOnly = true;
+            // 
+            // IDNV
+            // 
+            this.IDNV.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.IDNV.DataPropertyName = "IDNV";
+            this.IDNV.HeaderText = "IDNV";
+            this.IDNV.MinimumWidth = 6;
+            this.IDNV.Name = "IDNV";
+            this.IDNV.ReadOnly = true;
+            // 
+            // NGAYDONG
+            // 
+            this.NGAYDONG.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.NGAYDONG.DataPropertyName = "NgayDong";
+            this.NGAYDONG.HeaderText = "NGAYDONG";
+            this.NGAYDONG.MinimumWidth = 6;
+            this.NGAYDONG.Name = "NGAYDONG";
+            this.NGAYDONG.ReadOnly = true;
+            // 
+            // THOIHAN
+            // 
+            this.THOIHAN.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.THOIHAN.DataPropertyName = "ThoiHan";
+            this.THOIHAN.HeaderText = "THOIHAN";
+            this.THOIHAN.MinimumWidth = 6;
+            this.THOIHAN.Name = "THOIHAN";
+            this.THOIHAN.ReadOnly = true;
+            // 
+            // SOTIEN
+            // 
+            this.SOTIEN.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.SOTIEN.DataPropertyName = "SoTien";
+            this.SOTIEN.HeaderText = "SOTIEN";
+            this.SOTIEN.MinimumWidth = 6;
+            this.SOTIEN.Name = "SOTIEN";
+            this.SOTIEN.ReadOnly = true;
             // 
             // groupBox1
             // 
@@ -295,6 +340,7 @@ namespace QUANLYNHANSU
             this.tbSoTien.Name = "tbSoTien";
             this.tbSoTien.Size = new System.Drawing.Size(285, 32);
             this.tbSoTien.TabIndex = 28;
+            this.tbSoTien.TextChanged += new System.EventHandler(this.tbSoTien_TextChanged_1);
             this.tbSoTien.KeyDown += new System.Windows.Forms.KeyEventHandler(this.tbSoTien_KeyDown);
             this.tbSoTien.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbSoTien_KeyPress);
             // 
@@ -559,6 +605,7 @@ namespace QUANLYNHANSU
             this.btnTimKiem.Border = DevExpress.XtraEditors.Controls.BorderStyles.Simple;
             this.btnTimKiem.Caption = "Tim Kiếm";
             this.btnTimKiem.Id = 7;
+            this.btnTimKiem.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("btnTimKiem.ImageOptions.SvgImage")));
             this.btnTimKiem.Name = "btnTimKiem";
             this.btnTimKiem.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnTimKiem_ItemClick);
             // 
@@ -626,51 +673,6 @@ namespace QUANLYNHANSU
             this.barDockControlRight.Manager = this.barManager1;
             this.barDockControlRight.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.barDockControlRight.Size = new System.Drawing.Size(0, 811);
-            // 
-            // BHXH
-            // 
-            this.BHXH.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.BHXH.DataPropertyName = "BHXH";
-            this.BHXH.HeaderText = "IDBHXH";
-            this.BHXH.MinimumWidth = 6;
-            this.BHXH.Name = "BHXH";
-            this.BHXH.ReadOnly = true;
-            // 
-            // IDNV
-            // 
-            this.IDNV.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.IDNV.DataPropertyName = "IDNV";
-            this.IDNV.HeaderText = "IDNV";
-            this.IDNV.MinimumWidth = 6;
-            this.IDNV.Name = "IDNV";
-            this.IDNV.ReadOnly = true;
-            // 
-            // NGAYDONG
-            // 
-            this.NGAYDONG.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.NGAYDONG.DataPropertyName = "NgayDong";
-            this.NGAYDONG.HeaderText = "NGAYDONG";
-            this.NGAYDONG.MinimumWidth = 6;
-            this.NGAYDONG.Name = "NGAYDONG";
-            this.NGAYDONG.ReadOnly = true;
-            // 
-            // THOIHAN
-            // 
-            this.THOIHAN.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.THOIHAN.DataPropertyName = "ThoiHan";
-            this.THOIHAN.HeaderText = "THOIHAN";
-            this.THOIHAN.MinimumWidth = 6;
-            this.THOIHAN.Name = "THOIHAN";
-            this.THOIHAN.ReadOnly = true;
-            // 
-            // SOTIEN
-            // 
-            this.SOTIEN.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.SOTIEN.DataPropertyName = "SoTien";
-            this.SOTIEN.HeaderText = "SOTIEN";
-            this.SOTIEN.MinimumWidth = 6;
-            this.SOTIEN.Name = "SOTIEN";
-            this.SOTIEN.ReadOnly = true;
             // 
             // FormBHXH
             // 

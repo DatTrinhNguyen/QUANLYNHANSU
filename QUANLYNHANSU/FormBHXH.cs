@@ -451,7 +451,7 @@ namespace QUANLYNHANSU
             {
                 e.Handled = true;
             }
-            //không cho phép quá 15 ký tự
+            //không cho phép quá 6 ký tự
             if (e.KeyChar != (char)Keys.Back && tbMaNV.Text.Length == 6)
             {
                 e.Handled = true;

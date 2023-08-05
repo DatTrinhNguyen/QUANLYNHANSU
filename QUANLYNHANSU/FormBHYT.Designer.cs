@@ -60,13 +60,13 @@ namespace QUANLYNHANSU
             this.lbMaBHYT = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.dgv = new System.Windows.Forms.DataGridView();
-            this.bar1 = new DevExpress.XtraBars.Bar();
-            this.bar4 = new DevExpress.XtraBars.Bar();
             this.IDBHYT = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.IDNV = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.NgayDong = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.NgayKetThuc = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.SoTien = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.bar1 = new DevExpress.XtraBars.Bar();
+            this.bar4 = new DevExpress.XtraBars.Bar();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtNgayKetThuc.Properties)).BeginInit();
@@ -148,6 +148,7 @@ namespace QUANLYNHANSU
             this.btnTimKiem.Border = DevExpress.XtraEditors.Controls.BorderStyles.Simple;
             this.btnTimKiem.Caption = "Tim Kiếm";
             this.btnTimKiem.Id = 7;
+            this.btnTimKiem.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("btnTimKiem.ImageOptions.SvgImage")));
             this.btnTimKiem.Name = "btnTimKiem";
             this.btnTimKiem.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnTimKiem_ItemClick);
             // 
@@ -342,6 +343,7 @@ namespace QUANLYNHANSU
             this.tbSoTien.Name = "tbSoTien";
             this.tbSoTien.Size = new System.Drawing.Size(285, 32);
             this.tbSoTien.TabIndex = 28;
+            this.tbSoTien.TextChanged += new System.EventHandler(this.tbSoTien_TextChanged_1);
             this.tbSoTien.KeyDown += new System.Windows.Forms.KeyEventHandler(this.tbSoTien_KeyDown_1);
             this.tbSoTien.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbSoTien_KeyPress_1);
             // 
@@ -443,40 +445,6 @@ namespace QUANLYNHANSU
             this.dgv.TabIndex = 1;
             this.dgv.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_CellContentClick);
             // 
-            // bar1
-            // 
-            this.bar1.BarName = "Main menu";
-            this.bar1.DockCol = 0;
-            this.bar1.DockRow = 0;
-            this.bar1.FloatLocation = new System.Drawing.Point(137, 209);
-            this.bar1.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
-            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.btnThem, "", true, true, true, 0, null, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
-            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.btnSua, "", true, true, true, 0, null, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
-            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.btnXoa, "", true, true, true, 0, null, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
-            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.btnThoat, "", true, true, true, 0, null, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
-            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.btnIn, "", true, true, true, 0, null, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph)});
-            this.bar1.OptionsBar.MultiLine = true;
-            this.bar1.OptionsBar.UseWholeRow = true;
-            this.bar1.Text = "Main menu";
-            // 
-            // bar4
-            // 
-            this.bar4.BarName = "Main menu";
-            this.bar4.DockCol = 0;
-            this.bar4.DockRow = 0;
-            this.bar4.DockStyle = DevExpress.XtraBars.BarDockStyle.Top;
-            this.bar4.FloatLocation = new System.Drawing.Point(26, 160);
-            this.bar4.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
-            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.btnThem, "", true, true, true, 0, null, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
-            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.btnSua, "", true, true, true, 0, null, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
-            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.btnXoa, "", true, true, true, 0, null, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
-            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.btnTimKiem, "", true, true, true, 0, null, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
-            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.btnIn, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
-            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.btnThoat, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph)});
-            this.bar4.OptionsBar.MultiLine = true;
-            this.bar4.OptionsBar.UseWholeRow = true;
-            this.bar4.Text = "Main menu";
-            // 
             // IDBHYT
             // 
             this.IDBHYT.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
@@ -516,6 +484,40 @@ namespace QUANLYNHANSU
             this.SoTien.HeaderText = "SoTien";
             this.SoTien.MinimumWidth = 6;
             this.SoTien.Name = "SoTien";
+            // 
+            // bar1
+            // 
+            this.bar1.BarName = "Main menu";
+            this.bar1.DockCol = 0;
+            this.bar1.DockRow = 0;
+            this.bar1.FloatLocation = new System.Drawing.Point(137, 209);
+            this.bar1.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
+            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.btnThem, "", true, true, true, 0, null, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
+            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.btnSua, "", true, true, true, 0, null, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
+            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.btnXoa, "", true, true, true, 0, null, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
+            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.btnThoat, "", true, true, true, 0, null, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
+            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.btnIn, "", true, true, true, 0, null, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph)});
+            this.bar1.OptionsBar.MultiLine = true;
+            this.bar1.OptionsBar.UseWholeRow = true;
+            this.bar1.Text = "Main menu";
+            // 
+            // bar4
+            // 
+            this.bar4.BarName = "Main menu";
+            this.bar4.DockCol = 0;
+            this.bar4.DockRow = 0;
+            this.bar4.DockStyle = DevExpress.XtraBars.BarDockStyle.Top;
+            this.bar4.FloatLocation = new System.Drawing.Point(26, 160);
+            this.bar4.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
+            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.btnThem, "", true, true, true, 0, null, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
+            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.btnSua, "", true, true, true, 0, null, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
+            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.btnXoa, "", true, true, true, 0, null, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
+            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.btnTimKiem, "", true, true, true, 0, null, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
+            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.btnIn, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
+            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.btnThoat, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph)});
+            this.bar4.OptionsBar.MultiLine = true;
+            this.bar4.OptionsBar.UseWholeRow = true;
+            this.bar4.Text = "Main menu";
             // 
             // FormBHYT
             // 
