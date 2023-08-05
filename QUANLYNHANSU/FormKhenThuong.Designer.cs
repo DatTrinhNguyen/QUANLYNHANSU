@@ -43,7 +43,7 @@ namespace QUANLYNHANSU
             this.lbSoTien = new System.Windows.Forms.Label();
             this.lbNgayLap = new System.Windows.Forms.Label();
             this.lbMaNV = new System.Windows.Forms.Label();
-            this.lbNgayKetThuc = new System.Windows.Forms.Label();
+            this.lbHoTen = new System.Windows.Forms.Label();
             this.lbMaKT = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.dgv = new System.Windows.Forms.DataGridView();
@@ -89,7 +89,7 @@ namespace QUANLYNHANSU
             this.groupBox1.Controls.Add(this.lbSoTien);
             this.groupBox1.Controls.Add(this.lbNgayLap);
             this.groupBox1.Controls.Add(this.lbMaNV);
-            this.groupBox1.Controls.Add(this.lbNgayKetThuc);
+            this.groupBox1.Controls.Add(this.lbHoTen);
             this.groupBox1.Controls.Add(this.lbMaKT);
             this.groupBox1.Location = new System.Drawing.Point(12, 38);
             this.groupBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -230,15 +230,15 @@ namespace QUANLYNHANSU
             this.lbMaNV.TabIndex = 23;
             this.lbMaNV.Text = "Mã NV";
             // 
-            // lbNgayKetThuc
+            // lbHoTen
             // 
-            this.lbNgayKetThuc.AutoSize = true;
-            this.lbNgayKetThuc.Font = new System.Drawing.Font("Tahoma", 12F);
-            this.lbNgayKetThuc.Location = new System.Drawing.Point(712, 132);
-            this.lbNgayKetThuc.Name = "lbNgayKetThuc";
-            this.lbNgayKetThuc.Size = new System.Drawing.Size(75, 24);
-            this.lbNgayKetThuc.TabIndex = 22;
-            this.lbNgayKetThuc.Text = "Họ Tên";
+            this.lbHoTen.AutoSize = true;
+            this.lbHoTen.Font = new System.Drawing.Font("Tahoma", 12F);
+            this.lbHoTen.Location = new System.Drawing.Point(712, 133);
+            this.lbHoTen.Name = "lbHoTen";
+            this.lbHoTen.Size = new System.Drawing.Size(75, 24);
+            this.lbHoTen.TabIndex = 22;
+            this.lbHoTen.Text = "Họ Tên";
             // 
             // lbMaKT
             // 
@@ -537,7 +537,7 @@ namespace QUANLYNHANSU
         private System.Windows.Forms.Label lbSoTien;
         private System.Windows.Forms.Label lbNgayLap;
         private System.Windows.Forms.Label lbMaNV;
-        private System.Windows.Forms.Label lbNgayKetThuc;
+        private System.Windows.Forms.Label lbHoTen;
         private System.Windows.Forms.Label lbMaKT;
         private System.Windows.Forms.TextBox tbMaNV;
         private DevExpress.XtraBars.Bar bar1;

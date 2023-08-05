@@ -224,7 +224,8 @@ namespace QUANLYNHANSU
                 string _maNV = selectedRow.Cells[2].Value.ToString(); 
                 string _ngayLap = selectedRow.Cells[3].Value.ToString();
                 string _soTien = selectedRow.Cells[4].Value.ToString();
-                
+
+
 
                 if (_maNV != maNV)
                 {
@@ -402,8 +403,8 @@ namespace QUANLYNHANSU
             {
                 DataGridViewRow row = dgv.Rows[e.RowIndex];
                 tbMaKT.Text = row.Cells[0].Value.ToString();
-                tbMaNV.Text = row.Cells[1].Value.ToString();
-                tbHoTen.Text = row.Cells[2].Value.ToString();
+                tbHoTen.Text = row.Cells[1].Value.ToString();
+                tbMaNV.Text = row.Cells[2].Value.ToString();
                 dtNgayLap.Text = row.Cells[3].Value.ToString();
                 tbSoTien.Text = row.Cells[4].Value.ToString();
             }
