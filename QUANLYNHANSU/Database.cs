@@ -8,7 +8,7 @@ namespace QUANLYNHANSU
 {
     public class Database
     {
-        public static string name = "postgres";
-        public static string pass = "30062003";
+        public static string name = "QUANLYNHANSU";
+        public static string pass = "20030930";
     }
 }

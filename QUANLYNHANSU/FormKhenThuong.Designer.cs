@@ -188,7 +188,6 @@ namespace QUANLYNHANSU
             this.tbSoTien.Name = "tbSoTien";
             this.tbSoTien.Size = new System.Drawing.Size(285, 32);
             this.tbSoTien.TabIndex = 28;
-            this.tbSoTien.TextChanged += new System.EventHandler(this.tbSoTien_TextChanged_1);
             this.tbSoTien.KeyDown += new System.Windows.Forms.KeyEventHandler(this.tbSoTien_KeyDown_1);
             this.tbSoTien.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbSoTien_KeyPress_1);
             // 
@@ -292,7 +291,7 @@ namespace QUANLYNHANSU
             // IDKT
             // 
             this.IDKT.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.IDKT.DataPropertyName = "BHYT";
+            this.IDKT.DataPropertyName = "MAKT";
             this.IDKT.HeaderText = "IDKT";
             this.IDKT.MinimumWidth = 6;
             this.IDKT.Name = "IDKT";

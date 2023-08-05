@@ -107,8 +107,9 @@ namespace QUANLYNHANSU
         }
 
         // Hàm lấy mã nhân viên cuối cùng trong cơ sở dữ liệu
-        private void LayMaNhanVienCuoiCung()
+        private int LayMaNhanVienCuoiCung()
         {
+            int idKT = 0;
             NpgsqlConnection connection = new NpgsqlConnection("Server=localhost;Port=5432;Database=" + Database.name + ";User ID=postgres;Password=" + Database.pass + ";");
             connection.Open();
             NpgsqlCommand command = new NpgsqlCommand();
@@ -116,7 +117,7 @@ namespace QUANLYNHANSU
             command.CommandType = CommandType.Text;
 
             // Truy vấn mã nhân viên lớn nhất trong cơ sở dữ liệu
-            command.CommandText = "SELECT MAX(\"IDNV\") FROM public.\"tb.NHANVIEN\"";
+            command.CommandText = "SELECT MAX(\"MAKT\") FROM public.\"tb.KHENTHUONG\"";
             object kq = command.ExecuteScalar();
 
             if (kq != null && kq != DBNull.Value)
@@ -125,22 +126,24 @@ namespace QUANLYNHANSU
                 string kq2 = kq1.Substring(2);//loại bỏ 2 ký tự đầu.
                 // Nếu đã có mã nhân viên trong cơ sở dữ liệu, tăng giá trị lên một đơn vị
                 int maxMaNV = Convert.ToInt32(kq2);
-                idNV = maxMaNV;
+                idKT = maxMaNV;
             }
             else
             {
-                // Nếu chưa có mã nhân viên trong cơ sở dữ liệu, bắt đầu từ mã NV000001
-                idNV = 1;
+                // Nếu chưa có mã nhân viên trong cơ sở dữ liệu, bắt đầu từ mã NV000000
+                idKT = 0;
             }
 
             connection.Dispose();
             connection.Close();
+            return idKT;
         }
         private void TangidNV()
         {
-            LayMaNhanVienCuoiCung(); // Gọi hàm để lấy mã nhân viên cuối cùng
-            idNV++;
-            tbMaNV.Text = "NV" + idNV.ToString("D6");// Định dạng mã nhân viên với 6 chữ số (NV000001, NV000002, ...)
+            // Gọi hàm để lấy mã nhân viên cuối cùng
+            int idKT = LayMaNhanVienCuoiCung();
+            idKT++;
+            tbMaKT.Text = "KT" + idKT.ToString("D6");// Định dạng mã nhân viên với 6 chữ số (NV000001, NV000002, ...)
         }
         
 
@@ -149,6 +152,7 @@ namespace QUANLYNHANSU
         {
             showHide(false);
             them = true;
+            TangidNV();
         }
 
 
@@ -180,21 +184,18 @@ namespace QUANLYNHANSU
             }
 
 
-
-
             NpgsqlConnection connection = new NpgsqlConnection("Server=localhost;Port=5432;Database=" + Database.name + ";User ID=postgres;Password=" + Database.pass + ";");
             connection.Open();
             NpgsqlCommand command = new NpgsqlCommand();
             command.Connection = connection;
             command.CommandType = CommandType.Text;
 
-            command.CommandText = "INSERT INTO public.\"tb.NHANVIENBAOHIEMYTE\"(\"IDKT\",\"SOTIEN\",\"IDNV\",\"NGAYLAP\",\"HOTEN\",\"TRANGTHAI\")" +
+            command.CommandText = "INSERT INTO public.\"tb.KHENTHUONG\"(\"MAKT\",\"SOTIEN\",\"IDNV\",\"NGAYLAP\",\"HOTEN\",\"TRANGTHAI\")" +
             "VALUES(\'" + idKT + "\', \'" + soTien + "\', \'" + maNV + "\' , \'" + ngayLap + "\', \'" + hoTen + "\', \'1\');";
             command.ExecuteNonQuery();
             connection.Dispose();
             connection.Close();
             loadData();
-
         }
 
         //Nút sửa dữ liệu vào database
@@ -264,11 +265,11 @@ namespace QUANLYNHANSU
 
                 // Sử dụng truy vấn UPDATE để cập nhật thông tin của nhân viên
                 command.CommandText = "UPDATE public.\"tb.KHENTHUONG\" " +
-                                        "SET \"IDKT\" = \'" + idKT + "\',\"SOTIEN\" = \'" + soTien + "\', " +
+                                        "SET \"MAKT\" = \'" + idKT + "\',\"SOTIEN\" = \'" + soTien + "\', " +
                                         "\"IDNV\" = \'" + maNV + "\', " +
                                         "\"NGAYLAP\" = \'" + ngayLap + "\', " +
                                         "\"HOTEN\" = \'" + hoTen + "\' " +
-                                        "WHERE \"IDKT\" = \'" + _idKT + "\';";
+                                        "WHERE \"MAKT\" = \'" + _idKT + "\';";
 
                 // Thực thi truy vấn
                 command.ExecuteNonQuery();
@@ -308,7 +309,7 @@ namespace QUANLYNHANSU
                 command.CommandType = CommandType.Text;
 
                 // Sử dụng truy vấn UPDATE để cập nhật thông tin của nhân viên
-                command.CommandText = "UPDATE public.\"tb.KHENTHUONG\" SET  \"TRANGTHAI\"=\'0\' WHERE \"IDKT\"=\'" + idKT + "\';";
+                command.CommandText = "UPDATE public.\"tb.KHENTHUONG\" SET  \"TRANGTHAI\"=\'0\' WHERE \"MAKT\"=\'" + idKT + "\';";
 
                 // Thực thi truy vấn
                 command.ExecuteNonQuery();
@@ -575,7 +576,7 @@ namespace QUANLYNHANSU
                 sb.AppendLine("Bạn chưa nhập số tiền đóng!");
                 tbSoTien.Focus();
             }
-            else if (!decimal.TryParse(tbSoTien.Text.Trim(), out decimal newSoTien) || (newSoTien < 100000 || newSoTien > 1000000000))
+            else if (!decimal.TryParse(tbSoTien.Text.Trim(), out decimal newSoTien) || (newSoTien < 100 || newSoTien > 1000))
             {
                 sb.AppendLine("Số tiền bạn nhập không hợp lệ. Số tiền phải lớn hơn 10^5 và bé hơn 10^9");
                 tbSoTien.Focus();

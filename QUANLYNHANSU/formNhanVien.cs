@@ -19,8 +19,6 @@ namespace QUANLYNHANSU
     {
         // biến điều khiển (có thể bỏ nếu tìm đc cách hay hơn)
         bool them = false, sua = false;
-        // khai báo mã nhân viên ban đầu
-        private int idNV ;
         //Kết nối database
         NpgsqlConnection connection = new NpgsqlConnection("Server=localhost;Port=5432;Database=" + Database.name + ";User ID=postgres;Password=" + Database.pass + ";");
         public FormNhanVien()
@@ -158,8 +156,9 @@ namespace QUANLYNHANSU
         }
 
             // Hàm lấy mã nhân viên cuối cùng trong cơ sở dữ liệu
-        private void LayMaNhanVienCuoiCung()
+        private int LayMaNhanVienCuoiCung()
         {
+            int idNV = 0;
             NpgsqlConnection connection = new NpgsqlConnection("Server=localhost;Port=5432;Database=" + Database.name + ";User ID=postgres;Password=" + Database.pass + ";");
             connection.Open();
             NpgsqlCommand command = new NpgsqlCommand();
@@ -186,10 +185,11 @@ namespace QUANLYNHANSU
 
             connection.Dispose();
             connection.Close();
+            return idNV;
         }
         private void TangidNV()
         {
-            LayMaNhanVienCuoiCung(); // Gọi hàm để lấy mã nhân viên cuối cùng
+            int idNV = LayMaNhanVienCuoiCung(); // Gọi hàm để lấy mã nhân viên cuối cùng
             idNV++;
             tbMaNV.Text = "NV" + idNV.ToString("D6");// Định dạng mã nhân viên với 6 chữ số (NV000001, NV000002, ...)
         }
