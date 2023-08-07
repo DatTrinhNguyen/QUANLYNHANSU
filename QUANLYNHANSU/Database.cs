@@ -9,6 +9,6 @@ namespace QUANLYNHANSU
     public class Database
     {
         public static string name = "QUANLYNHANSU";
-        public static string pass = "20030930";
+        public static string pass = "30062003";
     }
 }

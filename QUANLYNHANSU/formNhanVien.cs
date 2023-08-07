@@ -12,6 +12,8 @@ using Npgsql;
 using DevExpress.ExpressApp.SystemModule;
 using DevExpress.CodeParser;
 using System.Globalization;
+using DevExpress.CodeParser.Diagnostics;
+using System.Collections;
 
 namespace QUANLYNHANSU
 {
@@ -25,6 +27,8 @@ namespace QUANLYNHANSU
         {
             InitializeComponent();
             // Thêm dữ liệu giới tính vào ComboBox
+            cbGioiTinh.Items.Add("Nam");
+            cbGioiTinh.Items.Add("Nữ");
             showHide(true);
             //Khóa chức năng paste
             tbMaNV.ShortcutsEnabled = false;
@@ -65,9 +69,13 @@ namespace QUANLYNHANSU
             tbTonGiao.Enabled = !kt;
             tbTrinhDo.Enabled = !kt;
             tbDanToc.Enabled = !kt;
-            tbChucVu.Enabled = !kt;
-            cbGioiTinh.Enabled = !kt;
             tbPhongBan.Enabled = !kt;
+            cbGioiTinh.Enabled = !kt;
+            tbChucVu.Enabled = !kt;
+            btnTim.Enabled = false;
+        }
+        void clear()
+        {
 
             //Làm sạch các text box
             tbHoDem.Clear();
@@ -82,11 +90,9 @@ namespace QUANLYNHANSU
             tbTonGiao.Clear();
             tbTrinhDo.Clear();
             tbDanToc.Clear();
-            tbChucVu.Clear();
-            cbGioiTinh.Text = " ";
             tbPhongBan.Clear();
-
-            btnTim.Enabled = false;
+            cbGioiTinh.ResetText();
+            tbChucVu.Clear();
         }
 
 
@@ -101,24 +107,35 @@ namespace QUANLYNHANSU
             command.Connection = connection;
             command.CommandType = CommandType.Text;
             command.CommandText = "SELECT \"IDNV\",\"HODEM\",\"TEN\",\"GIOITINH\",\"NGAYSINH\",\"CMND\",\"SDT\",\"DIACHI\"" +
-                ",\"IDPB\",\"IDCV\",\"LUONG\",\"NGAYGIANHAP\",\"DANTOC\",\"TONGIAO\",\"TRINHDO\" FROM public.\"tb.NHANVIEN\"WHERE \"TRANGTHAI\" = \'1\';";
+                ",\"IDPB\",\"IDCV\",\"LUONG\",\"NGAYGIANHAP\",\"DANTOC\",\"TONGIAO\",\"TRINHDO\" FROM public.\"tb.NHANVIEN\"WHERE \"TRANGTHAI\" = '1';";
             NpgsqlDataReader dataReader = command.ExecuteReader();
             if (dataReader.HasRows)
             {
                 DataTable dataTable = new DataTable();
                 dataTable.Load(dataReader);
-                dgv.DataSource = dataTable;
 
+                // Thêm cột mới để lưu trữ giới tính dưới dạng chuỗi
+                DataColumn gioiTinhTextColumn = new DataColumn("GioiTinh", typeof(string));
+                dataTable.Columns.Add(gioiTinhTextColumn);
+
+                // Ánh xạ giá trị giới tính từ kiểu bit thành chuỗi
+                foreach (DataRow row in dataTable.Rows)
+                {
+                    bool gioiTinhBit = (bool)row["GIOITINH"];
+                    string gioiTinhText = gioiTinhBit ? "Nữ" : "Nam";
+                    row["GioiTinh"] = gioiTinhText;
+                }
+                dataTable.Columns.Remove("GIOITINH");
+                dgv.DataSource = dataTable;
             }
             connection.Dispose();
             connection.Close();
-
         }
 
 
 
         //Hàm dùng cho text box tự gợi ý
-        private void FormBHYT_Load(object sender, EventArgs e)
+        private void FormNhanVien_Load(object sender, EventArgs e)
         {
 
             NpgsqlConnection connection = new NpgsqlConnection("Server=localhost;Port=5432;Database=" + Database.name + ";User ID=postgres;Password=" + Database.pass + ";");
@@ -133,17 +150,17 @@ namespace QUANLYNHANSU
             {
                 auto.Add(dataReader.GetString(0));
             }
-            tbPhongBan.AutoCompleteCustomSource = auto;
-            tbPhongBan.AutoCompleteSource = AutoCompleteSource.CustomSource;
-            tbPhongBan.AutoCompleteMode = AutoCompleteMode.Suggest;
+            tbChucVu.AutoCompleteCustomSource = auto;
+            tbChucVu.AutoCompleteSource = AutoCompleteSource.CustomSource;
+            tbChucVu.AutoCompleteMode = AutoCompleteMode.Suggest;
             command.CommandText = "SELECT \"IDCV\" FROM public.\"tb.NHANVIEN\"";
             while (dataReader.Read())
             {
                 auto.Add(dataReader.GetString(0));
             }
-            tbChucVu.AutoCompleteCustomSource = auto;
-            tbChucVu.AutoCompleteSource = AutoCompleteSource.CustomSource;
-            tbChucVu.AutoCompleteMode = AutoCompleteMode.Suggest;
+            tbPhongBan.AutoCompleteCustomSource = auto;
+            tbPhongBan.AutoCompleteSource = AutoCompleteSource.CustomSource;
+            tbPhongBan.AutoCompleteMode = AutoCompleteMode.Suggest;
             connection.Close();
         }
 
@@ -151,8 +168,31 @@ namespace QUANLYNHANSU
         private void btnThem_ItemClick_1(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             showHide(false);
+            clear();
             them = true;
             TangidNV();
+            tbHoDem.Focus();
+            Tabindex();
+        }
+        //Thứ tự tab trong hàm thêm
+        private void Tabindex()
+        {
+            tbHoDem.TabIndex = 0;
+            tbTen.TabIndex = 1;
+            cbGioiTinh.TabIndex = 2;
+            dtngaySinh.TabIndex = 3;
+            tbDanToc.TabIndex = 4;
+            tbTonGiao.TabIndex = 5;
+            tbTrinhDo.TabIndex = 6;
+            tbCCCD.TabIndex = 7;
+            tbSDT.TabIndex = 8;
+            tbDiaChi.TabIndex = 9;
+            tbLuongTT.TabIndex = 10;
+            tbPhongBan.TabIndex = 11;
+            tbChucVu.TabIndex = 12;
+            dtngayVaoLam.TabIndex = 13;
+            btnLuu.TabIndex = 14;
+            btnKhongLuu.TabIndex = 15;
         }
 
             // Hàm lấy mã nhân viên cuối cùng trong cơ sở dữ liệu
@@ -206,8 +246,8 @@ namespace QUANLYNHANSU
             string CMND = tbCCCD.Text.ToString();
             string SDT = tbSDT.Text.ToString();
             string diaChi = tbDiaChi.Text.ToString();
-            string idPB = tbPhongBan.Text.ToString();
-            string idCV = tbChucVu.Text.ToString();
+            string idPB = tbChucVu.Text.ToString();
+            string idCV = tbPhongBan.Text.ToString();
             string luong = tbLuongTT.Text.ToString();
             string ngayGiaNhap = dtngayVaoLam.Text.ToString();
             string tonGiao = tbTonGiao.Text.ToString();
@@ -223,7 +263,7 @@ namespace QUANLYNHANSU
             {
                 return;
             }
-            if (!GioiTInh_Condition(gioiTinh))
+            if (!cbGioiTinh_Condition(gioiTinh))
             {
                 return;
             }
@@ -272,16 +312,31 @@ namespace QUANLYNHANSU
             NpgsqlCommand command = new NpgsqlCommand();
             command.Connection = connection;
             command.CommandType = CommandType.Text;
+            if (cbGioiTinh.SelectedItem.ToString() == "Nam")
+            {
+                command.CommandText = "INSERT INTO public.\"tb.NHANVIEN\"(\"IDNV\",\"HODEM\",\"TEN\",\"GIOITINH\",\"NGAYSINH\",\"CMND\",\"SDT\",\"DIACHI\"" +
+                    ",\"IDPB\",\"IDCV\",\"LUONG\",\"NGAYGIANHAP\",\"DANTOC\",\"TONGIAO\",\"TRINHDO\",\"TRANGTHAI\")" +
+                "VALUES(\'" + maNV + "\', \'" + hoDem + "\', \'" + Ten + "\' ,'0', \'" + ngaySinh + "\', \'" + CMND + "\', \'" + SDT + "\'" +
+                ", \'" + diaChi + "\', \'" + idPB + "\', \'" + idCV + "\', \'" + luong + "\', \'" + ngayGiaNhap + "\', \'" + tonGiao + "\', \'" + danToc + "\', \'" + trinhDo + "\', \'1\');";
+                command.ExecuteNonQuery();
+                connection.Dispose();
+                connection.Close();
+                clear();
+                loadData();
+            }
 
-            command.CommandText = "INSERT INTO public.\"tb.NHANVIEN\"(\"IDNV\",\"HODEM\",\"TEN\",\"GIOITINH\",\"NGAYSINH\",\"CMND\",\"SDT\",\"DIACHI\"" +
-                ",\"IDPB\",\"IDCV\",\"LUONG\",\"NGAYGIANHAP\",\"DANTOC\",\"TONGIAO\",\"TRINHDO\",\"TRANGTHAI\")" +
-            "VALUES(\'" + maNV + "\', \'" + hoDem + "\', \'" + Ten + "\' , \'" + gioiTinh + "\', \'" + ngaySinh + "\', \'" + CMND + "\', \'" + SDT + "\'" +
-            ", \'" + diaChi + "\', \'" + idPB + "\', \'" + idCV + "\', \'" + luong + "\', \'" + ngayGiaNhap + "\', \'" + tonGiao + "\', \'" + danToc + "\', \'" + trinhDo + "\', \'1\');";
-            command.ExecuteNonQuery();
-            connection.Dispose();
-            connection.Close();
-            loadData();
-
+            else if (cbGioiTinh.SelectedItem.ToString() == "Nữ")
+            {
+                command.CommandText = "INSERT INTO public.\"tb.NHANVIEN\"(\"IDNV\",\"HODEM\",\"TEN\",\"GIOITINH\",\"NGAYSINH\",\"CMND\",\"SDT\",\"DIACHI\"" +
+                    ",\"IDPB\",\"IDCV\",\"LUONG\",\"NGAYGIANHAP\",\"DANTOC\",\"TONGIAO\",\"TRINHDO\",\"TRANGTHAI\")" +
+                "VALUES(\'" + maNV + "\', \'" + hoDem + "\', \'" + Ten + "\' , '1', \'" + ngaySinh + "\', \'" + CMND + "\', \'" + SDT + "\'" +
+                ", \'" + diaChi + "\', \'" + idPB + "\', \'" + idCV + "\', \'" + luong + "\', \'" + ngayGiaNhap + "\', \'" + tonGiao + "\', \'" + danToc + "\', \'" + trinhDo + "\', \'1\');";
+                command.ExecuteNonQuery();
+                connection.Dispose();
+                connection.Close();
+                clear();
+                loadData();
+            }
         }
 
 
@@ -315,8 +370,8 @@ namespace QUANLYNHANSU
                 string CMND = tbCCCD.Text.ToString();
                 string SDT = tbSDT.Text.ToString();
                 string diaChi = tbDiaChi.Text.ToString();
-                string idPB = tbPhongBan.Text.ToString();
-                string idCV = tbChucVu.Text.ToString();
+                string idPB = tbChucVu.Text.ToString();
+                string idCV = tbPhongBan.Text.ToString();
                 string luong = tbLuongTT.Text.ToString();
                 string ngayGiaNhap = dtngayVaoLam.Text.ToString();
                 string tonGiao = tbTonGiao.Text.ToString();
@@ -393,6 +448,7 @@ namespace QUANLYNHANSU
         private void btnXoa_ItemClick_1(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             showHide(true);
+            clear();
             Xoa();
         }
         //Xóa dữ liệu (vô hiệu hóa) 
@@ -431,6 +487,7 @@ namespace QUANLYNHANSU
             showHide(true);
             them = false;
             sua = false;
+            clear();
             loadData();
         }
 
@@ -445,7 +502,7 @@ namespace QUANLYNHANSU
             if (sua == true)
             {
                 Sua();
-            }
+            }     
         }
 
 
@@ -453,8 +510,7 @@ namespace QUANLYNHANSU
         private void btnKhongLuu_Click_1(object sender, EventArgs e)
         {
             showHide(true);
-            them = false;
-            sua = false;
+            clear();
         }
 
 
@@ -479,9 +535,9 @@ namespace QUANLYNHANSU
             tbTonGiao.Enabled = false;
             tbTrinhDo.Enabled = false;
             tbDanToc.Enabled = false;
-            tbChucVu.Enabled = false;
-            cbGioiTinh.Enabled = false;
             tbPhongBan.Enabled = false;
+            cbGioiTinh.Enabled = false;
+            tbChucVu.Enabled = false;
 
             btnTim.Enabled = true;
         }
@@ -523,82 +579,23 @@ namespace QUANLYNHANSU
                 tbMaNV.Text = row.Cells[0].Value.ToString();
                 tbHoDem.Text = row.Cells[1].Value.ToString();
                 tbTen.Text = row.Cells[2].Value.ToString();
-                cbGioiTinh.Text = row.Cells[3].Value.ToString();
-                dtngaySinh.Text = row.Cells[4].Value.ToString();
-                tbCCCD.Text = row.Cells[5].Value.ToString();
-                tbSDT.Text = row.Cells[6].Value.ToString();
-                tbDiaChi.Text = row.Cells[7].Value.ToString();
+                dtngaySinh.Text = row.Cells[3].Value.ToString();
+                tbCCCD.Text = row.Cells[4].Value.ToString();
+                tbSDT.Text = row.Cells[5].Value.ToString();
+                tbDiaChi.Text = row.Cells[6].Value.ToString();
+                tbChucVu.Text = row.Cells[7].Value.ToString();
                 tbPhongBan.Text = row.Cells[8].Value.ToString();
-                tbChucVu.Text = row.Cells[9].Value.ToString();
-                tbLuongTT.Text = row.Cells[10].Value.ToString();
-                dtngayVaoLam.Text = row.Cells[11].Value.ToString();
+                tbLuongTT.Text = row.Cells[9].Value.ToString();
+                dtngayVaoLam.Text = row.Cells[10].Value.ToString();
                 tbTonGiao.Text = row.Cells[12].Value.ToString();
-                tbDanToc.Text = row.Cells[13].Value.ToString();
-                tbTrinhDo.Text = row.Cells[14].Value.ToString();
+                tbDanToc.Text = row.Cells[11].Value.ToString();
+                tbTrinhDo.Text = row.Cells[13].Value.ToString();
+                //Lấy số cột mới thêm vào
+                int newColumnIndex = dgv.Columns.Count - 1;
+                cbGioiTinh.Text = row.Cells[newColumnIndex].Value.ToString();
             }
         }
-        //*IDNV
-        private void tbMaNV_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            //2 ký tự chữ đầu
-            if (e.KeyChar != (char)Keys.Back && !char.IsLetter(e.KeyChar) && tbMaNV.Text.Length < 2)
-            {
-                e.Handled = true;
-            }
-            //4 ký tự sau là số
-            if (e.KeyChar != (char)Keys.Back && !char.IsDigit(e.KeyChar) && tbMaNV.Text.Length >= 2)
-            {
-                e.Handled = true;
-            }
-            //không cho phép quá 6 ký tự
-            if (e.KeyChar != (char)Keys.Back && tbMaNV.Text.Length == 6)
-            {
-                e.Handled = true;
-            }        
-        }
-        
-
-
-        private bool MaNV_Condition(string idNV)
-        {
-            //Không cho phép thiếu
-            if (idNV.Length < 3)
-            {
-                DialogResult dialogResult = MessageBox.Show("Mã NV không đúng định dạng", "Lỗi", MessageBoxButtons.RetryCancel);
-                return false;
-            }
-
-            //Không cho phép trùng
-            if (!MaNV_CheckIfDataExists(idNV))
-            {
-                DialogResult dialogResult = MessageBox.Show("Mã NV đã được đăng ký ", "Lỗi", MessageBoxButtons.RetryCancel);
-                return false;
-            }
-            return true;
-
-        }
-
-        private bool MaNV_CheckIfDataExists(string idNV)
-        {
-            //Kiểm tra dữ liệu đã được đăng ký chưa
-            NpgsqlConnection connection = new NpgsqlConnection("Server=localhost;Port=5432;Database=" + Database.name + ";User ID=postgres;Password=" + Database.pass + ";");
-            connection.Open();
-            NpgsqlCommand command = new NpgsqlCommand();
-            command.Connection = connection;
-            command.CommandText = "SELECT \"IDNV\" FROM public.\"tb.NHANVIEN\" WHERE \"IDNV\" = \'" + idNV + "\';";
-            command.ExecuteNonQuery();
-            NpgsqlDataReader dataReader = command.ExecuteReader();
-            if (dataReader.Read())
-            {
-                connection.Dispose();
-                connection.Close();
-                return false;
-            }
-            connection.Dispose();
-            connection.Close();
-            return true;
-
-        }
+       
 
 
         // ràng buộc HODEM    
@@ -609,8 +606,8 @@ namespace QUANLYNHANSU
             {
                 e.Handled = true;
             }
-            //Khong cho nhap qua 40 ky tu
-            if (e.KeyChar != (char)Keys.Back && tbHoDem.Text.Length == 40)
+            //Khong cho nhap qua 35 ky tu
+            if (e.KeyChar != (char)Keys.Back && tbHoDem.Text.Length == 35)
             {
                 e.Handled = true;
             }
@@ -651,34 +648,15 @@ namespace QUANLYNHANSU
             return true;
         }
 
-        //Gioi Tinh
-       /* private void cbGioiTinh_SelectedIndexChanged(object sender, EventArgs e)
+        //GioiTinh
+        private bool cbGioiTinh_Condition(string GioiTinh)
         {
-            string gioitinh = cbGioiTinh.SelectedItem.ToString();
-        }*/
-        private bool GioiTInh_Condition(string GioiTinh)
-        {
-            //Không cho phép thiếu
-            if (GioiTinh.Length == 0)
+            if (cbGioiTinh.SelectedItem == null)
             {
-                DialogResult dialogResult = MessageBox.Show("Bạn chưa chọn giới tính", "Lỗi", MessageBoxButtons.RetryCancel);
-                return false;
+                MessageBox.Show("Vui lòng chọn giới tính", "Cảnh báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return false; 
             }
             return true;
-        }
-
-        private void cbGioiTinh_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            //Khong cho nhap so
-            if (char.IsDigit(e.KeyChar))
-            {
-                e.Handled = true;
-            }
-            //Khong cho nhap qua 5 ky tu
-            if (e.KeyChar != (char)Keys.Back && cbGioiTinh.Text.Length == 5)
-            {
-                e.Handled = true;
-            }
         }
 
         // NgaySinh
@@ -786,6 +764,11 @@ namespace QUANLYNHANSU
             {
                 e.Handled = true;
             }
+            //chỉ cho nhập số 0 ở đầu tiên
+            if (e.KeyChar != '0' && tbSDT.Text.Length == 0)
+            {
+                e.Handled = true;
+            }
             //không cho nhập quá 10 số
             if (e.KeyChar != (char)Keys.Back && tbSDT.Text.Length == 10)
             {
@@ -801,14 +784,20 @@ namespace QUANLYNHANSU
                 DialogResult dialogResult = MessageBox.Show("Bạn chưa nhập SĐT", "Lỗi", MessageBoxButtons.RetryCancel);
                 return false;
             }
+            //không cho phép sai định dạng là 10 số
+            if (SDT.Length != 10)
+            {
+                DialogResult dialogResult = MessageBox.Show("Bạn nhập thiếu SĐT", "Lỗi", MessageBoxButtons.RetryCancel);
+                return false;
+            }
             return true;
         }
 
         //DiaChi
         private void tbDiaChi_KeyPress(object sender, KeyPressEventArgs e)
         {
-            //không cho nhập quá 150 số
-            if (e.KeyChar != (char)Keys.Back && tbDiaChi.Text.Length == 150)
+            //không cho nhập quá 50 số
+            if (e.KeyChar != (char)Keys.Back && tbDiaChi.Text.Length == 50)
             {
                 e.Handled = true;
             }
@@ -914,6 +903,8 @@ namespace QUANLYNHANSU
                 e.Handled = true;
             }
         }
+
+
         private bool CCCD_Condition(string CMND)
         {
             //Không cho phép thiếu
@@ -922,12 +913,18 @@ namespace QUANLYNHANSU
                 DialogResult dialogResult = MessageBox.Show("Bạn chưa nhập CCCD", "Lỗi", MessageBoxButtons.RetryCancel);
                 return false;
             }
+            //không cho phép sai định dạng là 12 số
+            if (CMND.Length != 12)
+            {
+                DialogResult dialogResult = MessageBox.Show("Bạn nhập thiếu CMND", "Lỗi", MessageBoxButtons.RetryCancel);
+                return false;
+            }
             return true;
         }
 
 
         //Chưa làm phòng ban, Chức vụ
-
+        
 
     }
 }

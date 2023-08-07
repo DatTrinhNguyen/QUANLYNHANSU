@@ -340,18 +340,20 @@ namespace QUANLYNHANSU
             if (sua == true)
             {
                 Sua();
-            }
-            showHide(true);
-            them = false;
-            sua = false;
+            }       
         }
 
         //Nút hủy lưu dữ liệu
         private void btnKhongLuu_Click(object sender, EventArgs e)
         {
             showHide(true);
-            them = false;
-            sua = false;
+            them = true;
+           /* tbMaBHXH.Clear();
+            tbMaNV.Clear();
+            tbSoTien.Clear();
+            dtThoiHan.Clear();
+            dtNgayDong.Clear();*/
+
         }
 
         //Thoát các chức năng

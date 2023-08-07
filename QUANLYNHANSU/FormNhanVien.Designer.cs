@@ -62,21 +62,6 @@
             this.btnKhongLuu = new System.Windows.Forms.Button();
             this.btnTim = new System.Windows.Forms.Button();
             this.dgv = new System.Windows.Forms.DataGridView();
-            this.tbPhongBan = new System.Windows.Forms.TextBox();
-            this.tbChucVu = new System.Windows.Forms.TextBox();
-            this.barManager1 = new DevExpress.XtraBars.BarManager(this.components);
-            this.bar5 = new DevExpress.XtraBars.Bar();
-            this.btnThem = new DevExpress.XtraBars.BarButtonItem();
-            this.btnSua = new DevExpress.XtraBars.BarButtonItem();
-            this.btnXoa = new DevExpress.XtraBars.BarButtonItem();
-            this.btnTimKiem = new DevExpress.XtraBars.BarButtonItem();
-            this.btnIn = new DevExpress.XtraBars.BarButtonItem();
-            this.btnThoat = new DevExpress.XtraBars.BarButtonItem();
-            this.bar6 = new DevExpress.XtraBars.Bar();
-            this.barDockControl1 = new DevExpress.XtraBars.BarDockControl();
-            this.barDockControlBottom = new DevExpress.XtraBars.BarDockControl();
-            this.barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
-            this.barDockControlRight = new DevExpress.XtraBars.BarDockControl();
             this._IDNV = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.HoDem = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Ten = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -92,6 +77,21 @@
             this.IDCV = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.LuongTT = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.NgayVaoLam = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.barManager1 = new DevExpress.XtraBars.BarManager(this.components);
+            this.bar5 = new DevExpress.XtraBars.Bar();
+            this.btnThem = new DevExpress.XtraBars.BarButtonItem();
+            this.btnSua = new DevExpress.XtraBars.BarButtonItem();
+            this.btnXoa = new DevExpress.XtraBars.BarButtonItem();
+            this.btnTimKiem = new DevExpress.XtraBars.BarButtonItem();
+            this.btnIn = new DevExpress.XtraBars.BarButtonItem();
+            this.btnThoat = new DevExpress.XtraBars.BarButtonItem();
+            this.bar6 = new DevExpress.XtraBars.Bar();
+            this.barDockControl1 = new DevExpress.XtraBars.BarDockControl();
+            this.barDockControlBottom = new DevExpress.XtraBars.BarDockControl();
+            this.barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
+            this.barDockControlRight = new DevExpress.XtraBars.BarDockControl();
+            this.tbChucVu = new System.Windows.Forms.TextBox();
+            this.tbPhongBan = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dtngaySinh.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtngaySinh.Properties.CalendarTimeProperties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtngayVaoLam.Properties)).BeginInit();
@@ -104,37 +104,34 @@
             // 
             this.label1.AutoSize = true;
             this.label1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.label1.Location = new System.Drawing.Point(264, 73);
+            this.label1.Location = new System.Drawing.Point(12, 57);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(46, 17);
+            this.label1.Size = new System.Drawing.Size(37, 13);
             this.label1.TabIndex = 4;
             this.label1.Text = "Mã NV";
             // 
             // tbMaNV
             // 
-            this.tbMaNV.Location = new System.Drawing.Point(342, 68);
-            this.tbMaNV.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.tbMaNV.Location = new System.Drawing.Point(74, 51);
             this.tbMaNV.Name = "tbMaNV";
-            this.tbMaNV.Size = new System.Drawing.Size(150, 23);
+            this.tbMaNV.Size = new System.Drawing.Size(129, 21);
             this.tbMaNV.TabIndex = 5;
-            this.tbMaNV.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbMaNV_KeyPress);
             // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.label2.Location = new System.Drawing.Point(532, 73);
+            this.label2.Location = new System.Drawing.Point(209, 59);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(58, 17);
+            this.label2.Size = new System.Drawing.Size(45, 13);
             this.label2.TabIndex = 6;
             this.label2.Text = "Họ Đệm";
             // 
             // tbHoDem
             // 
-            this.tbHoDem.Location = new System.Drawing.Point(608, 68);
-            this.tbHoDem.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.tbHoDem.Location = new System.Drawing.Point(260, 51);
             this.tbHoDem.Name = "tbHoDem";
-            this.tbHoDem.Size = new System.Drawing.Size(198, 23);
+            this.tbHoDem.Size = new System.Drawing.Size(127, 21);
             this.tbHoDem.TabIndex = 11;
             this.tbHoDem.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbHoDem_KeyPress);
             // 
@@ -142,41 +139,36 @@
             // 
             this.label3.AutoSize = true;
             this.label3.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.label3.Location = new System.Drawing.Point(839, 71);
+            this.label3.Location = new System.Drawing.Point(410, 59);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(31, 17);
+            this.label3.Size = new System.Drawing.Size(25, 13);
             this.label3.TabIndex = 12;
             this.label3.Text = "Tên";
             // 
             // tbTen
             // 
-            this.tbTen.Location = new System.Drawing.Point(933, 69);
-            this.tbTen.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.tbTen.Location = new System.Drawing.Point(465, 49);
             this.tbTen.Name = "tbTen";
-            this.tbTen.Size = new System.Drawing.Size(149, 23);
+            this.tbTen.Size = new System.Drawing.Size(128, 21);
             this.tbTen.TabIndex = 13;
             this.tbTen.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbTen_KeyPress);
             // 
             // cbGioiTinh
             // 
+            this.cbGioiTinh.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbGioiTinh.FormattingEnabled = true;
-            this.cbGioiTinh.Items.AddRange(new object[] {
-            "Nam",
-            "Nữ"});
-            this.cbGioiTinh.Location = new System.Drawing.Point(1179, 67);
-            this.cbGioiTinh.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.cbGioiTinh.Location = new System.Drawing.Point(701, 51);
             this.cbGioiTinh.Name = "cbGioiTinh";
-            this.cbGioiTinh.Size = new System.Drawing.Size(94, 24);
+            this.cbGioiTinh.Size = new System.Drawing.Size(81, 21);
             this.cbGioiTinh.TabIndex = 14;
-            this.cbGioiTinh.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.cbGioiTinh_KeyPress);
             // 
             // label4
             // 
             this.label4.AutoSize = true;
             this.label4.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.label4.Location = new System.Drawing.Point(1115, 70);
+            this.label4.Location = new System.Drawing.Point(648, 57);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(59, 17);
+            this.label4.Size = new System.Drawing.Size(47, 13);
             this.label4.TabIndex = 15;
             this.label4.Text = "Giới Tính";
             // 
@@ -184,41 +176,39 @@
             // 
             this.label5.AutoSize = true;
             this.label5.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.label5.Location = new System.Drawing.Point(264, 139);
+            this.label5.Location = new System.Drawing.Point(12, 97);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(70, 17);
+            this.label5.Size = new System.Drawing.Size(55, 13);
             this.label5.TabIndex = 20;
             this.label5.Text = "Ngày Sinh";
             // 
             // dtngaySinh
             // 
             this.dtngaySinh.EditValue = null;
-            this.dtngaySinh.Location = new System.Drawing.Point(342, 131);
-            this.dtngaySinh.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.dtngaySinh.Location = new System.Drawing.Point(73, 90);
             this.dtngaySinh.Name = "dtngaySinh";
             this.dtngaySinh.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.dtngaySinh.Properties.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.dtngaySinh.Size = new System.Drawing.Size(150, 22);
+            this.dtngaySinh.Size = new System.Drawing.Size(129, 20);
             this.dtngaySinh.TabIndex = 21;
             // 
             // label6
             // 
             this.label6.AutoSize = true;
             this.label6.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.label6.Location = new System.Drawing.Point(532, 139);
+            this.label6.Location = new System.Drawing.Point(208, 97);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(60, 17);
+            this.label6.Size = new System.Drawing.Size(46, 13);
             this.label6.TabIndex = 22;
             this.label6.Text = "Dân Tộc";
             // 
             // tbDanToc
             // 
-            this.tbDanToc.Location = new System.Drawing.Point(608, 135);
-            this.tbDanToc.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.tbDanToc.Location = new System.Drawing.Point(260, 90);
             this.tbDanToc.Name = "tbDanToc";
-            this.tbDanToc.Size = new System.Drawing.Size(198, 23);
+            this.tbDanToc.Size = new System.Drawing.Size(127, 21);
             this.tbDanToc.TabIndex = 23;
             this.tbDanToc.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbDanToc_KeyPress);
             // 
@@ -226,18 +216,17 @@
             // 
             this.label7.AutoSize = true;
             this.label7.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.label7.Location = new System.Drawing.Point(839, 139);
+            this.label7.Location = new System.Drawing.Point(410, 94);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(62, 17);
+            this.label7.Size = new System.Drawing.Size(49, 13);
             this.label7.TabIndex = 28;
             this.label7.Text = "Tôn Giáo";
             // 
             // tbTonGiao
             // 
-            this.tbTonGiao.Location = new System.Drawing.Point(933, 135);
-            this.tbTonGiao.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.tbTonGiao.Location = new System.Drawing.Point(465, 90);
             this.tbTonGiao.Name = "tbTonGiao";
-            this.tbTonGiao.Size = new System.Drawing.Size(149, 23);
+            this.tbTonGiao.Size = new System.Drawing.Size(128, 21);
             this.tbTonGiao.TabIndex = 29;
             this.tbTonGiao.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbTonGiao_KeyPress);
             // 
@@ -245,18 +234,17 @@
             // 
             this.label8.AutoSize = true;
             this.label8.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.label8.Location = new System.Drawing.Point(264, 198);
+            this.label8.Location = new System.Drawing.Point(648, 98);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(61, 17);
+            this.label8.Size = new System.Drawing.Size(48, 13);
             this.label8.TabIndex = 30;
             this.label8.Text = "Trình Độ";
             // 
             // tbTrinhDo
             // 
-            this.tbTrinhDo.Location = new System.Drawing.Point(342, 193);
-            this.tbTrinhDo.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.tbTrinhDo.Location = new System.Drawing.Point(702, 94);
             this.tbTrinhDo.Name = "tbTrinhDo";
-            this.tbTrinhDo.Size = new System.Drawing.Size(150, 23);
+            this.tbTrinhDo.Size = new System.Drawing.Size(80, 21);
             this.tbTrinhDo.TabIndex = 31;
             this.tbTrinhDo.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbTrinhDo_KeyPress);
             // 
@@ -264,18 +252,17 @@
             // 
             this.label9.AutoSize = true;
             this.label9.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.label9.Location = new System.Drawing.Point(535, 198);
+            this.label9.Location = new System.Drawing.Point(12, 137);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(45, 17);
+            this.label9.Size = new System.Drawing.Size(35, 13);
             this.label9.TabIndex = 33;
             this.label9.Text = "CCCD";
             // 
             // tbCCCD
             // 
-            this.tbCCCD.Location = new System.Drawing.Point(608, 193);
-            this.tbCCCD.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.tbCCCD.Location = new System.Drawing.Point(73, 129);
             this.tbCCCD.Name = "tbCCCD";
-            this.tbCCCD.Size = new System.Drawing.Size(198, 23);
+            this.tbCCCD.Size = new System.Drawing.Size(129, 21);
             this.tbCCCD.TabIndex = 34;
             this.tbCCCD.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbCCCD_KeyPress);
             // 
@@ -283,18 +270,17 @@
             // 
             this.label10.AutoSize = true;
             this.label10.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.label10.Location = new System.Drawing.Point(839, 197);
+            this.label10.Location = new System.Drawing.Point(209, 137);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(34, 17);
+            this.label10.Size = new System.Drawing.Size(27, 13);
             this.label10.TabIndex = 35;
             this.label10.Text = "SĐT";
             // 
             // tbSDT
             // 
-            this.tbSDT.Location = new System.Drawing.Point(934, 193);
-            this.tbSDT.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.tbSDT.Location = new System.Drawing.Point(260, 129);
             this.tbSDT.Name = "tbSDT";
-            this.tbSDT.Size = new System.Drawing.Size(147, 23);
+            this.tbSDT.Size = new System.Drawing.Size(127, 21);
             this.tbSDT.TabIndex = 36;
             this.tbSDT.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbSDT_KeyPress);
             // 
@@ -302,18 +288,17 @@
             // 
             this.label11.AutoSize = true;
             this.label11.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.label11.Location = new System.Drawing.Point(264, 266);
+            this.label11.Location = new System.Drawing.Point(410, 137);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(54, 17);
+            this.label11.Size = new System.Drawing.Size(44, 13);
             this.label11.TabIndex = 37;
             this.label11.Text = "Địa  Chỉ";
             // 
             // tbDiaChi
             // 
-            this.tbDiaChi.Location = new System.Drawing.Point(342, 262);
-            this.tbDiaChi.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.tbDiaChi.Location = new System.Drawing.Point(465, 129);
             this.tbDiaChi.Name = "tbDiaChi";
-            this.tbDiaChi.Size = new System.Drawing.Size(464, 23);
+            this.tbDiaChi.Size = new System.Drawing.Size(317, 21);
             this.tbDiaChi.TabIndex = 38;
             this.tbDiaChi.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbDiaChi_KeyPress);
             // 
@@ -321,9 +306,9 @@
             // 
             this.label12.AutoSize = true;
             this.label12.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.label12.Location = new System.Drawing.Point(829, 266);
+            this.label12.Location = new System.Drawing.Point(254, 190);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(96, 17);
+            this.label12.Size = new System.Drawing.Size(75, 13);
             this.label12.TabIndex = 39;
             this.label12.Text = "Mã Phòng Ban";
             // 
@@ -331,9 +316,9 @@
             // 
             this.label13.AutoSize = true;
             this.label13.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.label13.Location = new System.Drawing.Point(1115, 266);
+            this.label13.Location = new System.Drawing.Point(479, 190);
             this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(82, 17);
+            this.label13.Size = new System.Drawing.Size(64, 13);
             this.label13.TabIndex = 45;
             this.label13.Text = "Mã Chức Vụ";
             // 
@@ -341,18 +326,17 @@
             // 
             this.label14.AutoSize = true;
             this.label14.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.label14.Location = new System.Drawing.Point(264, 313);
+            this.label14.Location = new System.Drawing.Point(12, 185);
             this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(126, 17);
+            this.label14.Size = new System.Drawing.Size(97, 13);
             this.label14.TabIndex = 48;
             this.label14.Text = "Lương Thoả Thuận";
             // 
             // tbLuongTT
             // 
-            this.tbLuongTT.Location = new System.Drawing.Point(395, 309);
-            this.tbLuongTT.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.tbLuongTT.Location = new System.Drawing.Point(115, 182);
             this.tbLuongTT.Name = "tbLuongTT";
-            this.tbLuongTT.Size = new System.Drawing.Size(145, 23);
+            this.tbLuongTT.Size = new System.Drawing.Size(121, 21);
             this.tbLuongTT.TabIndex = 49;
             this.tbLuongTT.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbLuongTT_KeyPress);
             // 
@@ -360,31 +344,29 @@
             // 
             this.label15.AutoSize = true;
             this.label15.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.label15.Location = new System.Drawing.Point(582, 313);
+            this.label15.Location = new System.Drawing.Point(683, 190);
             this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(97, 17);
+            this.label15.Size = new System.Drawing.Size(75, 13);
             this.label15.TabIndex = 50;
             this.label15.Text = "Ngày Vào Làm";
             // 
             // dtngayVaoLam
             // 
             this.dtngayVaoLam.EditValue = null;
-            this.dtngayVaoLam.Location = new System.Drawing.Point(688, 310);
-            this.dtngayVaoLam.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.dtngayVaoLam.Location = new System.Drawing.Point(764, 183);
             this.dtngayVaoLam.Name = "dtngayVaoLam";
             this.dtngayVaoLam.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.dtngayVaoLam.Properties.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.dtngayVaoLam.Size = new System.Drawing.Size(118, 22);
+            this.dtngayVaoLam.Size = new System.Drawing.Size(101, 20);
             this.dtngayVaoLam.TabIndex = 51;
             // 
             // btnLuu
             // 
-            this.btnLuu.Location = new System.Drawing.Point(688, 364);
-            this.btnLuu.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.btnLuu.Location = new System.Drawing.Point(149, 276);
             this.btnLuu.Name = "btnLuu";
-            this.btnLuu.Size = new System.Drawing.Size(122, 38);
+            this.btnLuu.Size = new System.Drawing.Size(105, 31);
             this.btnLuu.TabIndex = 58;
             this.btnLuu.Text = "Lưu";
             this.btnLuu.UseVisualStyleBackColor = true;
@@ -392,10 +374,9 @@
             // 
             // btnKhongLuu
             // 
-            this.btnKhongLuu.Location = new System.Drawing.Point(933, 364);
-            this.btnKhongLuu.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.btnKhongLuu.Location = new System.Drawing.Point(335, 276);
             this.btnKhongLuu.Name = "btnKhongLuu";
-            this.btnKhongLuu.Size = new System.Drawing.Size(113, 38);
+            this.btnKhongLuu.Size = new System.Drawing.Size(97, 31);
             this.btnKhongLuu.TabIndex = 59;
             this.btnKhongLuu.Text = "Không Lưu";
             this.btnKhongLuu.UseVisualStyleBackColor = true;
@@ -403,10 +384,9 @@
             // 
             // btnTim
             // 
-            this.btnTim.Location = new System.Drawing.Point(1146, 364);
-            this.btnTim.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.btnTim.Location = new System.Drawing.Point(549, 276);
             this.btnTim.Name = "btnTim";
-            this.btnTim.Size = new System.Drawing.Size(115, 38);
+            this.btnTim.Size = new System.Drawing.Size(99, 31);
             this.btnTim.TabIndex = 60;
             this.btnTim.Text = "Tìm Kiếm";
             this.btnTim.UseVisualStyleBackColor = true;
@@ -438,37 +418,164 @@
             this.LuongTT,
             this.NgayVaoLam});
             this.dgv.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
-            this.dgv.Location = new System.Drawing.Point(0, 428);
-            this.dgv.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.dgv.Location = new System.Drawing.Point(-51, 313);
             this.dgv.Name = "dgv";
             this.dgv.ReadOnly = true;
             this.dgv.RowHeadersWidth = 51;
             this.dgv.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgv.Size = new System.Drawing.Size(1785, 580);
+            this.dgv.Size = new System.Drawing.Size(1296, 441);
             this.dgv.TabIndex = 61;
             this.dgv.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_CellContentClick_1);
             // 
-            // tbPhongBan
+            // _IDNV
             // 
-            this.tbPhongBan.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
-            this.tbPhongBan.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
-            this.tbPhongBan.Font = new System.Drawing.Font("Tahoma", 12F);
-            this.tbPhongBan.Location = new System.Drawing.Point(938, 251);
-            this.tbPhongBan.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.tbPhongBan.Name = "tbPhongBan";
-            this.tbPhongBan.Size = new System.Drawing.Size(146, 32);
-            this.tbPhongBan.TabIndex = 66;
+            this._IDNV.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this._IDNV.DataPropertyName = "IDNV";
+            this._IDNV.HeaderText = "IDNV";
+            this._IDNV.MinimumWidth = 6;
+            this._IDNV.Name = "_IDNV";
+            this._IDNV.ReadOnly = true;
+            this._IDNV.Width = 56;
             // 
-            // tbChucVu
+            // HoDem
             // 
-            this.tbChucVu.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
-            this.tbChucVu.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
-            this.tbChucVu.Font = new System.Drawing.Font("Tahoma", 12F);
-            this.tbChucVu.Location = new System.Drawing.Point(1209, 255);
-            this.tbChucVu.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.tbChucVu.Name = "tbChucVu";
-            this.tbChucVu.Size = new System.Drawing.Size(129, 32);
-            this.tbChucVu.TabIndex = 67;
+            this.HoDem.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.HoDem.DataPropertyName = "HODEM";
+            this.HoDem.HeaderText = "HoDem";
+            this.HoDem.MinimumWidth = 6;
+            this.HoDem.Name = "HoDem";
+            this.HoDem.ReadOnly = true;
+            this.HoDem.Width = 66;
+            // 
+            // Ten
+            // 
+            this.Ten.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.Ten.DataPropertyName = "TEN";
+            this.Ten.HeaderText = "Ten";
+            this.Ten.MinimumWidth = 6;
+            this.Ten.Name = "Ten";
+            this.Ten.ReadOnly = true;
+            this.Ten.Width = 50;
+            // 
+            // GioiTinh
+            // 
+            this.GioiTinh.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.GioiTinh.DataPropertyName = "GIOITINH";
+            this.GioiTinh.HeaderText = "GioiTinh";
+            this.GioiTinh.MinimumWidth = 6;
+            this.GioiTinh.Name = "GioiTinh";
+            this.GioiTinh.ReadOnly = true;
+            this.GioiTinh.Width = 69;
+            // 
+            // NgaySinh
+            // 
+            this.NgaySinh.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.NgaySinh.DataPropertyName = "NGAYSINH";
+            this.NgaySinh.HeaderText = "NgaySinh";
+            this.NgaySinh.MinimumWidth = 6;
+            this.NgaySinh.Name = "NgaySinh";
+            this.NgaySinh.ReadOnly = true;
+            this.NgaySinh.Width = 77;
+            // 
+            // DanToc
+            // 
+            this.DanToc.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.DanToc.DataPropertyName = "DANTOC";
+            this.DanToc.HeaderText = "DanToc";
+            this.DanToc.MinimumWidth = 6;
+            this.DanToc.Name = "DanToc";
+            this.DanToc.ReadOnly = true;
+            this.DanToc.Width = 68;
+            // 
+            // TonGiao
+            // 
+            this.TonGiao.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.TonGiao.DataPropertyName = "TONGIAO";
+            this.TonGiao.HeaderText = "TonGiao";
+            this.TonGiao.MinimumWidth = 6;
+            this.TonGiao.Name = "TonGiao";
+            this.TonGiao.ReadOnly = true;
+            this.TonGiao.Width = 71;
+            // 
+            // CMND
+            // 
+            this.CMND.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.CMND.DataPropertyName = "CMND";
+            this.CMND.HeaderText = "CMND";
+            this.CMND.MinimumWidth = 6;
+            this.CMND.Name = "CMND";
+            this.CMND.ReadOnly = true;
+            this.CMND.Width = 61;
+            // 
+            // TrinhDo
+            // 
+            this.TrinhDo.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.TrinhDo.DataPropertyName = "TRINHDO";
+            this.TrinhDo.HeaderText = "TrinhDo";
+            this.TrinhDo.MinimumWidth = 6;
+            this.TrinhDo.Name = "TrinhDo";
+            this.TrinhDo.ReadOnly = true;
+            this.TrinhDo.Width = 69;
+            // 
+            // SDT
+            // 
+            this.SDT.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.SDT.DataPropertyName = "SDT";
+            this.SDT.HeaderText = "SDT";
+            this.SDT.MinimumWidth = 6;
+            this.SDT.Name = "SDT";
+            this.SDT.ReadOnly = true;
+            this.SDT.Width = 51;
+            // 
+            // DiaChi
+            // 
+            this.DiaChi.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.DiaChi.DataPropertyName = "DIACHI";
+            this.DiaChi.HeaderText = "DiaChi";
+            this.DiaChi.MinimumWidth = 6;
+            this.DiaChi.Name = "DiaChi";
+            this.DiaChi.ReadOnly = true;
+            this.DiaChi.Width = 62;
+            // 
+            // IDPB
+            // 
+            this.IDPB.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.IDPB.DataPropertyName = "IDPB";
+            this.IDPB.HeaderText = "IDPB";
+            this.IDPB.MinimumWidth = 6;
+            this.IDPB.Name = "IDPB";
+            this.IDPB.ReadOnly = true;
+            this.IDPB.Width = 55;
+            // 
+            // IDCV
+            // 
+            this.IDCV.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.IDCV.DataPropertyName = "IDCV";
+            this.IDCV.HeaderText = "IDCV";
+            this.IDCV.MinimumWidth = 6;
+            this.IDCV.Name = "IDCV";
+            this.IDCV.ReadOnly = true;
+            this.IDCV.Width = 56;
+            // 
+            // LuongTT
+            // 
+            this.LuongTT.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.LuongTT.DataPropertyName = "LUONG";
+            this.LuongTT.HeaderText = "LuongTT";
+            this.LuongTT.MinimumWidth = 6;
+            this.LuongTT.Name = "LuongTT";
+            this.LuongTT.ReadOnly = true;
+            this.LuongTT.Width = 73;
+            // 
+            // NgayVaoLam
+            // 
+            this.NgayVaoLam.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.NgayVaoLam.DataPropertyName = "NGAYGIANHAP";
+            this.NgayVaoLam.HeaderText = "NgayVaoLam";
+            this.NgayVaoLam.MinimumWidth = 6;
+            this.NgayVaoLam.Name = "NgayVaoLam";
+            this.NgayVaoLam.ReadOnly = true;
+            this.NgayVaoLam.Width = 94;
             // 
             // barManager1
             // 
@@ -580,190 +687,62 @@
             this.barDockControl1.Location = new System.Drawing.Point(0, 0);
             this.barDockControl1.Manager = this.barManager1;
             this.barDockControl1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.barDockControl1.Size = new System.Drawing.Size(1797, 32);
+            this.barDockControl1.Size = new System.Drawing.Size(1059, 26);
             // 
             // barDockControlBottom
             // 
             this.barDockControlBottom.CausesValidation = false;
             this.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.barDockControlBottom.Location = new System.Drawing.Point(0, 1014);
+            this.barDockControlBottom.Location = new System.Drawing.Point(0, 594);
             this.barDockControlBottom.Manager = this.barManager1;
             this.barDockControlBottom.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.barDockControlBottom.Size = new System.Drawing.Size(1797, 20);
+            this.barDockControlBottom.Size = new System.Drawing.Size(1059, 20);
             // 
             // barDockControlLeft
             // 
             this.barDockControlLeft.CausesValidation = false;
             this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
-            this.barDockControlLeft.Location = new System.Drawing.Point(0, 32);
+            this.barDockControlLeft.Location = new System.Drawing.Point(0, 26);
             this.barDockControlLeft.Manager = this.barManager1;
             this.barDockControlLeft.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.barDockControlLeft.Size = new System.Drawing.Size(0, 982);
+            this.barDockControlLeft.Size = new System.Drawing.Size(0, 568);
             // 
             // barDockControlRight
             // 
             this.barDockControlRight.CausesValidation = false;
             this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
-            this.barDockControlRight.Location = new System.Drawing.Point(1797, 32);
+            this.barDockControlRight.Location = new System.Drawing.Point(1059, 26);
             this.barDockControlRight.Manager = this.barManager1;
             this.barDockControlRight.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.barDockControlRight.Size = new System.Drawing.Size(0, 982);
+            this.barDockControlRight.Size = new System.Drawing.Size(0, 568);
             // 
-            // _IDNV
+            // tbChucVu
             // 
-            this._IDNV.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this._IDNV.DataPropertyName = "IDNV";
-            this._IDNV.HeaderText = "IDNV";
-            this._IDNV.MinimumWidth = 6;
-            this._IDNV.Name = "_IDNV";
-            this._IDNV.ReadOnly = true;
-            this._IDNV.Width = 68;
+            this.tbChucVu.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.tbChucVu.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
+            this.tbChucVu.Font = new System.Drawing.Font("Tahoma", 12F);
+            this.tbChucVu.Location = new System.Drawing.Point(549, 182);
+            this.tbChucVu.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.tbChucVu.Name = "tbChucVu";
+            this.tbChucVu.Size = new System.Drawing.Size(116, 27);
+            this.tbChucVu.TabIndex = 67;
             // 
-            // HoDem
+            // tbPhongBan
             // 
-            this.HoDem.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.HoDem.DataPropertyName = "HODEM";
-            this.HoDem.HeaderText = "HoDem";
-            this.HoDem.MinimumWidth = 6;
-            this.HoDem.Name = "HoDem";
-            this.HoDem.ReadOnly = true;
-            this.HoDem.Width = 83;
-            // 
-            // Ten
-            // 
-            this.Ten.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.Ten.DataPropertyName = "TEN";
-            this.Ten.HeaderText = "Ten";
-            this.Ten.MinimumWidth = 6;
-            this.Ten.Name = "Ten";
-            this.Ten.ReadOnly = true;
-            this.Ten.Width = 60;
-            // 
-            // GioiTinh
-            // 
-            this.GioiTinh.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.GioiTinh.DataPropertyName = "GIOITINH";
-            this.GioiTinh.HeaderText = "GioiTinh";
-            this.GioiTinh.MinimumWidth = 6;
-            this.GioiTinh.Name = "GioiTinh";
-            this.GioiTinh.ReadOnly = true;
-            this.GioiTinh.Width = 84;
-            // 
-            // NgaySinh
-            // 
-            this.NgaySinh.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.NgaySinh.DataPropertyName = "NGAYSINH";
-            this.NgaySinh.HeaderText = "NgaySinh";
-            this.NgaySinh.MinimumWidth = 6;
-            this.NgaySinh.Name = "NgaySinh";
-            this.NgaySinh.ReadOnly = true;
-            this.NgaySinh.Width = 95;
-            // 
-            // DanToc
-            // 
-            this.DanToc.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.DanToc.DataPropertyName = "DANTOC";
-            this.DanToc.HeaderText = "DanToc";
-            this.DanToc.MinimumWidth = 6;
-            this.DanToc.Name = "DanToc";
-            this.DanToc.ReadOnly = true;
-            this.DanToc.Width = 85;
-            // 
-            // TonGiao
-            // 
-            this.TonGiao.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.TonGiao.DataPropertyName = "TONGIAO";
-            this.TonGiao.HeaderText = "TonGiao";
-            this.TonGiao.MinimumWidth = 6;
-            this.TonGiao.Name = "TonGiao";
-            this.TonGiao.ReadOnly = true;
-            this.TonGiao.Width = 87;
-            // 
-            // CMND
-            // 
-            this.CMND.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.CMND.DataPropertyName = "CMND";
-            this.CMND.HeaderText = "CMND";
-            this.CMND.MinimumWidth = 6;
-            this.CMND.Name = "CMND";
-            this.CMND.ReadOnly = true;
-            this.CMND.Width = 75;
-            // 
-            // TrinhDo
-            // 
-            this.TrinhDo.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.TrinhDo.DataPropertyName = "TRINHDO";
-            this.TrinhDo.HeaderText = "TrinhDo";
-            this.TrinhDo.MinimumWidth = 6;
-            this.TrinhDo.Name = "TrinhDo";
-            this.TrinhDo.ReadOnly = true;
-            this.TrinhDo.Width = 86;
-            // 
-            // SDT
-            // 
-            this.SDT.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.SDT.DataPropertyName = "SDT";
-            this.SDT.HeaderText = "SDT";
-            this.SDT.MinimumWidth = 6;
-            this.SDT.Name = "SDT";
-            this.SDT.ReadOnly = true;
-            this.SDT.Width = 63;
-            // 
-            // DiaChi
-            // 
-            this.DiaChi.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.DiaChi.DataPropertyName = "DIACHI";
-            this.DiaChi.HeaderText = "DiaChi";
-            this.DiaChi.MinimumWidth = 6;
-            this.DiaChi.Name = "DiaChi";
-            this.DiaChi.ReadOnly = true;
-            this.DiaChi.Width = 75;
-            // 
-            // IDPB
-            // 
-            this.IDPB.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.IDPB.DataPropertyName = "IDPB";
-            this.IDPB.HeaderText = "IDPB";
-            this.IDPB.MinimumWidth = 6;
-            this.IDPB.Name = "IDPB";
-            this.IDPB.ReadOnly = true;
-            this.IDPB.Width = 67;
-            // 
-            // IDCV
-            // 
-            this.IDCV.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.IDCV.DataPropertyName = "IDCV";
-            this.IDCV.HeaderText = "IDCV";
-            this.IDCV.MinimumWidth = 6;
-            this.IDCV.Name = "IDCV";
-            this.IDCV.ReadOnly = true;
-            this.IDCV.Width = 68;
-            // 
-            // LuongTT
-            // 
-            this.LuongTT.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.LuongTT.DataPropertyName = "LUONG";
-            this.LuongTT.HeaderText = "LuongTT";
-            this.LuongTT.MinimumWidth = 6;
-            this.LuongTT.Name = "LuongTT";
-            this.LuongTT.ReadOnly = true;
-            this.LuongTT.Width = 92;
-            // 
-            // NgayVaoLam
-            // 
-            this.NgayVaoLam.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.NgayVaoLam.DataPropertyName = "NGAYGIANHAP";
-            this.NgayVaoLam.HeaderText = "NgayVaoLam";
-            this.NgayVaoLam.MinimumWidth = 6;
-            this.NgayVaoLam.Name = "NgayVaoLam";
-            this.NgayVaoLam.ReadOnly = true;
-            this.NgayVaoLam.Width = 118;
+            this.tbPhongBan.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.tbPhongBan.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
+            this.tbPhongBan.Font = new System.Drawing.Font("Tahoma", 12F);
+            this.tbPhongBan.Location = new System.Drawing.Point(335, 182);
+            this.tbPhongBan.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.tbPhongBan.Name = "tbPhongBan";
+            this.tbPhongBan.Size = new System.Drawing.Size(119, 27);
+            this.tbPhongBan.TabIndex = 66;
             // 
             // FormNhanVien
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1797, 1034);
+            this.ClientSize = new System.Drawing.Size(1059, 614);
             this.Controls.Add(this.tbChucVu);
             this.Controls.Add(this.tbPhongBan);
             this.Controls.Add(this.dgv);
@@ -802,7 +781,6 @@
             this.Controls.Add(this.barDockControlRight);
             this.Controls.Add(this.barDockControlBottom);
             this.Controls.Add(this.barDockControl1);
-            this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "FormNhanVien";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FormNhanVien";
@@ -850,8 +828,6 @@
         private System.Windows.Forms.Button btnLuu;
         private System.Windows.Forms.Button btnTim;
         private System.Windows.Forms.DataGridView dgv;
-        private System.Windows.Forms.TextBox tbChucVu;
-        private System.Windows.Forms.TextBox tbPhongBan;
         private DevExpress.XtraBars.BarManager barManager1;
         private DevExpress.XtraBars.Bar bar5;
         private DevExpress.XtraBars.BarButtonItem btnThem;
@@ -880,5 +856,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn IDCV;
         private System.Windows.Forms.DataGridViewTextBoxColumn LuongTT;
         private System.Windows.Forms.DataGridViewTextBoxColumn NgayVaoLam;
+        private System.Windows.Forms.TextBox tbChucVu;
+        private System.Windows.Forms.TextBox tbPhongBan;
     }
 }
