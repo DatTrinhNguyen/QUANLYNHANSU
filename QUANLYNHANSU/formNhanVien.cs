@@ -241,19 +241,18 @@ namespace QUANLYNHANSU
             string maNV = tbMaNV.Text;
             string hoDem = tbHoDem.Text.ToString();
             string Ten = tbTen.Text.ToString();
-            string gioiTinh = cbGioiTinh.Text.ToString();
-            string ngaySinh = dtngaySinh.Text.ToString();
+            string gioiTinh = cbGioiTinh.Text.ToString();     
             string CMND = tbCCCD.Text.ToString();
             string SDT = tbSDT.Text.ToString();
             string diaChi = tbDiaChi.Text.ToString();
             string idPB = tbChucVu.Text.ToString();
             string idCV = tbPhongBan.Text.ToString();
             string luong = tbLuongTT.Text.ToString();
-            string ngayGiaNhap = dtngayVaoLam.Text.ToString();
             string tonGiao = tbTonGiao.Text.ToString();
             string danToc = tbDanToc.Text.ToString();
             string trinhDo = tbDanToc.Text.ToString();
-
+            string ngaySinh = dtngaySinh.Text;
+            string ngayVaoLam = dtngayVaoLam.Text;
 
             if (!HoDem_Condition(hoDem))
             {
@@ -299,13 +298,19 @@ namespace QUANLYNHANSU
             {
                 return;
             }
-            if (!NgayVaoLam_Condition(ngayGiaNhap))
+            if (!NgayVaoLam_Condition(ngayVaoLam))
             {
                 return;
             }
 
             //Điều kiện phòng ban , chức vụ  
 
+            //Ép kiểu
+            DateTime ngaySinhDate = DateTime.ParseExact(ngaySinh, "dd/MM/yyyy", CultureInfo.InvariantCulture);
+            string ngaySinhFormatted = ngaySinhDate.ToString("MM/dd/yyyy");
+
+            DateTime ngayVaoLamDate = DateTime.ParseExact(ngayVaoLam, "dd/MM/yyyy", CultureInfo.InvariantCulture);
+            string ngayVaoLamFormatted = ngayVaoLamDate.ToString("MM/dd/yyyy");
 
             NpgsqlConnection connection = new NpgsqlConnection("Server=localhost;Port=5432;Database=" + Database.name + ";User ID=postgres;Password=" + Database.pass + ";");
             connection.Open();
@@ -316,8 +321,8 @@ namespace QUANLYNHANSU
             {
                 command.CommandText = "INSERT INTO public.\"tb.NHANVIEN\"(\"IDNV\",\"HODEM\",\"TEN\",\"GIOITINH\",\"NGAYSINH\",\"CMND\",\"SDT\",\"DIACHI\"" +
                     ",\"IDPB\",\"IDCV\",\"LUONG\",\"NGAYGIANHAP\",\"DANTOC\",\"TONGIAO\",\"TRINHDO\",\"TRANGTHAI\")" +
-                "VALUES(\'" + maNV + "\', \'" + hoDem + "\', \'" + Ten + "\' ,'0', \'" + ngaySinh + "\', \'" + CMND + "\', \'" + SDT + "\'" +
-                ", \'" + diaChi + "\', \'" + idPB + "\', \'" + idCV + "\', \'" + luong + "\', \'" + ngayGiaNhap + "\', \'" + danToc + "\', \'" + tonGiao + "\', \'" + trinhDo + "\', \'1\');";
+                "VALUES(\'" + maNV + "\', \'" + hoDem + "\', \'" + Ten + "\' ,'0', \'" + ngaySinhFormatted + "\', \'" + CMND + "\', \'" + SDT + "\'" +
+                ", \'" + diaChi + "\', \'" + idPB + "\', \'" + idCV + "\', \'" + luong + "\', \'" + ngayVaoLamFormatted + "\', \'" + danToc + "\', \'" + tonGiao + "\', \'" + trinhDo + "\', \'1\');";
                 command.ExecuteNonQuery();
                 connection.Dispose();
                 connection.Close();               
@@ -328,8 +333,8 @@ namespace QUANLYNHANSU
             {
                 command.CommandText = "INSERT INTO public.\"tb.NHANVIEN\"(\"IDNV\",\"HODEM\",\"TEN\",\"GIOITINH\",\"NGAYSINH\",\"CMND\",\"SDT\",\"DIACHI\"" +
                     ",\"IDPB\",\"IDCV\",\"LUONG\",\"NGAYGIANHAP\",\"DANTOC\",\"TONGIAO\",\"TRINHDO\",\"TRANGTHAI\")" +
-                "VALUES(\'" + maNV + "\', \'" + hoDem + "\', \'" + Ten + "\' , '1', \'" + ngaySinh + "\', \'" + CMND + "\', \'" + SDT + "\'" +
-                ", \'" + diaChi + "\', \'" + idPB + "\', \'" + idCV + "\', \'" + luong + "\', \'" + ngayGiaNhap + "\', \'" + danToc + "\', \'" + tonGiao + "\', \'" + trinhDo + "\', \'1\');";
+                "VALUES(\'" + maNV + "\', \'" + hoDem + "\', \'" + Ten + "\' , '1', \'" + ngaySinhFormatted + "\', \'" + CMND + "\', \'" + SDT + "\'" +
+                ", \'" + diaChi + "\', \'" + idPB + "\', \'" + idCV + "\', \'" + luong + "\', \'" + ngayVaoLamFormatted + "\', \'" + danToc + "\', \'" + tonGiao + "\', \'" + trinhDo + "\', \'1\');";
                 command.ExecuteNonQuery();
                 connection.Dispose();
                 connection.Close();
@@ -365,20 +370,19 @@ namespace QUANLYNHANSU
                 string hoDem = tbHoDem.Text.ToString();
                 string Ten = tbTen.Text.ToString();
                 string gioiTinh = cbGioiTinh.Text.ToString();
-                string ngaySinh = dtngaySinh.Text.ToString();
                 string CMND = tbCCCD.Text.ToString();
                 string SDT = tbSDT.Text.ToString();
                 string diaChi = tbDiaChi.Text.ToString();
                 string idPB = tbChucVu.Text.ToString();
                 string idCV = tbPhongBan.Text.ToString();
                 string luong = tbLuongTT.Text.ToString();
-                string ngayGiaNhap = dtngayVaoLam.Text.ToString();
                 string tonGiao = tbTonGiao.Text.ToString();
                 string danToc = tbDanToc.Text.ToString();
                 string trinhDo = tbDanToc.Text.ToString();
+                string ngaySinh = dtngaySinh.Text;
+                string ngayVaoLam = dtngayVaoLam.Text;
 
                 //Biến tạm
-
                 string _SDT = selectedRow.Cells[6].Value.ToString();
                 string _diaChi = selectedRow.Cells[7].Value.ToString();
                 string _idPB = selectedRow.Cells[8].Value.ToString();
@@ -414,6 +418,11 @@ namespace QUANLYNHANSU
                         return;
                     }
                 }
+                DateTime ngaySinhDate = DateTime.ParseExact(ngaySinh, "dd/MM/yyyy", CultureInfo.InvariantCulture);
+                string ngaySinhFormatted = ngaySinhDate.ToString("MM/dd/yyyy");
+
+                DateTime ngayVaoLamDate = DateTime.ParseExact(ngayVaoLam, "dd/MM/yyyy", CultureInfo.InvariantCulture);
+                string ngayVaoLamFormatted = ngayVaoLamDate.ToString("MM/dd/yyyy");
 
                 // Kết nối tới cơ sở dữ liệu
                 NpgsqlConnection connection = new NpgsqlConnection("Server=localhost;Port=5432;Database=" + Database.name + ";User ID=postgres;Password=" + Database.pass + ";");
@@ -610,17 +619,8 @@ namespace QUANLYNHANSU
                 tbTonGiao.Text = row.Cells[12].Value.ToString();
                 tbDanToc.Text = row.Cells[11].Value.ToString();
                 tbTrinhDo.Text = row.Cells[13].Value.ToString();
-
-                if (row.Cells[3].Value is DateTime ngaySinh)
-                {
-                    string _ngaySinh = ngaySinh.ToString("dd/MM/yyyy");
-                    dtngaySinh.Text = _ngaySinh;
-                }
-                if (row.Cells[10].Value is DateTime ngayGiaNhap)
-                {
-                    string _ngayGiaNhap = ngayGiaNhap.ToString("dd/MM/yyyy");
-                    dtngayVaoLam.Text = _ngayGiaNhap;
-                }
+                dtngaySinh.Text = row.Cells[3].Value.ToString();
+                dtngayVaoLam.Text = row.Cells[10].Value.ToString();
                 //Lấy số cột mới thêm vào
                 int newColumnIndex = dgv.Columns.Count - 1;
                 cbGioiTinh.Text = row.Cells[newColumnIndex].Value.ToString();
@@ -963,6 +963,11 @@ namespace QUANLYNHANSU
             return true;
         }
 
+        private void dgv_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+
+        }
+
         //Chức vụ
         private bool ChucVu_Condition(string chucVu)
         {
@@ -973,6 +978,28 @@ namespace QUANLYNHANSU
                 return false;
             }
             return true;
+        }  
+
+        private void dgv_CellFormatting_1(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            if (dgv.Columns[3].Name == "NGAYSINH" && e.RowIndex >= 0)
+            {
+                // Định dạng ngày tháng trong cell
+                if (e.Value != null && DateTime.TryParse(e.Value.ToString(), out DateTime dateValue))
+                {
+                    e.Value = dateValue.ToString("dd/MM/yyyy");
+                    e.FormattingApplied = true;
+                }
+            }
+            if (dgv.Columns[10].Name == "NGAYGIANHAP" && e.RowIndex >= 0)
+            {
+                // Định dạng ngày tháng trong cell
+                if (e.Value != null && DateTime.TryParse(e.Value.ToString(), out DateTime dateValue))
+                {
+                    e.Value = dateValue.ToString("dd/MM/yyyy");
+                    e.FormattingApplied = true;
+                }
+            }
         }
 
 

@@ -134,12 +134,7 @@ namespace QUANLYNHANSU
             string ngayDong = dtNgayDong.Text;
             string thoiHan = dtThoiHan.Text;
 
-            DateTime ngayDongDate = DateTime.ParseExact(ngayDong, "dd/MM/yyyy", CultureInfo.InvariantCulture);
-            string ngayDongFormatted = ngayDongDate.ToString("MM/dd/yyyy");
-
-            DateTime thoiHanDate = DateTime.ParseExact(thoiHan, "dd/MM/yyyy", CultureInfo.InvariantCulture);
-            string thoiHanFormatted = thoiHanDate.ToString("MM/dd/yyyy");
-
+         
             if (!MaBHXH_Condition(idBHYT))
             {
                 return;
@@ -163,6 +158,11 @@ namespace QUANLYNHANSU
             }
 
 
+            DateTime ngayDongDate = DateTime.ParseExact(ngayDong, "dd/MM/yyyy", CultureInfo.InvariantCulture);
+            string ngayDongFormatted = ngayDongDate.ToString("MM/dd/yyyy");
+
+            DateTime thoiHanDate = DateTime.ParseExact(thoiHan, "dd/MM/yyyy", CultureInfo.InvariantCulture);
+            string thoiHanFormatted = thoiHanDate.ToString("MM/dd/yyyy");
 
 
             NpgsqlConnection connection = new NpgsqlConnection("Server=localhost;Port=5432;Database=" + Database.name + ";User ID=postgres;Password=" + Database.pass + ";");
@@ -203,36 +203,11 @@ namespace QUANLYNHANSU
                 string ngayDong = dtNgayDong.Text;
                 string thoiHan = dtThoiHan.Text;
 
-                DateTime ngayDongDate = DateTime.ParseExact(ngayDong, "dd/MM/yyyy", CultureInfo.InvariantCulture);
-                string ngayDongFormatted = ngayDongDate.ToString("MM/dd/yyyy");
-
-                DateTime thoiHanDate = DateTime.ParseExact(thoiHan, "dd/MM/yyyy", CultureInfo.InvariantCulture);
-                string thoiHanFormatted = thoiHanDate.ToString("MM/dd/yyyy");
-
                 //Biến tạm
-                string _idBHYT = selectedRow.Cells[0].Value.ToString();
                 string _soTien = selectedRow.Cells[1].Value.ToString();
-                string _maNV = selectedRow.Cells[2].Value.ToString();
                 string _ngayDong = selectedRow.Cells[3].Value.ToString();
                 string _ngayThoiHan = selectedRow.Cells[4].Value.ToString();
-
-
-
-                if (_idBHYT != idBHYT)
-                {
-                    if (!MaBHXH_Condition(idBHYT))
-                    {
-                        return;
-                    }
-                }
-
-                if (_maNV != maNV)
-                {
-                    if (!MaNV_Condition(maNV))
-                    {
-                        return;
-                    }
-                }
+      
                 if (_ngayDong != ngayDong)
                 {
 
@@ -255,7 +230,16 @@ namespace QUANLYNHANSU
                         return;
                     }
                 }
+                if (!MaNV_Condition(maNV))
+                {
+                    return;
+                }
 
+                DateTime ngayDongDate = DateTime.ParseExact(ngayDong, "dd/MM/yyyy", CultureInfo.InvariantCulture);
+                string ngayDongFormatted = ngayDongDate.ToString("MM/dd/yyyy");
+
+                DateTime thoiHanDate = DateTime.ParseExact(thoiHan, "dd/MM/yyyy", CultureInfo.InvariantCulture);
+                string thoiHanFormatted = thoiHanDate.ToString("MM/dd/yyyy");
 
                 // Kết nối tới cơ sở dữ liệu
                 NpgsqlConnection connection = new NpgsqlConnection("Server=localhost;Port=5432;Database=" + Database.name + ";User ID=postgres;Password=" + Database.pass + ";");
@@ -266,11 +250,10 @@ namespace QUANLYNHANSU
 
                 // Sử dụng truy vấn UPDATE để cập nhật thông tin của nhân viên
                 command.CommandText = "UPDATE public.\"tb.NHANVIENBAOHIEMXAHOI\" " +
-                                        "SET \"BHXH\" = \'" + idBHYT + "\',\"SOTIEN\" = \'" + soTien + "\', " +
-                                        "\"IDNV\" = \'" + maNV + "\', " +
+                                        "SET \"SOTIEN\" = \'" + soTien + "\', " +                   
                                         "\"NGAYDONG\" = \'" + ngayDongFormatted + "\', " +
                                         "\"THOIHAN\" = \'" + thoiHanFormatted + "\' " +
-                                        "WHERE \"BHXH\" = \'" + _idBHYT + "\';";
+                                        "WHERE \"BHXH\" = \'" + idBHYT + "\';";
 
                 // Thực thi truy vấn
                 command.ExecuteNonQuery();
@@ -452,7 +435,14 @@ namespace QUANLYNHANSU
 
         private bool MaBHXH_Condition(string idBHXH)
         {
+            
             //Không cho phép thiếu
+            if (idBHXH.Length == 0)
+            {
+                DialogResult dialogResult = MessageBox.Show("Vui lòng điền Mã BHYT", "Lỗi", MessageBoxButtons.RetryCancel);
+                return false;
+            }
+            //Không cho phép sai định dạng
             if (idBHXH.Length != 10)
             {
                 DialogResult dialogResult = MessageBox.Show("Mã BHXH không đúng định dạng", "Lỗi", MessageBoxButtons.RetryCancel);
@@ -674,8 +664,8 @@ namespace QUANLYNHANSU
                 e.Handled = true;
             }
 
-            //Không cho nhập quá 12 chữ số
-            if(e.KeyChar != (char)Keys.Back && tbSoTien.Text.Length == 12)
+            //Không cho nhập quá 9 chữ số
+            if(e.KeyChar != (char)Keys.Back && tbSoTien.Text.Length == 9)
             {
                 e.Handled = true;
             }

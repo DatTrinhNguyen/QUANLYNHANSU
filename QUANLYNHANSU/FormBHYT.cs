@@ -140,12 +140,6 @@ namespace QUANLYNHANSU
             string ngayDong = dtNgayDong.Text.ToString();
             string ngayKetThuc = dtNgayKetThuc.Text.ToString();
 
-            DateTime ngayDongDate = DateTime.ParseExact(ngayDong, "dd/MM/yyyy", CultureInfo.InvariantCulture);
-            string ngayDongFormatted = ngayDongDate.ToString("MM/dd/yyyy");
-
-            DateTime ngayKetThucDate = DateTime.ParseExact(ngayKetThuc, "dd/MM/yyyy", CultureInfo.InvariantCulture);
-            string ngayKetThucFormatted = ngayKetThucDate.ToString("MM/dd/yyyy");
-
             if (!MaBHYT_Condition(idBHYT))
             {
                 return;
@@ -169,6 +163,11 @@ namespace QUANLYNHANSU
             }
 
 
+            DateTime ngayDongDate = DateTime.ParseExact(ngayDong, "dd/MM/yyyy", CultureInfo.InvariantCulture);
+            string ngayDongFormatted = ngayDongDate.ToString("MM/dd/yyyy");
+
+            DateTime ngayKetThucDate = DateTime.ParseExact(ngayKetThuc, "dd/MM/yyyy", CultureInfo.InvariantCulture);
+            string ngayKetThucFormatted = ngayKetThucDate.ToString("MM/dd/yyyy");
 
 
             NpgsqlConnection connection = new NpgsqlConnection("Server=localhost;Port=5432;Database=" + Database.name + ";User ID=postgres;Password=" + Database.pass + ";");
@@ -209,12 +208,6 @@ namespace QUANLYNHANSU
                 string maNV = tbMaNV.Text.ToString();
                 string ngayDong = dtNgayDong.Text.ToString();
                 string ngayKetThuc = dtNgayKetThuc.Text.ToString();
-
-                DateTime ngayDongDate = DateTime.ParseExact(ngayDong, "dd/MM/yyyy", CultureInfo.InvariantCulture);
-                string ngayDongFormatted = ngayDongDate.ToString("MM/dd/yyyy");
-
-                DateTime ngayKetThucDate = DateTime.ParseExact(ngayKetThuc, "dd/MM/yyyy", CultureInfo.InvariantCulture);
-                string ngayKetThucFormatted = ngayKetThucDate.ToString("MM/dd/yyyy");
 
                 //Biến tạm
                 string _idBHYT = selectedRow.Cells[0].Value.ToString();
@@ -262,6 +255,12 @@ namespace QUANLYNHANSU
                     }
                 }
 
+
+                DateTime ngayDongDate = DateTime.ParseExact(ngayDong, "dd/MM/yyyy", CultureInfo.InvariantCulture);
+                string ngayDongFormatted = ngayDongDate.ToString("MM/dd/yyyy");
+
+                DateTime ngayKetThucDate = DateTime.ParseExact(ngayKetThuc, "dd/MM/yyyy", CultureInfo.InvariantCulture);
+                string ngayKetThucFormatted = ngayKetThucDate.ToString("MM/dd/yyyy");
 
                 // Kết nối tới cơ sở dữ liệu
                 NpgsqlConnection connection = new NpgsqlConnection("Server=localhost;Port=5432;Database=" + Database.name + ";User ID=postgres;Password=" + Database.pass + ";");
