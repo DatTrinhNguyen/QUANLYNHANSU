@@ -61,6 +61,17 @@ namespace QUANLYNHANSU
             dtNgayDong.Clear();
         }
 
+        private void Tabindex()
+        {
+            tbMaBHXH.TabIndex = 0;
+            tbMaNV.TabIndex = 1;
+            dtNgayDong.TabIndex = 2;
+            dtThoiHan.TabIndex = 4;
+            tbSoTien.TabIndex = 5;
+            btnLuu.TabIndex = 6;
+            btnKhongLuu.TabIndex = 7;
+        }
+
         //Load dữ liệu từ database
         void loadData()
         {
@@ -110,6 +121,8 @@ namespace QUANLYNHANSU
         {
             showHide(false);
             them = true;
+            tbMaBHXH.Focus();
+            Tabindex();
         }
 
         //Thêm dữ liệu vào database
@@ -168,13 +181,14 @@ namespace QUANLYNHANSU
         }
 
             //Nút sửa dữ liệu vào database
-            private void btnSua_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        private void btnSua_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             showHide(false);
             tbMaBHXH.Enabled = false;
             tbMaNV.Enabled = false;
-            
             sua = true;
+            dtNgayDong.Focus();
+            Tabindex();
         }
 
         //Sửa dữ liệu trong database
@@ -533,7 +547,7 @@ namespace QUANLYNHANSU
             connection.Open();
             NpgsqlCommand command = new NpgsqlCommand();
             command.Connection = connection;
-            command.CommandText = "SELECT \"IDNV\" FROM public.\"tb.NHANVIENBAOHIEMXAHOI\" WHERE \"IDNV\" = \'" + idNV + "\';";
+            command.CommandText = "SELECT \"IDNV\" FROM public.\"tb.NHANVIENBAOHIEMXAHOI\" WHERE \"IDNV\" = \'" + idNV + "\'AND \"TRANGTHAI\" = \'1\';";
             command.ExecuteNonQuery();
             NpgsqlDataReader dataReader = command.ExecuteReader();
             if (dataReader.Read())
@@ -691,6 +705,7 @@ namespace QUANLYNHANSU
             return true;
         }
 
+        // Hiển thị ngày tháng năm trong DatagridView
         private void dgv_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
             if (dgv.Columns[3].Name == "NGAYDONG" && e.RowIndex >= 0)
@@ -713,13 +728,5 @@ namespace QUANLYNHANSU
             }
         }
 
-       
-
-        private void tbSoTien_TextChanged_1(object sender, EventArgs e)
-        {
-            // không cho khoảng trông
-            TextBox textBox = (TextBox)sender;
-            textBox.Text = textBox.Text.Replace(" ", "");
-        }
     }
 }

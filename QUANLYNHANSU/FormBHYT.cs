@@ -50,10 +50,14 @@ namespace QUANLYNHANSU
             tbSoTien.Enabled = !kt;
             dtNgayDong.Enabled = !kt;
             dtNgayKetThuc.Enabled = !kt;
+
+            btnTim.Enabled = false;
         }
+
+
         void clear()
             {
-                //Làm sạch các text box
+             //Làm sạch các text box
              tbMaBHYT.Clear();
              tbMaNV.Clear();
              tbSoTien.Clear();
@@ -61,8 +65,18 @@ namespace QUANLYNHANSU
              dtNgayDong.Clear();
         }
 
+        private void Tabindex()
+        {
+            tbMaBHYT.TabIndex = 0;
+            tbMaNV.TabIndex = 1;
+            dtNgayDong.TabIndex = 2;
+            dtNgayKetThuc.TabIndex = 4;
+            tbSoTien.TabIndex = 5;
+            btnLuu.TabIndex = 6;
+            btnKhongLuu.TabIndex = 7;
+        }
 
-            //Load dữ liệu từ database
+        //Load dữ liệu từ database
         void loadData()
         {
             dgv.DataSource = null;
@@ -112,6 +126,8 @@ namespace QUANLYNHANSU
         {
             showHide(false);
             them = true;
+            tbMaBHYT.Focus();
+            Tabindex();
         }
 
 
@@ -123,6 +139,12 @@ namespace QUANLYNHANSU
             string maNV = tbMaNV.Text.ToString();
             string ngayDong = dtNgayDong.Text.ToString();
             string ngayKetThuc = dtNgayKetThuc.Text.ToString();
+
+            DateTime ngayDongDate = DateTime.ParseExact(ngayDong, "dd/MM/yyyy", CultureInfo.InvariantCulture);
+            string ngayDongFormatted = ngayDongDate.ToString("MM/dd/yyyy");
+
+            DateTime ngayKetThucDate = DateTime.ParseExact(ngayKetThuc, "dd/MM/yyyy", CultureInfo.InvariantCulture);
+            string ngayKetThucFormatted = ngayKetThucDate.ToString("MM/dd/yyyy");
 
             if (!MaBHYT_Condition(idBHYT))
             {
@@ -156,7 +178,7 @@ namespace QUANLYNHANSU
             command.CommandType = CommandType.Text;
 
             command.CommandText = "INSERT INTO public.\"tb.NHANVIENBAOHIEMYTE\"(\"BHYT\",\"SOTIEN\",\"IDNV\",\"NGAYDONG\",\"NGAYKETTHUC\",\"TRANGTHAI\")" +
-            "VALUES(\'" + idBHYT + "\', \'" + soTien + "\', \'" + maNV + "\' , \'" + ngayDong + "\', \'" + ngayKetThuc + "\', \'1\');";
+            "VALUES(\'" + idBHYT + "\', \'" + soTien + "\', \'" + maNV + "\' , \'" + ngayDongFormatted + "\', \'" + ngayKetThucFormatted + "\', \'1\');";
             command.ExecuteNonQuery();
             connection.Dispose();
             connection.Close();
@@ -172,7 +194,8 @@ namespace QUANLYNHANSU
             tbMaBHYT.Enabled = false;
             tbMaNV.Enabled = false;
             sua = true;
-
+            dtNgayDong.Focus();
+            Tabindex();
         }
 
         //Sửa dữ liệu trong database
@@ -186,6 +209,12 @@ namespace QUANLYNHANSU
                 string maNV = tbMaNV.Text.ToString();
                 string ngayDong = dtNgayDong.Text.ToString();
                 string ngayKetThuc = dtNgayKetThuc.Text.ToString();
+
+                DateTime ngayDongDate = DateTime.ParseExact(ngayDong, "dd/MM/yyyy", CultureInfo.InvariantCulture);
+                string ngayDongFormatted = ngayDongDate.ToString("MM/dd/yyyy");
+
+                DateTime ngayKetThucDate = DateTime.ParseExact(ngayKetThuc, "dd/MM/yyyy", CultureInfo.InvariantCulture);
+                string ngayKetThucFormatted = ngayKetThucDate.ToString("MM/dd/yyyy");
 
                 //Biến tạm
                 string _idBHYT = selectedRow.Cells[0].Value.ToString();
@@ -245,8 +274,8 @@ namespace QUANLYNHANSU
                 command.CommandText = "UPDATE public.\"tb.NHANVIENBAOHIEMYTE\" " +
                                         "SET \"BHYT\" = \'" + idBHYT + "\',\"SOTIEN\" = \'" + soTien + "\', " +
                                         "\"IDNV\" = \'" + maNV + "\', " +
-                                        "\"NGAYDONG\" = \'" + ngayDong + "\', " +
-                                        "\"NGAYKETTHUC\" = \'" + ngayKetThuc + "\' " +
+                                        "\"NGAYDONG\" = \'" + ngayDongFormatted + "\', " +
+                                        "\"NGAYKETTHUC\" = \'" + ngayKetThucFormatted + "\' " +
                                         "WHERE \"BHYT\" = \'" + _idBHYT + "\';";
 
                 // Thực thi truy vấn
@@ -395,16 +424,8 @@ namespace QUANLYNHANSU
                 tbMaBHYT.Text = row.Cells[0].Value.ToString();
                 tbSoTien.Text = row.Cells[1].Value.ToString();
                 tbMaNV.Text = row.Cells[2].Value.ToString();
-                if (row.Cells[3].Value is DateTime ngayDong)
-                {
-                    string _ngayDong = ngayDong.ToString("dd/MM/yyyy");
-                    dtNgayDong.Text = _ngayDong;
-                }
-                if (row.Cells[3].Value is DateTime ngayKetThuc)
-                {
-                    string _ngayKetThuc = ngayKetThuc.ToString("dd/MM/yyyy");
-                    dtNgayKetThuc.Text = _ngayKetThuc;
-                }
+                dtNgayDong.Text = row.Cells[3].Value.ToString();
+                dtNgayKetThuc.Text = row.Cells[4].Value.ToString();
             }
 
         }
@@ -603,25 +624,26 @@ namespace QUANLYNHANSU
         private bool NgayKetThuc_Condition(string ngayKetThuc)
         {
             StringBuilder sb = new StringBuilder();
+            string kq = dtNgayDong.Text.ToString();
 
             if (string.IsNullOrEmpty(ngayKetThuc))
             {
-                MessageBox.Show("Bạn chưa nhập thời hạn kết thúc!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Bạn chưa nhập ngày kết thúc!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
-            else if (!DateTime.TryParse(ngayKetThuc, out DateTime inputTime))
+            if (!DateTime.TryParseExact(ngayKetThuc, "dd/MM/yyyy", CultureInfo.InvariantCulture, DateTimeStyles.None, out DateTime parsedDate))
             {
-                MessageBox.Show("Thời hạn kết thúc bạn nhập không hợp lệ. Vui lòng nhập đúng định dạng thời gian.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Ngày không hợp lệ. Vui lòng nhập đúng định dạng ngày (dd/MM/yyyy).", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
-            else if (!DateTime.TryParse(dtNgayDong.Text.ToString(), out DateTime ngayDongValue))
+            else if (!DateTime.TryParseExact(kq, "dd/MM/yyyy", CultureInfo.InvariantCulture, DateTimeStyles.None, out DateTime ngayDongValue))
             {
                 MessageBox.Show("Ngày đóng không hợp lệ. Vui lòng kiểm tra lại.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
-            else if (inputTime <= ngayDongValue)
+            else if (parsedDate <= ngayDongValue)
             {
-                MessageBox.Show("Thời hạn kết thúc phải lớn hơn thời gian đóng.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Ngày kết thúc phải lớn hơn thời gian đóng.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
 
@@ -692,28 +714,27 @@ namespace QUANLYNHANSU
             return true;
         }
 
-        private void tbSoTien_TextChanged_1(object sender, EventArgs e)
+        // Hiển thị ngày tháng năm trong DatagridView
+        private void dgv_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
-            // không cho khoảng trông
-            TextBox textBox = (TextBox)sender;
-            textBox.Text = textBox.Text.Replace(" ", "");
+            if (dgv.Columns[3].Name == "NGAYDONG" && e.RowIndex >= 0)
+            {
+                // Định dạng ngày tháng trong cell
+                if (e.Value != null && DateTime.TryParse(e.Value.ToString(), out DateTime dateValue))
+                {
+                    e.Value = dateValue.ToString("dd/MM/yyyy");
+                    e.FormattingApplied = true;
+                }
+            }
+            if (dgv.Columns[4].Name == "NGAYKETTHUC" && e.RowIndex >= 0)
+            {
+                // Định dạng ngày tháng trong cell
+                if (e.Value != null && DateTime.TryParse(e.Value.ToString(), out DateTime dateValue))
+                {
+                    e.Value = dateValue.ToString("dd/MM/yyyy");
+                    e.FormattingApplied = true;
+                }
+            }
         }
-
-        
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     }
 }
