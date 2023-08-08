@@ -191,6 +191,9 @@
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.dtngaySinh.Properties.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.dtngaySinh.Properties.DisplayFormat.FormatString = "dd/MM/yyyy";
+            this.dtngaySinh.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
+            this.dtngaySinh.Properties.MaskSettings.Set("mask", "dd/MM/yyyy");
             this.dtngaySinh.Size = new System.Drawing.Size(129, 20);
             this.dtngaySinh.TabIndex = 21;
             // 
@@ -359,6 +362,9 @@
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.dtngayVaoLam.Properties.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.dtngayVaoLam.Properties.DisplayFormat.FormatString = "dd/MM/yyyy";
+            this.dtngayVaoLam.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
+            this.dtngayVaoLam.Properties.MaskSettings.Set("mask", "dd/MM/yyyy");
             this.dtngayVaoLam.Size = new System.Drawing.Size(101, 20);
             this.dtngayVaoLam.TabIndex = 51;
             // 
@@ -740,6 +746,7 @@
             // 
             // FormNhanVien
             // 
+            this.AcceptButton = this.btnLuu;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1059, 614);

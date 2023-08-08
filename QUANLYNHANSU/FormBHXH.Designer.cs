@@ -37,6 +37,11 @@ namespace QUANLYNHANSU
             this.bar4 = new DevExpress.XtraBars.Bar();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.dgv = new System.Windows.Forms.DataGridView();
+            this.BHXH = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.IDNV = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NGAYDONG = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.THOIHAN = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SOTIEN = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.btnKhongLuu = new System.Windows.Forms.Button();
             this.btnLuu = new System.Windows.Forms.Button();
@@ -76,11 +81,6 @@ namespace QUANLYNHANSU
             this.barDockControlBottom = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlRight = new DevExpress.XtraBars.BarDockControl();
-            this.BHXH = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.IDNV = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.NGAYDONG = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.THOIHAN = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.SOTIEN = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -137,11 +137,11 @@ namespace QUANLYNHANSU
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.dgv);
-            this.groupBox2.Location = new System.Drawing.Point(12, 333);
+            this.groupBox2.Location = new System.Drawing.Point(10, 271);
             this.groupBox2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.groupBox2.Size = new System.Drawing.Size(1338, 509);
+            this.groupBox2.Size = new System.Drawing.Size(1147, 414);
             this.groupBox2.TabIndex = 13;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Thông tin BHYT";
@@ -162,15 +162,61 @@ namespace QUANLYNHANSU
             this.THOIHAN,
             this.SOTIEN});
             this.dgv.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
-            this.dgv.Location = new System.Drawing.Point(6, 20);
+            this.dgv.Location = new System.Drawing.Point(5, 16);
             this.dgv.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dgv.Name = "dgv";
             this.dgv.RowHeadersWidth = 51;
             this.dgv.RowTemplate.Height = 24;
             this.dgv.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgv.Size = new System.Drawing.Size(1326, 479);
+            this.dgv.Size = new System.Drawing.Size(1137, 389);
             this.dgv.TabIndex = 1;
             this.dgv.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_CellContentClick);
+            this.dgv.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgv_CellFormatting);
+            // 
+            // BHXH
+            // 
+            this.BHXH.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.BHXH.DataPropertyName = "BHXH";
+            this.BHXH.HeaderText = "IDBHXH";
+            this.BHXH.MinimumWidth = 6;
+            this.BHXH.Name = "BHXH";
+            this.BHXH.ReadOnly = true;
+            // 
+            // IDNV
+            // 
+            this.IDNV.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.IDNV.DataPropertyName = "IDNV";
+            this.IDNV.HeaderText = "IDNV";
+            this.IDNV.MinimumWidth = 6;
+            this.IDNV.Name = "IDNV";
+            this.IDNV.ReadOnly = true;
+            // 
+            // NGAYDONG
+            // 
+            this.NGAYDONG.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.NGAYDONG.DataPropertyName = "NGAYDONG";
+            this.NGAYDONG.HeaderText = "NGAYDONG";
+            this.NGAYDONG.MinimumWidth = 6;
+            this.NGAYDONG.Name = "NGAYDONG";
+            this.NGAYDONG.ReadOnly = true;
+            // 
+            // THOIHAN
+            // 
+            this.THOIHAN.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.THOIHAN.DataPropertyName = "THOIHAN";
+            this.THOIHAN.HeaderText = "THOIHAN";
+            this.THOIHAN.MinimumWidth = 6;
+            this.THOIHAN.Name = "THOIHAN";
+            this.THOIHAN.ReadOnly = true;
+            // 
+            // SOTIEN
+            // 
+            this.SOTIEN.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.SOTIEN.DataPropertyName = "SOTIEN";
+            this.SOTIEN.HeaderText = "SOTIEN";
+            this.SOTIEN.MinimumWidth = 6;
+            this.SOTIEN.Name = "SOTIEN";
+            this.SOTIEN.ReadOnly = true;
             // 
             // groupBox1
             // 
@@ -187,20 +233,19 @@ namespace QUANLYNHANSU
             this.groupBox1.Controls.Add(this.lbMaNV);
             this.groupBox1.Controls.Add(this.lbThoiHan);
             this.groupBox1.Controls.Add(this.lbMaBHXH);
-            this.groupBox1.Location = new System.Drawing.Point(12, 36);
+            this.groupBox1.Location = new System.Drawing.Point(10, 29);
             this.groupBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.groupBox1.Size = new System.Drawing.Size(1332, 277);
+            this.groupBox1.Size = new System.Drawing.Size(1142, 225);
             this.groupBox1.TabIndex = 12;
             this.groupBox1.TabStop = false;
             // 
             // btnKhongLuu
             // 
-            this.btnKhongLuu.Location = new System.Drawing.Point(891, 210);
-            this.btnKhongLuu.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.btnKhongLuu.Location = new System.Drawing.Point(764, 171);
             this.btnKhongLuu.Name = "btnKhongLuu";
-            this.btnKhongLuu.Size = new System.Drawing.Size(150, 39);
+            this.btnKhongLuu.Size = new System.Drawing.Size(129, 32);
             this.btnKhongLuu.TabIndex = 37;
             this.btnKhongLuu.Text = "Không lưu";
             this.btnKhongLuu.UseVisualStyleBackColor = true;
@@ -208,10 +253,9 @@ namespace QUANLYNHANSU
             // 
             // btnLuu
             // 
-            this.btnLuu.Location = new System.Drawing.Point(714, 210);
-            this.btnLuu.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.btnLuu.Location = new System.Drawing.Point(612, 171);
             this.btnLuu.Name = "btnLuu";
-            this.btnLuu.Size = new System.Drawing.Size(150, 39);
+            this.btnLuu.Size = new System.Drawing.Size(129, 32);
             this.btnLuu.TabIndex = 36;
             this.btnLuu.Text = "Lưu";
             this.btnLuu.UseVisualStyleBackColor = true;
@@ -219,10 +263,9 @@ namespace QUANLYNHANSU
             // 
             // btnTim
             // 
-            this.btnTim.Location = new System.Drawing.Point(1069, 210);
-            this.btnTim.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.btnTim.Location = new System.Drawing.Point(916, 171);
             this.btnTim.Name = "btnTim";
-            this.btnTim.Size = new System.Drawing.Size(150, 39);
+            this.btnTim.Size = new System.Drawing.Size(129, 32);
             this.btnTim.TabIndex = 35;
             this.btnTim.Text = "Tìm Kiếm";
             this.btnTim.UseVisualStyleBackColor = true;
@@ -231,7 +274,7 @@ namespace QUANLYNHANSU
             // dtThoiHan
             // 
             this.dtThoiHan.EditValue = null;
-            this.dtThoiHan.Location = new System.Drawing.Point(785, 126);
+            this.dtThoiHan.Location = new System.Drawing.Point(673, 102);
             this.dtThoiHan.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dtThoiHan.Name = "dtThoiHan";
             this.dtThoiHan.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 12F);
@@ -244,18 +287,17 @@ namespace QUANLYNHANSU
             this.dtThoiHan.Properties.CalendarTimeProperties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
             this.dtThoiHan.Properties.CalendarTimeProperties.EditFormat.FormatString = "MM/dd/YYYY";
             this.dtThoiHan.Properties.CalendarTimeProperties.EditFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
-            this.dtThoiHan.Properties.DisplayFormat.FormatString = "MM/dd/YYYY";
+            this.dtThoiHan.Properties.DisplayFormat.FormatString = "dd/MM/yyyy";
             this.dtThoiHan.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
-            this.dtThoiHan.Properties.EditFormat.FormatString = "MM/dd/YYYY";
-            this.dtThoiHan.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
+            this.dtThoiHan.Properties.MaskSettings.Set("mask", "dd/MM/yyyy");
             this.dtThoiHan.Properties.UseMaskAsDisplayFormat = true;
-            this.dtThoiHan.Size = new System.Drawing.Size(285, 30);
+            this.dtThoiHan.Size = new System.Drawing.Size(244, 26);
             this.dtThoiHan.TabIndex = 34;
             // 
             // dtNgayDong
             // 
             this.dtNgayDong.EditValue = null;
-            this.dtNgayDong.Location = new System.Drawing.Point(290, 130);
+            this.dtNgayDong.Location = new System.Drawing.Point(247, 102);
             this.dtNgayDong.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dtNgayDong.Name = "dtNgayDong";
             this.dtNgayDong.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 12F);
@@ -268,12 +310,11 @@ namespace QUANLYNHANSU
             this.dtNgayDong.Properties.CalendarTimeProperties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
             this.dtNgayDong.Properties.CalendarTimeProperties.EditFormat.FormatString = "MM/dd/YYYY";
             this.dtNgayDong.Properties.CalendarTimeProperties.EditFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
-            this.dtNgayDong.Properties.DisplayFormat.FormatString = "MM/dd/YYYY";
+            this.dtNgayDong.Properties.DisplayFormat.FormatString = "dd/MM/yyyy";
             this.dtNgayDong.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
-            this.dtNgayDong.Properties.EditFormat.FormatString = "MM/dd/YYYY";
-            this.dtNgayDong.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
+            this.dtNgayDong.Properties.MaskSettings.Set("mask", "dd/MM/yyyy");
             this.dtNgayDong.Properties.UseMaskAsDisplayFormat = true;
-            this.dtNgayDong.Size = new System.Drawing.Size(283, 30);
+            this.dtNgayDong.Size = new System.Drawing.Size(243, 26);
             this.dtNgayDong.TabIndex = 33;
             // 
             // tbMaNV
@@ -281,20 +322,20 @@ namespace QUANLYNHANSU
             this.tbMaNV.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
             this.tbMaNV.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
             this.tbMaNV.Font = new System.Drawing.Font("Tahoma", 12F);
-            this.tbMaNV.Location = new System.Drawing.Point(785, 38);
+            this.tbMaNV.Location = new System.Drawing.Point(673, 30);
             this.tbMaNV.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tbMaNV.Name = "tbMaNV";
-            this.tbMaNV.Size = new System.Drawing.Size(285, 32);
+            this.tbMaNV.Size = new System.Drawing.Size(245, 27);
             this.tbMaNV.TabIndex = 32;
             this.tbMaNV.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbMaNV_KeyPress_1);
             // 
             // tbSoTien
             // 
             this.tbSoTien.Font = new System.Drawing.Font("Tahoma", 12F);
-            this.tbSoTien.Location = new System.Drawing.Point(289, 218);
+            this.tbSoTien.Location = new System.Drawing.Point(247, 173);
             this.tbSoTien.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tbSoTien.Name = "tbSoTien";
-            this.tbSoTien.Size = new System.Drawing.Size(285, 32);
+            this.tbSoTien.Size = new System.Drawing.Size(245, 27);
             this.tbSoTien.TabIndex = 28;
             this.tbSoTien.KeyDown += new System.Windows.Forms.KeyEventHandler(this.tbSoTien_KeyDown);
             this.tbSoTien.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbSoTien_KeyPress);
@@ -302,10 +343,10 @@ namespace QUANLYNHANSU
             // tbMaBHXH
             // 
             this.tbMaBHXH.Font = new System.Drawing.Font("Tahoma", 12F);
-            this.tbMaBHXH.Location = new System.Drawing.Point(289, 33);
+            this.tbMaBHXH.Location = new System.Drawing.Point(245, 30);
             this.tbMaBHXH.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tbMaBHXH.Name = "tbMaBHXH";
-            this.tbMaBHXH.Size = new System.Drawing.Size(285, 32);
+            this.tbMaBHXH.Size = new System.Drawing.Size(245, 27);
             this.tbMaBHXH.TabIndex = 26;
             this.tbMaBHXH.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbMaBHXH_KeyPress_1);
             // 
@@ -313,9 +354,9 @@ namespace QUANLYNHANSU
             // 
             this.lbSoTien.AutoSize = true;
             this.lbSoTien.Font = new System.Drawing.Font("Tahoma", 12F);
-            this.lbSoTien.Location = new System.Drawing.Point(211, 226);
+            this.lbSoTien.Location = new System.Drawing.Point(150, 176);
             this.lbSoTien.Name = "lbSoTien";
-            this.lbSoTien.Size = new System.Drawing.Size(72, 24);
+            this.lbSoTien.Size = new System.Drawing.Size(58, 19);
             this.lbSoTien.TabIndex = 25;
             this.lbSoTien.Text = "Số tiền";
             // 
@@ -323,9 +364,9 @@ namespace QUANLYNHANSU
             // 
             this.lbNgayĐong.AutoSize = true;
             this.lbNgayĐong.Font = new System.Drawing.Font("Tahoma", 12F);
-            this.lbNgayĐong.Location = new System.Drawing.Point(175, 132);
+            this.lbNgayĐong.Location = new System.Drawing.Point(150, 105);
             this.lbNgayĐong.Name = "lbNgayĐong";
-            this.lbNgayĐong.Size = new System.Drawing.Size(108, 24);
+            this.lbNgayĐong.Size = new System.Drawing.Size(88, 19);
             this.lbNgayĐong.TabIndex = 24;
             this.lbNgayĐong.Text = "Ngày Đóng";
             // 
@@ -333,9 +374,9 @@ namespace QUANLYNHANSU
             // 
             this.lbMaNV.AutoSize = true;
             this.lbMaNV.Font = new System.Drawing.Font("Tahoma", 12F);
-            this.lbMaNV.Location = new System.Drawing.Point(712, 41);
+            this.lbMaNV.Location = new System.Drawing.Point(595, 33);
             this.lbMaNV.Name = "lbMaNV";
-            this.lbMaNV.Size = new System.Drawing.Size(67, 24);
+            this.lbMaNV.Size = new System.Drawing.Size(55, 19);
             this.lbMaNV.TabIndex = 23;
             this.lbMaNV.Text = "Mã NV";
             // 
@@ -343,9 +384,9 @@ namespace QUANLYNHANSU
             // 
             this.lbThoiHan.AutoSize = true;
             this.lbThoiHan.Font = new System.Drawing.Font("Tahoma", 12F);
-            this.lbThoiHan.Location = new System.Drawing.Point(694, 129);
+            this.lbThoiHan.Location = new System.Drawing.Point(595, 105);
             this.lbThoiHan.Name = "lbThoiHan";
-            this.lbThoiHan.Size = new System.Drawing.Size(91, 24);
+            this.lbThoiHan.Size = new System.Drawing.Size(74, 19);
             this.lbThoiHan.TabIndex = 22;
             this.lbThoiHan.Text = "Thời Hạn";
             // 
@@ -353,9 +394,9 @@ namespace QUANLYNHANSU
             // 
             this.lbMaBHXH.AutoSize = true;
             this.lbMaBHXH.Font = new System.Drawing.Font("Tahoma", 12F);
-            this.lbMaBHXH.Location = new System.Drawing.Point(191, 41);
+            this.lbMaBHXH.Location = new System.Drawing.Point(150, 33);
             this.lbMaBHXH.Name = "lbMaBHXH";
-            this.lbMaBHXH.Size = new System.Drawing.Size(94, 24);
+            this.lbMaBHXH.Size = new System.Drawing.Size(74, 19);
             this.lbMaBHXH.TabIndex = 21;
             this.lbMaBHXH.Text = "Mã BHXH";
             // 
@@ -363,10 +404,10 @@ namespace QUANLYNHANSU
             // 
             this.barDockControlTop.CausesValidation = false;
             this.barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top;
-            this.barDockControlTop.Location = new System.Drawing.Point(0, 32);
+            this.barDockControlTop.Location = new System.Drawing.Point(0, 26);
             this.barDockControlTop.Manager = null;
             this.barDockControlTop.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.barDockControlTop.Size = new System.Drawing.Size(1367, 0);
+            this.barDockControlTop.Size = new System.Drawing.Size(1172, 0);
             // 
             // bar8
             // 
@@ -600,85 +641,41 @@ namespace QUANLYNHANSU
             this.barDockControl1.Location = new System.Drawing.Point(0, 0);
             this.barDockControl1.Manager = this.barManager1;
             this.barDockControl1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.barDockControl1.Size = new System.Drawing.Size(1367, 32);
+            this.barDockControl1.Size = new System.Drawing.Size(1172, 26);
             // 
             // barDockControlBottom
             // 
             this.barDockControlBottom.CausesValidation = false;
             this.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.barDockControlBottom.Location = new System.Drawing.Point(0, 843);
+            this.barDockControlBottom.Location = new System.Drawing.Point(0, 594);
             this.barDockControlBottom.Manager = this.barManager1;
             this.barDockControlBottom.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.barDockControlBottom.Size = new System.Drawing.Size(1367, 20);
+            this.barDockControlBottom.Size = new System.Drawing.Size(1172, 20);
             // 
             // barDockControlLeft
             // 
             this.barDockControlLeft.CausesValidation = false;
             this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
-            this.barDockControlLeft.Location = new System.Drawing.Point(0, 32);
+            this.barDockControlLeft.Location = new System.Drawing.Point(0, 26);
             this.barDockControlLeft.Manager = this.barManager1;
             this.barDockControlLeft.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.barDockControlLeft.Size = new System.Drawing.Size(0, 811);
+            this.barDockControlLeft.Size = new System.Drawing.Size(0, 568);
             // 
             // barDockControlRight
             // 
             this.barDockControlRight.CausesValidation = false;
             this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
-            this.barDockControlRight.Location = new System.Drawing.Point(1367, 32);
+            this.barDockControlRight.Location = new System.Drawing.Point(1172, 26);
             this.barDockControlRight.Manager = this.barManager1;
             this.barDockControlRight.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.barDockControlRight.Size = new System.Drawing.Size(0, 811);
-            // 
-            // BHXH
-            // 
-            this.BHXH.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.BHXH.DataPropertyName = "BHXH";
-            this.BHXH.HeaderText = "IDBHXH";
-            this.BHXH.MinimumWidth = 6;
-            this.BHXH.Name = "BHXH";
-            this.BHXH.ReadOnly = true;
-            // 
-            // IDNV
-            // 
-            this.IDNV.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.IDNV.DataPropertyName = "IDNV";
-            this.IDNV.HeaderText = "IDNV";
-            this.IDNV.MinimumWidth = 6;
-            this.IDNV.Name = "IDNV";
-            this.IDNV.ReadOnly = true;
-            // 
-            // NGAYDONG
-            // 
-            this.NGAYDONG.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.NGAYDONG.DataPropertyName = "NGAYDONG";
-            this.NGAYDONG.HeaderText = "NGAYDONG";
-            this.NGAYDONG.MinimumWidth = 6;
-            this.NGAYDONG.Name = "NGAYDONG";
-            this.NGAYDONG.ReadOnly = true;
-            // 
-            // THOIHAN
-            // 
-            this.THOIHAN.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.THOIHAN.DataPropertyName = "THOIHAN";
-            this.THOIHAN.HeaderText = "THOIHAN";
-            this.THOIHAN.MinimumWidth = 6;
-            this.THOIHAN.Name = "THOIHAN";
-            this.THOIHAN.ReadOnly = true;
-            // 
-            // SOTIEN
-            // 
-            this.SOTIEN.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.SOTIEN.DataPropertyName = "SOTIEN";
-            this.SOTIEN.HeaderText = "SOTIEN";
-            this.SOTIEN.MinimumWidth = 6;
-            this.SOTIEN.Name = "SOTIEN";
-            this.SOTIEN.ReadOnly = true;
+            this.barDockControlRight.Size = new System.Drawing.Size(0, 568);
             // 
             // FormBHXH
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
+            this.AcceptButton = this.btnLuu;
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1367, 863);
+            this.ClientSize = new System.Drawing.Size(1172, 614);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.barDockControlTop);
@@ -686,6 +683,7 @@ namespace QUANLYNHANSU
             this.Controls.Add(this.barDockControlRight);
             this.Controls.Add(this.barDockControlBottom);
             this.Controls.Add(this.barDockControl1);
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "FormBHXH";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FormBHXH";

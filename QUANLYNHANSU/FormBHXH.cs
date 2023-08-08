@@ -9,6 +9,9 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Npgsql;
+using System.Globalization;
+using DevExpress.Xpo.DB;
+
 namespace QUANLYNHANSU
 {
     public partial class FormBHXH : DevExpress.XtraEditors.XtraForm
@@ -46,15 +49,15 @@ namespace QUANLYNHANSU
             tbSoTien.Enabled = !kt;
             dtNgayDong.Enabled = !kt;
             dtThoiHan.Enabled = !kt;
-
+            btnTim.Enabled = false;
+        }
+        void clear() { 
             //Làm sạch các text box
             tbMaBHXH.Clear();
             tbMaNV.Clear();
             tbSoTien.Clear();
             dtThoiHan.Clear();
             dtNgayDong.Clear();
-
-            btnTim.Enabled = false;
         }
 
         //Load dữ liệu từ database
@@ -152,6 +155,7 @@ namespace QUANLYNHANSU
             connection.Dispose();
             connection.Close();
             loadData();
+            clear();
 
         }
 
@@ -203,7 +207,7 @@ namespace QUANLYNHANSU
                 }
                 if (_ngayDong != ngayDong)
                 {
-                    
+
                     if (!NgayDong_Condition(ngayDong))
                     {
                         return;
@@ -213,7 +217,7 @@ namespace QUANLYNHANSU
                 {
                     if (!ThoiHan_Condition(thoiHan))
                     {
-                     return;
+                        return;
                     }
                 }
                 if (_soTien != soTien)
@@ -237,15 +241,14 @@ namespace QUANLYNHANSU
                                         "SET \"BHXH\" = \'" + idBHYT + "\',\"SOTIEN\" = \'" + soTien + "\', " +
                                         "\"IDNV\" = \'" + maNV + "\', " +
                                         "\"NGAYDONG\" = \'" + ngayDong + "\', " +
-                                        "\"NGAYKETTHUC\" = \'" + thoiHan + "\' " +
+                                        "\"THOIHAN\" = \'" + thoiHan + "\' " +
                                         "WHERE \"BHXH\" = \'" + _idBHYT + "\';";
 
                 // Thực thi truy vấn
                 command.ExecuteNonQuery();
                 // Sau khi sửa thông tin xong, cập nhật lại DataGridView
                 loadData();
-
-
+                clear();
             }
             else
             {
@@ -265,28 +268,33 @@ namespace QUANLYNHANSU
         //Xóa dữ liệu (vô hiệu hóa) 
         private void Xoa()
         {
-            if (dgv.SelectedRows.Count > 0)
+            DialogResult result = MessageBox.Show("Bạn có chắc chắn muốn xoá dữ liệu?", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+            if (result == DialogResult.Yes)
             {
-                DataGridViewRow selectedRow = dgv.SelectedRows[0];
-                string idBHXH = selectedRow.Cells[0].Value.ToString();
-                // Kết nối tới cơ sở dữ liệu
-                NpgsqlConnection connection = new NpgsqlConnection("Server=localhost;Port=5432;Database=" + Database.name + ";User ID=postgres;Password=" + Database.pass + ";");
-                connection.Open();
-                NpgsqlCommand command = new NpgsqlCommand();
-                command.Connection = connection;
-                command.CommandType = CommandType.Text;
+                if (dgv.SelectedRows.Count > 0)
+                {
+                    DataGridViewRow selectedRow = dgv.SelectedRows[0];
+                    string idBHXH = selectedRow.Cells[0].Value.ToString();
+                    // Kết nối tới cơ sở dữ liệu
+                    NpgsqlConnection connection = new NpgsqlConnection("Server=localhost;Port=5432;Database=" + Database.name + ";User ID=postgres;Password=" + Database.pass + ";");
+                    connection.Open();
+                    NpgsqlCommand command = new NpgsqlCommand();
+                    command.Connection = connection;
+                    command.CommandType = CommandType.Text;
 
-                // Sử dụng truy vấn UPDATE để cập nhật thông tin của nhân viên
-                command.CommandText = "UPDATE public.\"tb.NHANVIENBAOHIEMXAHOI\" SET  \"TRANGTHAI\"=\'0\' WHERE \"BHXH\"=\'" + idBHXH + "\';";
+                    // Sử dụng truy vấn UPDATE để cập nhật thông tin của nhân viên
+                    command.CommandText = "UPDATE public.\"tb.NHANVIENBAOHIEMXAHOI\" SET  \"TRANGTHAI\"=\'0\' WHERE \"BHXH\"=\'" + idBHXH + "\';";
 
-                // Thực thi truy vấn
-                command.ExecuteNonQuery();
-                // Sau khi sửa thông tin xong, cập nhật lại DataGridView
-                loadData();
-            }
-            else
-            {
-                MessageBox.Show("Vui lòng chọn một nhân viên để xóa thông tin.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    // Thực thi truy vấn
+                    command.ExecuteNonQuery();
+                    // Sau khi sửa thông tin xong, cập nhật lại DataGridView
+                    loadData();
+                    clear();
+                }
+                else
+                {
+                    MessageBox.Show("Vui lòng chọn một nhân viên để xóa thông tin.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
             }
         }
 
@@ -301,7 +309,14 @@ namespace QUANLYNHANSU
             command.Connection = connection;
             command.CommandType = CommandType.Text;
 
-            command.CommandText = "SELECT  \"BHXH\",\"SOTIEN\",\"IDNV\",\"NGAYDONG\",\"THOIHAN\" FROM public.\"tb.NHANVIENBAOHIEMXAHOI\" WHERE \"BHXH\" LIKE '%" + tbMaBHXH.Text + "%' AND  \"IDNV\" LIKE '%" + tbMaNV.Text + "%'AND\"TRANGTHAI\"=\'1\';";
+            command.CommandText = "SELECT  \"BHXH\",\"SOTIEN\",\"IDNV\",\"NGAYDONG\",\"THOIHAN\" " +
+                "FROM public.\"tb.NHANVIENBAOHIEMXAHOI\"" +
+                " WHERE \"BHXH\" LIKE @BHXH " +
+                "AND  \"IDNV\" ILIKE @MaNV" +
+                " AND \"TRANGTHAI\" = '1';";
+            command.Parameters.AddWithValue("@MaNV", "%" + tbMaNV.Text + "%");
+            command.Parameters.AddWithValue("@BHXH", "%" + tbMaBHXH.Text + "%");
+
             command.ExecuteNonQuery();
             NpgsqlDataReader dataReader = command.ExecuteReader();
             if (dataReader.HasRows)
@@ -326,34 +341,37 @@ namespace QUANLYNHANSU
             dtNgayDong.Enabled = false;
             dtThoiHan.Enabled = false;
             btnTim.Enabled = true;
+            
         }
 
 
         //Nút lưu dữ liệu vào database
         private void btnLuu_Click(object sender, EventArgs e)
         {
-            if (them == true)
+            DialogResult result = MessageBox.Show("Bạn muốn lưu thay đổi?", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+            if (result == DialogResult.Yes)
             {
-                Them();
-            }
+                if (them == true)
+                {
+                    Them();
+                }
 
-            if (sua == true)
-            {
-                Sua();
-            }       
+                if (sua == true)
+                {
+                    Sua();
+                }
+            }
         }
 
         //Nút hủy lưu dữ liệu
         private void btnKhongLuu_Click(object sender, EventArgs e)
         {
-            showHide(true);
-            them = true;
-           /* tbMaBHXH.Clear();
-            tbMaNV.Clear();
-            tbSoTien.Clear();
-            dtThoiHan.Clear();
-            dtNgayDong.Clear();*/
-
+            DialogResult result = MessageBox.Show("Bạn chắc chắn xoá những thông tin thay đổi?", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+            if (result == DialogResult.Yes)
+            {
+                showHide(true);
+                clear();
+            }       
         }
 
         //Thoát các chức năng
@@ -363,6 +381,7 @@ namespace QUANLYNHANSU
             them = false;
             sua = false;
             loadData();
+            clear();
 
         }
 
@@ -370,16 +389,23 @@ namespace QUANLYNHANSU
         // Chọn dữ liệu để show lên text box
         private void dgv_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.RowIndex >= 0 && sua == true)
+            if (e.RowIndex >= 0 && sua == true )
             {
                 DataGridViewRow row = dgv.Rows[e.RowIndex];
                 tbMaBHXH.Text = row.Cells[0].Value.ToString();
                 tbSoTien.Text = row.Cells[1].Value.ToString();
                 tbMaNV.Text = row.Cells[2].Value.ToString();
-                dtNgayDong.Text = row.Cells[3].Value.ToString();
-                dtThoiHan.Text = row.Cells[4].Value.ToString();
-            }
-
+                if (row.Cells[3].Value is DateTime ngayDong)
+                {
+                    string _ngayDong = ngayDong.ToString("dd/MM/yyyy");
+                    dtNgayDong.Text = _ngayDong;
+                }
+                if (row.Cells[4].Value is DateTime thoiHan)
+                {
+                    string _thoiHan = thoiHan.ToString("dd/MM/yyyy");
+                    dtThoiHan.Text = _thoiHan;
+                }
+            }           
         }
 
         //Ràng buộc điều kiện 
@@ -539,32 +565,28 @@ namespace QUANLYNHANSU
 
         //NGÀY ĐÓNG <= NGÀY HIỆN TẠI
         //Ràng buộc ngày đóng tiền
-        private bool NgayDong_Condition(string ngayDong)
+        private bool NgayDong_Condition(string inputDate)
         {
-            StringBuilder sb = new StringBuilder();
-
-            if (string.IsNullOrEmpty(ngayDong))
+            // Kiểm tra trống
+            if (string.IsNullOrEmpty(inputDate))
             {
-                sb.AppendLine("Bạn chưa nhập thời gian đóng!");
-                return false;
-            }
-            else if (!DateTime.TryParse(ngayDong, out DateTime inputTime))
-            {
-                sb.AppendLine("Thời gian bạn nhập không hợp lệ. Vui lòng nhập đúng định dạng thời gian.");
-                return false;
-            }
-            else if (inputTime >= DateTime.Now)
-            {
-                sb.AppendLine("Thời gian đóng phải nhỏ hơn thời gian hiện tại.");
+                MessageBox.Show("Ngày đóng không được để trống!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
 
-            if (sb.Length > 0)
+            // Kiểm tra định dạng ngày
+            if (!DateTime.TryParseExact(inputDate, "dd/MM/yyyy", CultureInfo.InvariantCulture, DateTimeStyles.None, out DateTime parsedDate))
             {
-                MessageBox.Show(sb.ToString(), "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Ngày không hợp lệ. Vui lòng nhập đúng định dạng ngày (dd/MM/yyyy).", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
 
+            // Kiểm tra nếu ngày nhập vào lớn hơn hoặc bằng thời gian hiện tại
+            if (parsedDate >= DateTime.Today)
+            {
+                MessageBox.Show("Ngày phải nhỏ hơn thời gian hiện tại.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
             return true;
         }
 
@@ -576,12 +598,12 @@ namespace QUANLYNHANSU
 
             if (string.IsNullOrEmpty(ngayKetThuc))
             {
-                MessageBox.Show("Bạn chưa nhập thời gian kết thúc!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Bạn chưa nhập thời hạn kết thúc!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
             else if (!DateTime.TryParse(ngayKetThuc, out DateTime inputTime))
             {
-                MessageBox.Show("Thời gian bạn nhập không hợp lệ. Vui lòng nhập đúng định dạng thời gian.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Thời hạn kết thúc bạn nhập không hợp lệ. Vui lòng nhập đúng định dạng thời gian.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
             else if (!DateTime.TryParse(dtNgayDong.Text.ToString(), out DateTime ngayDongValue))
@@ -660,6 +682,30 @@ namespace QUANLYNHANSU
             }
             return true;
         }
+
+        private void dgv_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            if (dgv.Columns[3].Name == "NGAYDONG" && e.RowIndex >= 0)
+            {
+                // Định dạng ngày tháng trong cell
+                if (e.Value != null && DateTime.TryParse(e.Value.ToString(), out DateTime dateValue))
+                {
+                    e.Value = dateValue.ToString("dd/MM/yyyy");
+                    e.FormattingApplied = true;
+                }
+            }
+            if (dgv.Columns[4].Name == "THOIHAN" && e.RowIndex >= 0)
+            {
+                // Định dạng ngày tháng trong cell
+                if (e.Value != null && DateTime.TryParse(e.Value.ToString(), out DateTime dateValue))
+                {
+                    e.Value = dateValue.ToString("dd/MM/yyyy");
+                    e.FormattingApplied = true;
+                }
+            }
+        }
+
+       
 
         private void tbSoTien_TextChanged_1(object sender, EventArgs e)
         {
