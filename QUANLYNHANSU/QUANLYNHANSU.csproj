@@ -160,9 +160,6 @@
     <Compile Include="FormNhanVien.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormNhanVien.designer.cs">
-      <DependentUpon>FormNhanVien.cs</DependentUpon>
-    </Compile>
     <Compile Include="Formphucap.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -222,9 +219,6 @@
     <EmbeddedResource Include="FormMain.resx">
       <DependentUpon>FormMain.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormNhanVien.resx">
-      <DependentUpon>FormNhanVien.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Formphucap.resx">
       <DependentUpon>Formphucap.cs</DependentUpon>
     </EmbeddedResource>
@@ -258,6 +252,10 @@
       <DependentUpon>FormBHXH.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="App.config" />
+    <Compile Include="FormNhanVien.Designer.cs1">
+      <SubType>Form</SubType>
+    </Compile>
+    <EmbeddedResource Include="formNhanVien.resx1" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

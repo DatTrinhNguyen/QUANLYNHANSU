@@ -11,6 +11,7 @@ using System.Windows.Forms;
 using Npgsql;
 using System.Globalization;
 using DevExpress.Xpo.DB;
+using DevExpress.Utils.DPI;
 
 namespace QUANLYNHANSU
 {
@@ -117,8 +118,14 @@ namespace QUANLYNHANSU
             string idBHYT = tbMaBHXH.Text.ToString();
             string soTien = tbSoTien.Text.ToString();
             string maNV = tbMaNV.Text.ToString();
-            string ngayDong = dtNgayDong.Text.ToString();
-            string thoiHan = dtThoiHan.Text.ToString();
+            string ngayDong = dtNgayDong.Text;
+            string thoiHan = dtThoiHan.Text;
+
+            DateTime ngayDongDate = DateTime.ParseExact(ngayDong, "dd/MM/yyyy", CultureInfo.InvariantCulture);
+            string ngayDongFormatted = ngayDongDate.ToString("MM/dd/yyyy");
+
+            DateTime thoiHanDate = DateTime.ParseExact(thoiHan, "dd/MM/yyyy", CultureInfo.InvariantCulture);
+            string thoiHanFormatted = thoiHanDate.ToString("MM/dd/yyyy");
 
             if (!MaBHXH_Condition(idBHYT))
             {
@@ -143,6 +150,8 @@ namespace QUANLYNHANSU
             }
 
 
+
+
             NpgsqlConnection connection = new NpgsqlConnection("Server=localhost;Port=5432;Database=" + Database.name + ";User ID=postgres;Password=" + Database.pass + ";");
             connection.Open();
             NpgsqlCommand command = new NpgsqlCommand();
@@ -150,17 +159,16 @@ namespace QUANLYNHANSU
             command.CommandType = CommandType.Text;
 
             command.CommandText = "INSERT INTO public.\"tb.NHANVIENBAOHIEMXAHOI\"(\"BHXH\",\"SOTIEN\",\"IDNV\",\"NGAYDONG\",\"THOIHAN\",\"TRANGTHAI\")" +
-            "VALUES(\'" + idBHYT + "\', \'" + soTien + "\', \'" + maNV + "\' , \'" + ngayDong + "\', \'" + thoiHan + "\', \'1\');";
+            "VALUES(\'" + idBHYT + "\', \'" + soTien + "\', \'" + maNV + "\' , \'" + ngayDongFormatted + "\', \'" + thoiHanFormatted + "\', \'1\');";
             command.ExecuteNonQuery();
             connection.Dispose();
             connection.Close();
             loadData();
             clear();
-
         }
 
-        //Nút sửa dữ liệu vào database
-        private void btnSua_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+            //Nút sửa dữ liệu vào database
+            private void btnSua_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             showHide(false);
             tbMaBHXH.Enabled = false;
@@ -178,8 +186,14 @@ namespace QUANLYNHANSU
                 string idBHYT = tbMaBHXH.Text.ToString();
                 string soTien = tbSoTien.Text.ToString();
                 string maNV = tbMaNV.Text.ToString();
-                string ngayDong = dtNgayDong.Text.ToString();
-                string thoiHan = dtThoiHan.Text.ToString();
+                string ngayDong = dtNgayDong.Text;
+                string thoiHan = dtThoiHan.Text;
+
+                DateTime ngayDongDate = DateTime.ParseExact(ngayDong, "dd/MM/yyyy", CultureInfo.InvariantCulture);
+                string ngayDongFormatted = ngayDongDate.ToString("MM/dd/yyyy");
+
+                DateTime thoiHanDate = DateTime.ParseExact(thoiHan, "dd/MM/yyyy", CultureInfo.InvariantCulture);
+                string thoiHanFormatted = thoiHanDate.ToString("MM/dd/yyyy");
 
                 //Biến tạm
                 string _idBHYT = selectedRow.Cells[0].Value.ToString();
@@ -240,8 +254,8 @@ namespace QUANLYNHANSU
                 command.CommandText = "UPDATE public.\"tb.NHANVIENBAOHIEMXAHOI\" " +
                                         "SET \"BHXH\" = \'" + idBHYT + "\',\"SOTIEN\" = \'" + soTien + "\', " +
                                         "\"IDNV\" = \'" + maNV + "\', " +
-                                        "\"NGAYDONG\" = \'" + ngayDong + "\', " +
-                                        "\"THOIHAN\" = \'" + thoiHan + "\' " +
+                                        "\"NGAYDONG\" = \'" + ngayDongFormatted + "\', " +
+                                        "\"THOIHAN\" = \'" + thoiHanFormatted + "\' " +
                                         "WHERE \"BHXH\" = \'" + _idBHYT + "\';";
 
                 // Thực thi truy vấn
@@ -395,16 +409,9 @@ namespace QUANLYNHANSU
                 tbMaBHXH.Text = row.Cells[0].Value.ToString();
                 tbSoTien.Text = row.Cells[1].Value.ToString();
                 tbMaNV.Text = row.Cells[2].Value.ToString();
-                if (row.Cells[3].Value is DateTime ngayDong)
-                {
-                    string _ngayDong = ngayDong.ToString("dd/MM/yyyy");
-                    dtNgayDong.Text = _ngayDong;
-                }
-                if (row.Cells[4].Value is DateTime thoiHan)
-                {
-                    string _thoiHan = thoiHan.ToString("dd/MM/yyyy");
-                    dtThoiHan.Text = _thoiHan;
-                }
+                dtNgayDong.Text = row.Cells[3].Value.ToString();
+                dtThoiHan.Text = row.Cells[4].Value.ToString();
+
             }           
         }
 
@@ -595,23 +602,24 @@ namespace QUANLYNHANSU
         private bool ThoiHan_Condition(string ngayKetThuc)
         {
             StringBuilder sb = new StringBuilder();
+            string kq = dtNgayDong.Text.ToString();
 
             if (string.IsNullOrEmpty(ngayKetThuc))
             {
                 MessageBox.Show("Bạn chưa nhập thời hạn kết thúc!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
-            else if (!DateTime.TryParse(ngayKetThuc, out DateTime inputTime))
+            if (!DateTime.TryParseExact(ngayKetThuc, "dd/MM/yyyy", CultureInfo.InvariantCulture, DateTimeStyles.None, out DateTime parsedDate))
             {
-                MessageBox.Show("Thời hạn kết thúc bạn nhập không hợp lệ. Vui lòng nhập đúng định dạng thời gian.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Ngày không hợp lệ. Vui lòng nhập đúng định dạng ngày (dd/MM/yyyy).", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
-            else if (!DateTime.TryParse(dtNgayDong.Text.ToString(), out DateTime ngayDongValue))
+            else if(!DateTime.TryParseExact(kq, "dd/MM/yyyy", CultureInfo.InvariantCulture, DateTimeStyles.None, out DateTime ngayDongValue))
             {
                 MessageBox.Show("Ngày đóng không hợp lệ. Vui lòng kiểm tra lại.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
-            else if (inputTime <= ngayDongValue)
+            else if (parsedDate <= ngayDongValue)
             {
                 MessageBox.Show("Thời hạn kết thúc phải lớn hơn thời gian đóng.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;

@@ -9,7 +9,12 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Npgsql;
-using DevExpress.DirectX.StandardInterop.Direct2D;
+using DevExpress.ExpressApp.SystemModule;
+using DevExpress.CodeParser;
+using System.Globalization;
+using DevExpress.CodeParser.Diagnostics;
+using System.Collections;
+using System.Windows.Media;
 
 namespace QUANLYNHANSU
 {
@@ -39,19 +44,19 @@ namespace QUANLYNHANSU
             btnLuu.Enabled = !kt;
             btnKoLuu.Enabled = !kt;
             btnTimKiem.Enabled = kt;
-
+            btnTim.Enabled = false;
 
             //Tắt bật các text box
             tbSoTien.Enabled = !kt;
             tbTen.Enabled = !kt;
             tbID.Enabled = false;
-
+        }
+        void clear()
+        {
             //Làm sạch các text box
             tbTen.Clear();
             tbSoTien.Clear();
             tbID.Clear();
-
-            btnTim.Enabled = false;
         }
 
         //Load dữ liệu từ database
@@ -109,13 +114,14 @@ namespace QUANLYNHANSU
             command.Connection = connection;
             command.CommandType = CommandType.Text;
 
-            command.CommandText = "INSERT INTO public.\"tb.PHUCAP\"(\"TENPC\",\"SOTIEN\",\"TRANGTHAI\")" +
-            "VALUES(\'"+ idpc +"\'" + ten + "\', \'" + sotien + "\', \'1\');";
+            command.CommandText = "INSERT INTO public.\"tb.PHUCAP\"(\"IDPC\",\"TENPC\",\"SOTIEN\",\"TRANGTHAI\")" +
+            "VALUES( \'" + idpc + "\',\'" + ten + "\', \'" + sotien + "\', \'1\');";
             command.ExecuteNonQuery();
             connection.Dispose();
             connection.Close();
             loadData();
-
+            clear();
+            TangidPC();
         }
 
         //Nút sửa dữ liệu vào database
@@ -175,8 +181,8 @@ namespace QUANLYNHANSU
                 command.ExecuteNonQuery();
                 // Sau khi sửa thông tin xong, cập nhật lại DataGridView
                 loadData();
-
-
+                clear();
+                sua = false;
             }
             else
             {
@@ -196,28 +202,32 @@ namespace QUANLYNHANSU
         //Xóa dữ liệu (vô hiệu hóa) 
         private void Xoa()
         {
-            if (dgvPhuCap.SelectedRows.Count > 0)
+            DialogResult result = MessageBox.Show("Bạn có chắc chắn muốn xoá dữ liệu?", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+            if (result == DialogResult.Yes)
             {
-                DataGridViewRow selectedRow = dgvPhuCap.SelectedRows[0];
-                string idPC = selectedRow.Cells[0].Value.ToString();
-                // Kết nối tới cơ sở dữ liệu
-                NpgsqlConnection connection = new NpgsqlConnection("Server=localhost;Port=5432;Database=" + Database.name + ";User ID=postgres;Password=" + Database.pass + ";");
-                connection.Open();
-                NpgsqlCommand command = new NpgsqlCommand();
-                command.Connection = connection;
-                command.CommandType = CommandType.Text;
+                if (dgvPhuCap.SelectedRows.Count > 0)
+                {
+                    DataGridViewRow selectedRow = dgvPhuCap.SelectedRows[0];
+                    string idPC = selectedRow.Cells[0].Value.ToString();
+                    // Kết nối tới cơ sở dữ liệu
+                    NpgsqlConnection connection = new NpgsqlConnection("Server=localhost;Port=5432;Database=" + Database.name + ";User ID=postgres;Password=" + Database.pass + ";");
+                    connection.Open();
+                    NpgsqlCommand command = new NpgsqlCommand();
+                    command.Connection = connection;
+                    command.CommandType = CommandType.Text;
 
-                // Sử dụng truy vấn UPDATE để cập nhật thông tin của nhân viên
-                command.CommandText = "UPDATE public.\"tb.PHUCAP\" SET  \"TRANGTHAI\"=\'0\' WHERE \"IDPC\"=\'" + idPC + "\';";
+                    // Sử dụng truy vấn UPDATE để cập nhật thông tin của nhân viên
+                    command.CommandText = "UPDATE public.\"tb.PHUCAP\" SET  \"TRANGTHAI\"=\'0\' WHERE \"IDPC\"=\'" + idPC + "\';";
 
-                // Thực thi truy vấn
-                command.ExecuteNonQuery();
-                // Sau khi sửa thông tin xong, cập nhật lại DataGridView
-                loadData();
-            }
-            else
-            {
-                MessageBox.Show("Vui lòng chọn loại phụ cấp xóa thông tin.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    // Thực thi truy vấn
+                    command.ExecuteNonQuery();
+                    // Sau khi sửa thông tin xong, cập nhật lại DataGridView
+                    loadData();
+                }
+                else
+                {
+                    MessageBox.Show("Vui lòng chọn loại phụ cấp xóa thông tin.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
             }
         }
 
@@ -246,8 +256,11 @@ namespace QUANLYNHANSU
             command.Connection = connection;
             command.CommandType = CommandType.Text;
 
-            command.CommandText = "SELECT  \"IDPC\",\"TENPC\",\"SOTIEN\" FROM public.\"tb.PHUCAP\" WHERE \"TEN\" LIKE '%" + tbTen.Text + "%' AND\"TRANGTHAI\"=\'1\';";
-            command.ExecuteNonQuery();
+            command.CommandText = "SELECT  \"IDPC\",\"TENPC\",\"SOTIEN\"" +
+                " FROM public.\"tb.PHUCAP\"" +
+                " WHERE \"TENPC\" ILIKE @Ten" +
+                " AND\"TRANGTHAI\"=\'1\';";
+            command.Parameters.AddWithValue("@Ten", "%" + tbTen.Text + "%");
             NpgsqlDataReader dataReader = command.ExecuteReader();
             if (dataReader.HasRows)
             {
@@ -261,24 +274,31 @@ namespace QUANLYNHANSU
         //Nút lưu dữ liệu vào database
         private void btnLuu_Click_1(object sender, EventArgs e)
         {
-            if (them == true)
+            DialogResult result = MessageBox.Show("Bạn muốn lưu thay đổi?", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+            if (result == DialogResult.Yes)
             {
-                Them();
-            }
+                if (them == true)
+                {
+                    Them();
+                }
 
-            if (sua == true)
-            {
-                Sua();
+                if (sua == true)
+                {
+                    Sua();
+                }
             }
         }
 
         //Nút hủy lưu dữ liệu
         private void btnKoLuu_Click(object sender, EventArgs e)
         {
-            showHide(false);
-            them = true;
-            tbSoTien.Clear();
-            tbTen.Clear();
+            DialogResult result = MessageBox.Show("Bạn chắc chắn xoá những thông tin thay đổi?", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+            if (result == DialogResult.Yes)
+            {
+                showHide(false);
+                tbSoTien.Clear();
+                tbTen.Clear();
+            }
         }
 
         //Thoát các chức năng
@@ -309,8 +329,8 @@ namespace QUANLYNHANSU
                 e.Handled = true;
             }
 
-
-            if (e.KeyChar != (char)Keys.Back && tbTen.Text.Length == 50)
+            //ràng buộc độ dài
+            if (e.KeyChar != (char)Keys.Back && tbTen.Text.Length == 30)
             {
                 e.Handled = true;
             }
@@ -401,7 +421,7 @@ namespace QUANLYNHANSU
             }
             return true;
         }
-        // Hàm lấy mã nhân viên cuối cùng trong cơ sở dữ liệu
+        // Hàm lấy mã cuối cùng trong cơ sở dữ liệu
         private void LayIDCuoiCung()
         {
             NpgsqlConnection connection = new NpgsqlConnection("Server=localhost;Port=5432;Database=" + Database.name + ";User ID=postgres;Password=" + Database.pass + ";");
@@ -413,10 +433,10 @@ namespace QUANLYNHANSU
             // Truy vấn mã nhân viên lớn nhất trong cơ sở dữ liệu
             command.CommandText = "SELECT MAX(\"IDPC\") FROM public.\"tb.PHUCAP\"";
             object kq = command.ExecuteScalar();
-            
+
             if (kq != null && kq != DBNull.Value)
-            {         
-                 idPC = Convert.ToInt32(kq);
+            {
+                idPC = Convert.ToInt32(kq);
             }
             else
             {
