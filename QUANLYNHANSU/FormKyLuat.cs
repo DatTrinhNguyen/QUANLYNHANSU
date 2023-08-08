@@ -41,7 +41,7 @@ namespace QUANLYNHANSU
             btnKhongLuu.Enabled = !kt;
             btnIn.Enabled = kt;
             btnTimKiem.Enabled = kt;
-
+            btnThoat.Enabled = !kt;
 
             //Tắt bật các text box
             tbMaKL.Enabled = false;
@@ -291,8 +291,12 @@ namespace QUANLYNHANSU
         //Nút xóa dữ liệu (database) trong database
         private void btnXoa_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            showHide(true);
-            Xoa();
+            DialogResult dialogResult = MessageBox.Show("Bạn có muốn xóa không", "Thông báo", MessageBoxButtons.YesNo);
+            if (dialogResult == DialogResult.Yes)
+            {
+                showHide(true);
+                Xoa();
+            }
         }
 
         //Xóa dữ liệu (vô hiệu hóa) 
@@ -366,12 +370,21 @@ namespace QUANLYNHANSU
         {
             if (them == true)
             {
-                Them();
+                DialogResult dialogResult = MessageBox.Show("Bạn có muốn lưu không", "Thông báo", MessageBoxButtons.YesNo);
+                if (dialogResult == DialogResult.Yes)
+                {
+                    Them();
+                }
             }
 
             if (sua == true)
             {
-                Sua();
+                DialogResult dialogResult = MessageBox.Show("Bạn có muốn lưu không", "Thông báo", MessageBoxButtons.YesNo);
+                if (dialogResult == DialogResult.Yes)
+                {
+                    Sua();
+                }
+
             }
             showHide(true);
             them = false;
@@ -381,18 +394,26 @@ namespace QUANLYNHANSU
         //Nút hủy lưu dữ liệu
         private void btnKhongLuu_Click(object sender, EventArgs e)
         {
-            showHide(true);
-            them = false;
-            sua = false;
+            DialogResult dialogResult = MessageBox.Show("Bạn có muốn hủy lưu không", "Thông báo", MessageBoxButtons.YesNo);
+            if (dialogResult == DialogResult.Yes)
+            {
+                showHide(true);
+                them = false;
+                sua = false;
+            }
         }
 
         //Thoát các chức năng
         private void btnThoat_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            showHide(true);
-            them = false;
-            sua = false;
-            loadData();
+            DialogResult dialogResult = MessageBox.Show("Bạn có muốn thoát chức năng không", "Thông báo", MessageBoxButtons.YesNo);
+            if (dialogResult == DialogResult.Yes)
+            {
+                showHide(true);
+                them = false;
+                sua = false;
+                loadData();
+            }
         }
 
 
